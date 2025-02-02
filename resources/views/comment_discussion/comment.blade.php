@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comment</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="{{ asset('js/vote.js') }}"></script>
 </head>
 
@@ -50,7 +51,8 @@
             <div class="flex items-center ">
                 <input type="text" class="w-full bg-[#FFFFFF] text-[#FBF7F4] p-2 rounded-lg"
                     placeholder="Tambahkan komentar...">
-                <button type="submit" class="ml-2 bg-[#5B913B] px-6 py-1 rounded-full text-[#FFFFFF] text-sm">Tambahkan
+                <button type="submit"
+                    class="ml-2 bg-[#5B913B] px-6 py-1 rounded-full text-[#FFFFFF] text-sm hover:bg-green-700">Tambahkan
                     komentar</button>
             </div>
         </div>
