@@ -1,33 +1,32 @@
-let upvoted = false;
-let downvoted = false;
-let voteCount = 416; // Initial count
+let voteState = null;
 
-document.getElementById("upvote").addEventListener("click", function () {
-    if (upvoted) {
-        voteCount -= 1;
-        upvoted = false;
-        document.getElementById("upvote").classList.remove("bg-[#77B254]");
-    } else {
-        voteCount += downvoted ? 2 : 1; // Remove downvote if exists
-        upvoted = true;
-        downvoted = false;
-        document.getElementById("upvote").classList.add("bg-[#77B254]");
-        document.getElementById("downvote").classList.remove("bg-[#FF5757]");
-    }
-    document.getElementById("upvoteCount").textContent = voteCount;
-});
+function toggleVote(type) {
+    const upvoteButton = document.getElementById("upvoteIcon");
+    const downvoteButton = document.getElementById("downvoteIcon");
+    const voteCount = document.getElementById("voteCount");
+    let count = parseInt(voteCount.innerText);
 
-document.getElementById("downvote").addEventListener("click", function () {
-    if (downvoted) {
-        voteCount += 1;
-        downvoted = false;
-        document.getElementById("downvote").classList.remove("bg-[#FF5757]");
-    } else {
-        voteCount -= upvoted ? 2 : 1; // Remove upvote if exists
-        downvoted = true;
-        upvoted = false;
-        document.getElementById("downvote").classList.add("bg-[#FF5757]");
-        document.getElementById("upvote").classList.remove("bg-[#77B254]");
+    if (type === "upvote") {
+        if (voteState === "upvote") {
+            upvoteButton.classList.remove("text-green-600");
+            voteState = null;
+            voteCount.innerText = count - 1;
+        } else {
+            upvoteButton.classList.add("text-green-600");
+            downvoteButton.classList.remove("text-red-500");
+            voteCount.innerText = voteState === "downvote" ? count + 2 : count + 1;
+            voteState = "upvote";
+        }
+    } else if (type === "downvote") {
+        if (voteState === "downvote") {
+            downvoteButton.classList.remove("text-red-500");
+            voteState = null;
+            voteCount.innerText = count + 1;
+        } else {
+            downvoteButton.classList.add("text-red-500");
+            upvoteButton.classList.remove("text-green-600");
+            voteCount.innerText = voteState === "upvote" ? count - 2 : count - 1;
+            voteState = "downvote";
+        }
     }
-    document.getElementById("upvoteCount").textContent = voteCount;
-});
+}

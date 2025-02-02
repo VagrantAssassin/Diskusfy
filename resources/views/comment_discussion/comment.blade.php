@@ -7,180 +7,110 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Comment</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/hoverA.css') }}">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="{{ asset('js/vote.js') }}"></script>
 </head>
 
-<body class="bg-white text-green-900">
-    <header class="header container-fluid d-flex align-items-center justify-content-between">
-        <div class="logo">Diskusfy</div>
-        <button class="btn btn-light d-block d-md-none" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="d-flex flex-grow-1 mx-3 d-none d-md-block">
-            <input type="text" class="form-control" placeholder="Cari sesuatu...">
-        </div>
-        <div class="d-none d-md-block">
-            <button class="btn btn-light">Cari Topik</button>
-            <button class="btn btn-light">Buat Diskusi Baru</button>
-        </div>
-    </header>
-    <div class="sidebar d-none d-md-block">
-        <nav>
-            <hr>
-            <h5>Menu</h5>
-            <ul class="list-unstyled">
-                <li><a href="#"><i class="fas fa-home me-2"></i>Home</a></li>
-                <li><a href="#"><i class="fas fa-bell me-2"></i>Notifikasi</a></li>
-                <li><a href="/edit_profile"><i class="fas fa-user-friends me-2"></i>Profile</a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-            </ul>
-            <hr>
-            <h5>Topik</h5>
-            <ul class="list-unstyled">
-                <li><a href="#"><i class="fas fa-graduation-cap me-2"></i>Pendidikan</a></li>
-                <li><a href="#"><i class="fas fa-code me-2"></i>Coding</a></li>
-                <li><a href="#"><i class="fas fa-calculator me-2"></i>Matematika</a></li>
-                <li><a href="#"><i class="fas fa-university me-2"></i>Kuliah</a></li>
-                <li><a href="#"><i class="fas fa-cogs me-2"></i>Algoritma</a></li>
-            </ul>
-        </nav>
-    </div>
-    <div class="offcanvas offcanvas-start offcanvas-sidebar" tabindex="-1" id="offcanvasSidebar"
-        aria-labelledby="offcanvasSidebarLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasSidebarLabel">Menu</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <nav>
-                <ul class="list-unstyled">
-                    <li><a href="#"><i class="fas fa-home me-2"></i>Home</a></li>
-                    <li><a href="#"><i class="fas fa-bell me-2"></i>Notifikasi</a></li>
-                    <li><a href="#"><i class="fas fa-user-friends me-2"></i>Mengikuti</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                </ul>
-                <hr>
-                <h5>Topik</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#"><i class="fas fa-graduation-cap me-2"></i>Pendidikan</a></li>
-                    <li><a href="#"><i class="fas fa-code me-2"></i>Coding</a></li>
-                    <li><a href="#"><i class="fas fa-calculator me-2"></i>Matematika</a></li>
-                    <li><a href="#"><i class="fas fa-university me-2"></i>Kuliah</a></li>
-                    <li><a href="#"><i class="fas fa-cogs me-2"></i>Algoritma</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <main class="content">
-        <div class="max-w-4xl mx-auto p-4">
+<body>
+    <div class="max-w-4xl mx-auto p-4">
 
-            <!-- Topik Diskusi -->
-            <div class="bg-white text-white p-3 rounded shadow-sm">
-                <h2 class="text-lg font-semibold mt-4 text-green-800">GeForce GRD 572.16 Feedback Thread
-                    (Released 1/30/25)</h2>
-                <div class="mt-2 border-t border-black pt-2">
-                    <div class="bg-green-100 p-3 rounded-lg flex items-start mt-3">
-                        <p class="mt-1 text-green-700">
-                            menggunakan fitur baru aplikasi NVIDIA.
-                            Aplikasi NVIDIA: Optimasi dan peningkatan RTX Video Super Resolution, pengaturan tampilan
-                            ganda
-                            baru,
-                            dukungan Advanced Optimus, dan lainnya diperkenalkan dalam pembaruan aplikasi NVIDIA yang
-                            baru.
-                            NVIDIA Broadcast: Perbarui aplikasi populer sekarang untuk menambahkan dua efek bertenaga AI
-                            baru.
-                            Pembaruan Game RTX: Dapatkan Game Ready untuk DLSS 4 dengan Multi Frame Generation, Ray
-                            Reconstruction,
-                            RTX Mega Geometry, RTX Hair, dan Neural Radiance Cache, dalam pembaruan baru untuk Alan Wake
-                            2,
-                            Cyberpunk 2077, Hogwarts Legacy, Indiana Jones and the Great Circle™, dan Star Wars™
-                            Outlaws.
-                            NVIDIA Smooth Motion: Model AI berbasis driver baru menghadirkan gameplay yang lebih halus
-                            dengan
-                            menyimpulkan frame tambahan di antara dua frame yang dirender pada GPU GeForce RTX 50
-                            Series.
-                            Game Baru: Dapatkan Game Ready untuk rilis Kingdom Come: Deliverance II dan Marvel's
-                            Spider-Man
-                            2,
-                        </p>
+        <!-- Topik Diskusi -->
+        <div class="bg-[#FFFFFF] p-3 rounded shadow-sm">
+            <h2 class="text-lg font-semibold mt-4 text-[#000001]">GeForce GRD 572.16 Feedback Thread
+                (Released 1/30/25)</h2>
+            <div class="mt-2 border-t border-[#000001] pt-2">
+                <div class="bg-[#B3B3B3] p-3 rounded-lg flex items-start mt-3">
+                    <p class="mt-1 text-[#000001]">
+                        menggunakan fitur baru aplikasi NVIDIA.
+                        Aplikasi NVIDIA: Optimasi dan peningkatan RTX Video Super Resolution, pengaturan tampilan
+                        ganda
+                        baru,
+                        dukungan Advanced Optimus, dan lainnya diperkenalkan dalam pembaruan aplikasi NVIDIA yang
+                        baru.
+                        NVIDIA Broadcast: Perbarui aplikasi populer sekarang untuk menambahkan dua efek bertenaga AI
+                        baru.
+                        Pembaruan Game RTX: Dapatkan Game Ready untuk DLSS 4 dengan Multi Frame Generation, Ray
+                        Reconstruction,
+                        RTX Mega Geometry, RTX Hair, dan Neural Radiance Cache, dalam pembaruan baru untuk Alan Wake
+                        2,
+                        Cyberpunk 2077, Hogwarts Legacy, Indiana Jones and the Great Circle™, dan Star Wars™
+                        Outlaws.
+                        NVIDIA Smooth Motion: Model AI berbasis driver baru menghadirkan gameplay yang lebih halus
+                        dengan
+                        menyimpulkan frame tambahan di antara dua frame yang dirender pada GPU GeForce RTX 50
+                        Series.
+                        Game Baru: Dapatkan Game Ready untuk rilis Kingdom Come: Deliverance II dan Marvel's
+                        Spider-Man
+                        2,
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tambah Komentar -->
+        <div class="bg-[#B3B3B3] p-3 rounded-lg shadow-lg mt-3">
+            <div class="flex items-center ">
+                <input type="text" class="w-full bg-[#FFFFFF] text-[#FBF7F4] p-2 rounded-lg"
+                    placeholder="Tambahkan komentar...">
+                <button type="submit" class="ml-2 bg-[#5B913B] px-6 py-1 rounded-full text-[#FFFFFF] text-sm">Tambahkan
+                    komentar</button>
+            </div>
+        </div>
+
+        <!-- Komentar Balasam -->
+        <h2 class="text-lg font-semibold mt-4 text-[#000001]">Komentar</h2>
+        <div class="mt-2 border-t border-[#000001] pt-2">
+            <div class="bg-[#B3B3B3] p-3 rounded-lg flex items-start mt-3">
+                <img src="data:image/jpeg;base64,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"
+                    alt="Profile" class="w-10 h-10 rounded-full">
+                <div class="ml-3 w-full">
+                    <div class="flex justify-between">
+                        <span class="font-bold text-[#000001]">user</span>
+                        <span class="text-[#000001] text-sm">6d</span>
                     </div>
-                </div>
-            </div>
-
-            <!-- Tambah Komentar -->
-            <div class="bg-green-100 p-3 rounded-lg shadow-lg mt-3">
-                <div class="flex items-center border-b border-green-300 pb-2">
-                    <input type="text" class="w-full bg-white text-green-900 p-2 rounded-lg"
-                        placeholder="Tambahkan komentar...">
-                    <button class="ml-2 bg-green-600 px-6 py-1 rounded-full text-white text-sm">Tambahkan
-                        komentar</button>
-                </div>
-            </div>
-
-            <!-- Komentar Balasam -->
-            <h2 class="text-lg font-semibold mt-4 text-green-800">Komentar</h2>
-            <div class="mt-2 border-t border-black pt-2">
-                <div class="bg-green-50 p-3 rounded-lg flex items-start mt-3">
-                    <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full">
-                    <div class="ml-3 w-full">
-                        <div class="flex justify-between">
-                            <span class="font-bold text-green-800">Pablo Lannister</span>
-                            <span class="text-green-500 text-sm">6d</span>
-                        </div>
-                        <p class="mt-1 text-green-700">
-                            Saya mengunduh driver Game Ready 572.16 pada hari pertama, mencopotnya dengan DDU dan
-                            kemudian
-                            menginstalnya kembali, tetapi setiap kali saya mengalami masalah yang sama: banyak
-                            stuttering
-                            dan penurunan FPS yang tidak wajar (dari 120 ke 80 atau 70) di Final Fantasy 16 dan
-                            (walaupun
-                            sedikit) di demo The First Berserker Khazan, tetapi masalahnya yang paling parah ada di
-                            FF16.
-                            Saya memainkan kedua game tersebut dengan pengaturan 120 FPS pada resolusi 1080p, kartu
-                            grafis
-                            MSI 4080 Super, i9 10900k, motherboard MSI Z490 Gaming Plus, RAM Corsair DDR4 32 GB, NVMe
-                            Samsung 980 Pro, Windows 10 Pro 64 bit. Saya harus kembali ke driver Game Ready bulan
-                            Desember,
-                            dan driver tersebut bekerja dengan sangat baik. Mohon segera diperbaiki.
-                        </p>
-                        <div class="flex items-center mt-2 text-green-600 text-sm">
-                            <div class="flex items-center space-x-2">
-                                <!-- UPVOTE -->
-                                <button id="upvote"
-                                    class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-green-200 focus:ring focus:ring-green-500 transition"
-                                    onclick="toggleVote('upvote')">
-                                    <svg id="upvoteIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="currentColor" class="text-green-400">
-                                        <path d="M12 4l-8 10h6v6h4v-6h6z" />
-                                    </svg>
-                                </button>
-
-                                <span id="voteCount" class="text-green-700">416</span>
-
-                                <!-- DOWNVOTE -->
-                                <button id="downvote"
-                                    class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-green-200 focus:ring focus:ring-red-500 transition"
-                                    onclick="toggleVote('downvote')">
-                                    <svg id="downvoteIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="currentColor" class="text-green-400">
-                                        <path d="M12 20l8-10h-6v-6h-4v6h-6z" />
-                                    </svg>
-                                </button>
-                            </div>
+                    <p class="mt-4 text-[#000001]">
+                        Saya mengunduh driver Game Ready 572.16 pada hari pertama, mencopotnya dengan DDU dan
+                        kemudian
+                        menginstalnya kembali, tetapi setiap kali saya mengalami masalah yang sama: banyak
+                        stuttering
+                        dan penurunan FPS yang tidak wajar (dari 120 ke 80 atau 70) di Final Fantasy 16 dan
+                        (walaupun
+                        sedikit) di demo The First Berserker Khazan, tetapi masalahnya yang paling parah ada di
+                        FF16.
+                        Saya memainkan kedua game tersebut dengan pengaturan 120 FPS pada resolusi 1080p, kartu
+                        grafis
+                        MSI 4080 Super, i9 10900k, motherboard MSI Z490 Gaming Plus, RAM Corsair DDR4 32 GB, NVMe
+                        Samsung 980 Pro, Windows 10 Pro 64 bit. Saya harus kembali ke driver Game Ready bulan
+                        Desember,
+                        dan driver tersebut bekerja dengan sangat baik. Mohon segera diperbaiki.
+                    </p>
+                    <div class="flex items-center mt-2 text-[#5B913B] text-sm">
+                        <div class="flex items-center space-x-2">
+                            <!-- UPVOTE -->
+                            <button id="upvote"
+                                class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#77B254] transition"
+                                onclick="toggleVote('upvote')">
+                                <svg id="upvoteIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="currentColor" class="text-[#FFFFFF]">
+                                    <path d="M12 4l-8 10h6v6h4v-6h6z" />
+                                </svg>
+                            </button>
+                            <span id="voteCount" class="text-[#000001]">416</span>
+                            <!-- DOWNVOTE -->
+                            <button id="downvote"
+                                class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#FF5757] transition"
+                                onclick="toggleVote('downvote')">
+                                <svg id="downvoteIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="currentColor" class="text-[#FFFFFF]">
+                                    <path d="M12 20l8-10h-6v-6h-4v6h-6z" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="{{ asset('js/vote.js') }}"></script>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
 </body>
 
 </html>
