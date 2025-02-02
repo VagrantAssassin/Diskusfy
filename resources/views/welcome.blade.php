@@ -60,10 +60,10 @@
         <div class="offcanvas-body">
             <nav>
                 <ul class="list-unstyled">
-                    <li><a href="#"><i class="fas fa-home me-2"></i>Home</a></li>
+                    <li><a href="/"><i class="fas fa-home me-2"></i>Beranda</a></li>
                     <li><a href="#"><i class="fas fa-bell me-2"></i>Notifikasi</a></li>
-                    <li><a href="#"><i class="fas fa-user-friends me-2"></i>Mengikuti</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                    <li><a href="/edit_profile"><i class="fas fa-user-friends me-2"></i>Profil</a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
                 </ul>
                 <hr>
                 <h5>Topik</h5>
