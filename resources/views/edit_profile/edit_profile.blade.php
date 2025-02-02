@@ -8,6 +8,15 @@
 </head>
 <body class="bg-gradient-to-r from-green-200 to-green-500 min-h-screen flex justify-center items-center">
     <div class="bg-white shadow-2xl rounded-2xl p-8 md:p-12 w-full max-w-4xl transform hover:scale-105 transition duration-300 ease-in-out">
+        <div class="text-left mb-4">
+            <a href="/" class="text-green-700 hover:text-green-900 text-lg font-medium transition duration-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414l-3.293 3.293h7.586a1 1 0 010 2H6.414l3.293 3.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                Kembali
+            </a>
+        </div>
+        
         <div class="text-center mb-8">
             <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-32 h-32 mx-auto rounded-full mb-4 shadow-lg border-4 border-green-200">
             <h2 class="text-green-700 text-3xl font-bold">Raditya Aryabudhi Ramadhan</h2>

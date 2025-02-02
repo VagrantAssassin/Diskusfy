@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/hoverA.css') }}">
+
 </head>
 
 <body>
@@ -27,15 +29,14 @@
             <button class="btn btn-light">Buat Diskusi Baru</button>
         </div>
     </header>
-
-    <!-- Sidebar untuk desktop -->
     <div class="sidebar d-none d-md-block">
         <nav>
+            <hr>
             <h5>Menu</h5>
             <ul class="list-unstyled">
                 <li><a href="#"><i class="fas fa-home me-2"></i>Home</a></li>
                 <li><a href="#"><i class="fas fa-bell me-2"></i>Notifikasi</a></li>
-                <li><a href="#"><i class="fas fa-user-friends me-2"></i>Mengikuti</a></li>
+                <li><a href="/edit_profile"><i class="fas fa-user-friends me-2"></i>Profile</a></li>
                 <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
             </ul>
             <hr>
@@ -49,8 +50,6 @@
             </ul>
         </nav>
     </div>
-
-    <!-- Offcanvas Sidebar untuk mobile -->
     <div class="offcanvas offcanvas-start offcanvas-sidebar" tabindex="-1" id="offcanvasSidebar"
         aria-labelledby="offcanvasSidebarLabel">
         <div class="offcanvas-header">

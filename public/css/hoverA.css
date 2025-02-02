@@ -1,0 +1,20 @@
+/* Animasi hover untuk tombol */
+.btn:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar a:hover,
+.offcanvas-body a:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Penanda hover untuk menu sidebar */
+.sidebar ul li a:hover,
+.offcanvas-body ul li a:hover {
+    background-color: #b3b3b3;
+    border-radius: 5px;
+    padding: 5px;
+}
