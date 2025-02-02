@@ -20,3 +20,7 @@ Route::get('/comment', function () {
 Route::get('/new_discussion', function () {
     return view('create_new_discussion.new_discussion');
 });
+
+Route::get('/home', function () {
+    return view('home.home');
+});
