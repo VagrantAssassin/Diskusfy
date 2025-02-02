@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diskusfy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/hoverA.css') }}">
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body>
@@ -26,18 +25,19 @@
         </div>
         <div class="d-none d-md-block">
             <button class="btn btn-light">Cari Topik</button>
-            <button class="btn btn-light">Buat Diskusi Baru</button>
+            <button class="btn btn-light" id="createDiscussionButton">Buat Diskusi Baru</button>
         </div>
     </header>
+
     <div class="sidebar d-none d-md-block">
         <nav>
             <hr>
             <h5>Menu</h5>
             <ul class="list-unstyled">
-                <li><a href="#"><i class="fas fa-home me-2"></i>Home</a></li>
+                <li><a href="/"><i class="fas fa-home me-2"></i>Beranda</a></li>
                 <li><a href="#"><i class="fas fa-bell me-2"></i>Notifikasi</a></li>
-                <li><a href="/edit_profile"><i class="fas fa-user-friends me-2"></i>Profile</a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                <li><a href="/edit_profile"><i class="fas fa-user-friends me-2"></i>Profil</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
             </ul>
             <hr>
             <h5>Topik</h5>
@@ -50,6 +50,7 @@
             </ul>
         </nav>
     </div>
+
     <div class="offcanvas offcanvas-start offcanvas-sidebar" tabindex="-1" id="offcanvasSidebar"
         aria-labelledby="offcanvasSidebarLabel">
         <div class="offcanvas-header">
@@ -77,12 +78,13 @@
         </div>
     </div>
 
-    <main class="content">
+    <main class="content" id="mainContent">
         <h1>Selamat Datang di Diskusfy</h1>
         <p>Ini adalah contoh konten utama.</p>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="{{ asset('js/discussion.js') }}"></script>
 </body>
 
 </html>
