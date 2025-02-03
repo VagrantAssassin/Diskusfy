@@ -20,27 +20,7 @@
     <div class="mt-2 border-t border-[#000001] pt-2">
         <div class="bg-[#B3B3B3] p-3 rounded-lg flex items-start mt-3">
             <p class="mt-1 text-[#000001]">
-                menggunakan fitur baru aplikasi NVIDIA.
-                Aplikasi NVIDIA: Optimasi dan peningkatan RTX Video Super Resolution, pengaturan tampilan
-                ganda
-                baru,
-                dukungan Advanced Optimus, dan lainnya diperkenalkan dalam pembaruan aplikasi NVIDIA yang
-                baru.
-                NVIDIA Broadcast: Perbarui aplikasi populer sekarang untuk menambahkan dua efek bertenaga AI
-                baru.
-                Pembaruan Game RTX: Dapatkan Game Ready untuk DLSS 4 dengan Multi Frame Generation, Ray
-                Reconstruction,
-                RTX Mega Geometry, RTX Hair, dan Neural Radiance Cache, dalam pembaruan baru untuk Alan Wake
-                2,
-                Cyberpunk 2077, Hogwarts Legacy, Indiana Jones and the Great Circle™, dan Star Wars™
-                Outlaws.
-                NVIDIA Smooth Motion: Model AI berbasis driver baru menghadirkan gameplay yang lebih halus
-                dengan
-                menyimpulkan frame tambahan di antara dua frame yang dirender pada GPU GeForce RTX 50
-                Series.
-                Game Baru: Dapatkan Game Ready untuk rilis Kingdom Come: Deliverance II dan Marvel's
-                Spider-Man
-                2,
+                p
             </p>
         </div>
     </div>
@@ -69,20 +49,7 @@
                     <span class="text-[#000001] text-sm">6d</span>
                 </div>
                 <p class="mt-4 text-[#000001]">
-                    Saya mengunduh driver Game Ready 572.16 pada hari pertama, mencopotnya dengan DDU dan
-                    kemudian
-                    menginstalnya kembali, tetapi setiap kali saya mengalami masalah yang sama: banyak
-                    stuttering
-                    dan penurunan FPS yang tidak wajar (dari 120 ke 80 atau 70) di Final Fantasy 16 dan
-                    (walaupun
-                    sedikit) di demo The First Berserker Khazan, tetapi masalahnya yang paling parah ada di
-                    FF16.
-                    Saya memainkan kedua game tersebut dengan pengaturan 120 FPS pada resolusi 1080p, kartu
-                    grafis
-                    MSI 4080 Super, i9 10900k, motherboard MSI Z490 Gaming Plus, RAM Corsair DDR4 32 GB, NVMe
-                    Samsung 980 Pro, Windows 10 Pro 64 bit. Saya harus kembali ke driver Game Ready bulan
-                    Desember,
-                    dan driver tersebut bekerja dengan sangat baik. Mohon segera diperbaiki.
+                    p
                 </p>
                 <div class="flex items-center mt-2 text-[#5B913B] text-sm">
                     <div class="flex items-center space-x-2">
