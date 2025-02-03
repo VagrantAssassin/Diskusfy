@@ -29,7 +29,7 @@
 
                 <button type="submit">Login</button>
 
-                <button type="button" id="google-signin" class="google-btn"><span>G</span> SIGN IN WITH GOOGLE</button>
+                <button type="button" id="google-signin" class="google-btn"><span></span> SIGN IN WITH GOOGLE</button>
 
                 <p class="register-text">Don't have an account? <a href="/register">Register here</a>.</p>
             </form>
