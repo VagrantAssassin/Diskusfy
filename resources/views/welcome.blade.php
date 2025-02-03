@@ -81,6 +81,7 @@
         @include('home.home')
     </main>
     <script defer src="{{ asset('js/discussion.js') }}"></script>
+    <script defer src="{{ asset('js/commentButton.js') }}"></script>
     <script type="module" src="{{ asset('js/auth.js') }}"></script>
 </body>
 

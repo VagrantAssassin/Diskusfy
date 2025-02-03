@@ -8,24 +8,35 @@ function toggleVote(type) {
 
     if (type === "upvote") {
         if (voteState === "upvote") {
+            // Jika upvote sudah aktif, matikan
             upvoteButton.classList.remove("text-green-600");
-            voteState = null;
             voteCount.innerText = count - 1;
+            voteState = null;
         } else {
+            // Jika sedang downvote, matikan downvote dulu
+            if (voteState === "downvote") {
+                downvoteButton.classList.remove("text-red-500");
+            }
+
+            // Aktifkan upvote dan update count
             upvoteButton.classList.add("text-green-600");
-            downvoteButton.classList.remove("text-red-500");
-            voteCount.innerText = voteState === "downvote" ? count + 2 : count + 1;
+            voteCount.innerText = count + 1;
             voteState = "upvote";
         }
     } else if (type === "downvote") {
         if (voteState === "downvote") {
+            // Jika downvote sudah aktif, matikan
             downvoteButton.classList.remove("text-red-500");
             voteState = null;
-            voteCount.innerText = count + 1;
         } else {
+            // Jika sedang upvote, matikan upvote dulu
+            if (voteState === "upvote") {
+                upvoteButton.classList.remove("text-green-600");
+                voteCount.innerText = count - 1; // Batalkan upvote saat beralih ke downvote
+            }
+
+            // Aktifkan downvote tanpa mengubah count
             downvoteButton.classList.add("text-red-500");
-            upvoteButton.classList.remove("text-green-600");
-            voteCount.innerText = voteState === "upvote" ? count - 2 : count - 1;
             voteState = "downvote";
         }
     }
