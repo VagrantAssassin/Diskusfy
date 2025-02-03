@@ -16,7 +16,7 @@
         </div>
         <div class="login-section">
             <h2>Log in</h2>
-            <form>
+            <form id="login-form" action="#" method="post">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="justin@gmail.com" required>
 
@@ -35,5 +35,7 @@
             </form>
         </div>
     </div>
+
+    <script src="{{ asset('js/login.js') }}" type="module"></script>
 </body>
 </html>

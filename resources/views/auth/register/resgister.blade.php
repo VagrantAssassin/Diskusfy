@@ -10,7 +10,7 @@
     <div class="container">
         <div class="form-section">
             <h2>Register</h2>
-            <form>
+            <form id="register-form" action="#" method="post">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
@@ -24,10 +24,11 @@
 
                 <p class="signin-text"><a href="/login">Sign in</a></p>
 
-                <button class="google-btn"><span>G</span> SIGN UP WITH GOOGLE</button>
-                <button class="facebook-btn"><span>f</span> SIGN UP WITH FACEBOOK</button>
+                <button type="button" class="google-btn"><span>G</span> SIGN UP WITH GOOGLE</button>
+                <button type="button" class="facebook-btn"><span>f</span> SIGN UP WITH FACEBOOK</button>
             </form>
         </div>
     </div>
+    <script src="{{ asset('js/register.js') }}" type="module"></script>
 </body>
 </html>
