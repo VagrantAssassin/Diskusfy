@@ -24,3 +24,15 @@ Route::get('/new_discussion', function () {
 Route::get('/home', function () {
     return view('home.home');
 });
+
+Route::get('/login', function () {
+    return view('auth.login.login');
+});
+
+Route::get('/register', function () {
+    return view('auth.register.resgister');
+});
+
+Route::get('/forget', function () {
+    return view('auth.forget.forget');
+});
