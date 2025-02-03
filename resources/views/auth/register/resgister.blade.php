@@ -24,11 +24,12 @@
 
                 <p class="signin-text"><a href="/login">Sign in</a></p>
 
-                <button type="button" class="google-btn"><span>G</span> SIGN UP WITH GOOGLE</button>
+                <button type="button" id="google-signup" class="google-btn"><span>G</span> SIGN UP WITH GOOGLE</button>
                 <button type="button" class="facebook-btn"><span>f</span> SIGN UP WITH FACEBOOK</button>
             </form>
         </div>
     </div>
+
     <script src="{{ asset('js/register.js') }}" type="module"></script>
 </body>
 </html>

@@ -29,7 +29,7 @@
 
                 <button type="submit">Login</button>
 
-                <p class="register-text">Login Memakai <a href="/register">Google!</a>.</p>
+                <button type="button" id="google-signin" class="google-btn"><span>G</span> SIGN IN WITH GOOGLE</button>
 
                 <p class="register-text">Don't have an account? <a href="/register">Register here</a>.</p>
             </form>

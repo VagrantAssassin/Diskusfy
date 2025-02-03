@@ -2,6 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import {
     getAuth,
     signInWithEmailAndPassword,
+    signInWithPopup,
+    GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // Konfigurasi Firebase
@@ -17,6 +19,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -31,8 +34,23 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
             password
         );
         alert("Login berhasil!");
-        window.location.href = "/";
+        window.location.href = "/"; // Ganti dengan halaman yang sesuai setelah login
     } catch (error) {
         alert("Login gagal: " + error.message);
+    }
+});
+
+// Handle Google Sign-in
+document.getElementById("google-signin").addEventListener("click", async () => {
+    try {
+        const result = await signInWithPopup(auth, provider);
+        alert(
+            "Login dengan Google berhasil! Selamat datang, " +
+                result.user.displayName
+        );
+        window.location.href = "/"; // Ganti dengan halaman yang sesuai setelah login
+    } catch (error) {
+        console.error("Login dengan Google gagal:", error);
+        alert("Login dengan Google gagal: " + error.message);
     }
 });
