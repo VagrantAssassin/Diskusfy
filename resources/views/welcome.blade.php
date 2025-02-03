@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/hoverA.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
             <ul class="list-unstyled">
                 <li><a href="/"><i class="fas fa-home me-2"></i>Beranda</a></li>
                 <li><a href="/edit_profile"><i class="fas fa-user-friends me-2"></i>Profil</a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
+                <li><a href="#" id="logoutButton"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
             </ul>
             <hr>
             <h5>Kategori</h5>
@@ -61,7 +62,7 @@
                 <ul class="list-unstyled">
                     <li><a href="/"><i class="fas fa-home me-2"></i>Beranda</a></li>
                     <li><a href="/edit_profile"><i class="fas fa-user-friends me-2"></i>Profil</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
+                    <li><a href="#" id="logoutButton"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
                 </ul>
                 <hr>
                 <h5>Kategori</h5>
@@ -79,8 +80,6 @@
     <main class="content" id="mainContent">
         @include('home.home')
     </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script defer src="{{ asset('js/discussion.js') }}"></script>
     <script type="module" src="{{ asset('js/auth.js') }}"></script>
 </body>
