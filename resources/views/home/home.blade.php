@@ -23,12 +23,6 @@
                         <button class="bg-[#5B913B] text-white px-4 py-2 rounded flex items-center">
                             💬 <span class="ml-1">Komentar</span>
                         </button>
-                        <button class="bg-[#666666] text-white px-4 py-2 rounded flex items-center">
-                            📌 <span class="ml-1">Simpan</span>
-                        </button>
-                        <button class="bg-[#384D6C] text-white px-4 py-2 rounded flex items-center">
-                            🔄 <span class="ml-1">Bagikan</span>
-                        </button>
                     </div>
                 </div>
             @endforeach

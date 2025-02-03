@@ -35,17 +35,16 @@
             <h5>Menu</h5>
             <ul class="list-unstyled">
                 <li><a href="/"><i class="fas fa-home me-2"></i>Beranda</a></li>
-                <li><a href="#"><i class="fas fa-bell me-2"></i>Notifikasi</a></li>
                 <li><a href="/edit_profile"><i class="fas fa-user-friends me-2"></i>Profil</a></li>
                 <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
             </ul>
             <hr>
-            <h5>Topik</h5>
+            <h5>Kategori</h5>
             <ul class="list-unstyled">
-                <li><a href="#"><i class="fas fa-graduation-cap me-2"></i>Pendidikan</a></li>
+                <li><a href="#"><i class="fas fa-graduation-cap me-2"></i>Indonesia</a></li>
                 <li><a href="#"><i class="fas fa-code me-2"></i>Coding</a></li>
                 <li><a href="#"><i class="fas fa-calculator me-2"></i>Matematika</a></li>
-                <li><a href="#"><i class="fas fa-university me-2"></i>Kuliah</a></li>
+                <li><a href="#"><i class="fas fa-university me-2"></i>Hukum</a></li>
                 <li><a href="#"><i class="fas fa-cogs me-2"></i>Algoritma</a></li>
             </ul>
         </nav>
@@ -61,12 +60,11 @@
             <nav>
                 <ul class="list-unstyled">
                     <li><a href="/"><i class="fas fa-home me-2"></i>Beranda</a></li>
-                    <li><a href="#"><i class="fas fa-bell me-2"></i>Notifikasi</a></li>
                     <li><a href="/edit_profile"><i class="fas fa-user-friends me-2"></i>Profil</a></li>
                     <li><a href="#"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
                 </ul>
                 <hr>
-                <h5>Topik</h5>
+                <h5>Kategori</h5>
                 <ul class="list-unstyled">
                     <li><a href="#"><i class="fas fa-graduation-cap me-2"></i>Pendidikan</a></li>
                     <li><a href="#"><i class="fas fa-code me-2"></i>Coding</a></li>
