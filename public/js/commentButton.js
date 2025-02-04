@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then((response) => response.text())
                 .then((data) => {
                     mainContent.innerHTML = `
-                        <div class="flex justify-center items-center min-h-screen">
-                            <div class="w-full max-w-auto">
+                        <div class="justify-center items-center">
+                            <div class="w-full">
                                 ${data}
                             </div>
                         </div>
