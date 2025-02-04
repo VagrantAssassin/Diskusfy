@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateForumTables extends Migration
 {
@@ -36,6 +37,14 @@ class CreateForumTables extends Migration
             $table->date('tanggal')->nullable();
             $table->timestamps();
         });
+
+        DB::table('kategoris')->insert([
+            ['id_kategori' => 1, 'nama_kategori' => 'Indonesia'],
+            ['id_kategori' => 2, 'nama_kategori' => 'Matematika'],
+            ['id_kategori' => 3, 'nama_kategori' => 'Coding'],
+            ['id_kategori' => 4, 'nama_kategori' => 'Hukum'],
+            ['id_kategori' => 5, 'nama_kategori' => 'Algoritma'],
+        ]);
 
 
         // Tabel 'balasan'
