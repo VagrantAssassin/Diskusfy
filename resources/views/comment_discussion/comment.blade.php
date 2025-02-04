@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <section class="bg-gray-900 py-8 center antialiased dark:bg-gray-900 md:py-16">
-        <div class="max-w-2xl mx-auto px-4">
+    <section class="bg-gray-900 py-8 antialiased dark:bg-gray-900 md:py-16">
+        <div class="max-w-6xl mx-auto px-4">
             <!-- Topik Diskusi -->
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">GeForce GRD 572.16 Feedback Thread
                 (Released 1/30/25)</h2>
