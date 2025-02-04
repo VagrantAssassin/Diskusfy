@@ -7,97 +7,111 @@
     <title>Diskusfy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="{{ asset('js/vote.js') }}"></script>
 </head>
 
 <body>
-    <div class="container mx-auto p-auto">
-        <div class="bg-white shadow-md rounded-lg p-6 w-full h-screen overflow-auto">
-
+    <section class="bg-gray-900 py-8 antialiased dark:bg-gray-900 md:py-16 h-screen">
+        <div class="mx-auto max-w-screen-lg px-4 2xl:px-0 lg:items-center">
             <!-- Topik Diskusi -->
-            <h2 class="text-lg font-semibold mt-4 text-[#000001]">GeForce GRD 572.16 Feedback Thread (Released 1/30/25)</h2>
-            <div class="mt-2 border-t border-[#000001] pt-2">
-                <div class="bg-[#FBF7F4] p-3 rounded-lg flex items-start mt-3">
-                    <p class="mt-1 text-[#000001]">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">GeForce GRD 572.16 Feedback Thread
+                (Released 1/30/25)</h2>
+            <div class="mt-2 border-t border-gray-700 pt-2">
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg flex items-start mt-3">
+                    <p class="text-gray-900 dark:text-gray-300">
                         p bfwoifnefslekjfspeomfw'epoifjseicme;sna/wkdjae/ofjkaofmafna'podjascaknawfa
                     </p>
                 </div>
             </div>
 
-            <!-- Tambah Komentar -->
-            <div class="bg-[#FBF7F4] p-3 rounded-lg shadow-lg mt-3">
-                <div class="flex items-center ">
-                    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
-                    <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
-                    <button type="submit" class="ml-2 bg-[#5B913B] px-6 py-1 rounded-full text-[#FFFFFF] text-sm hover:bg-green-700 mt-2">Tambahkan komentar</button>
+            <!-- Comment Input Form -->
+            <form class="mb-6 mt-6">
+                <div
+                    class="py-2 px-4 mb-4 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                    <label for="comment" class="sr-only">Your comment</label>
+                    <textarea id="comment" rows="6"
+                        class="w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                        placeholder="Write a comment..." required></textarea>
                 </div>
-            </div>
+                <button type="submit"
+                    class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                    Post comment
+                </button>
+            </form>
 
-            <!-- Komentar Sebelumnya -->
-            <h2 class="text-lg font-semibold mt-4 text-[#000001]">Komentar</h2>
-            <div class="mt-2 border-t border-[#000001] pt-2">
-                <div class="bg-[#FBF7F4] p-3 shadow-md rounded-lg flex items-start mt-3">
-                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="Profile" class="w-10 h-10 rounded-full">
-                    <div class="ml-3 w-full">
-                        <div class="flex justify-between">
-                            <span class="font-bold text-[#000001]">user</span>
-                            <span class="text-[#000001] text-sm">6d</span>
-                        </div>
-                        <p class="mt-4 text-[#000001]">
-                            p
-                        </p>
-                        <div class="flex items-center mt-2 text-[#5B913B] text-sm">
-                            <div class="flex items-center space-x-2">
-                                <!-- UPVOTE -->
-                                <button id="upvote" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#77B254] transition" onclick="toggleVote('upvote')">
-                                    <svg id="upvoteIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-[#B3B3B3]">
-                                        <path d="M12 4l-8 10h6v6h4v-6h6z" />
-                                    </svg>
-                                </button>
-                                <span id="voteCount" class="text-[#000001]">416</span>
-                                <!-- DOWNVOTE -->
-                                <button id="downvote" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#FF5757] transition" onclick="toggleVote('downvote')">
-                                    <svg id="downvoteIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-[#B3B3B3]">
-                                        <path d="M12 20l8-10h-6v-6h-4v6h-6z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+            <!-- Static Comment 1 -->
+            <article class="p-6 mb-4 text-base bg-white rounded-lg dark:bg-gray-900">
+                <footer class="flex justify-between items-center mb-2">
+                    <div class="flex items-center">
+                        <img class="mr-2 w-6 h-6 rounded-full"
+                            src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Michael Gough">
+                        <p class="text-sm text-gray-900 dark:text-white font-semibold">Michael Gough</p>
                     </div>
-                </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        <time datetime="2022-02-08">Feb. 8, 2022</time>
+                    </p>
+                </footer>
+                <p class="text-gray-500 dark:text-gray-400">Very straight-to-the-point article. Really worth
+                    reading. Thank you!</p>
 
-                <div class="bg-[#FBF7F4] p-3 shadow-md rounded-lg flex items-start mt-3">
-                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="Profile" class="w-10 h-10 rounded-full">
-                    <div class="ml-3 w-full">
-                        <div class="flex justify-between">
-                            <span class="font-bold text-[#000001]">user2</span>
-                            <span class="text-[#000001] text-sm">1d</span>
-                        </div>
-                        <p class="mt-4 text-[#000001]">
-                            Great discussion! I think the new drivers are making a big difference.
-                        </p>
-                        <div class="flex items-center mt-2 text-[#5B913B] text-sm">
-                            <div class="flex items-center space-x-2">
-                                <!-- UPVOTE -->
-                                <button id="upvote" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#77B254] transition" onclick="toggleVote('upvote')">
-                                    <svg id="upvoteIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-[#B3B3B3]">
-                                        <path d="M12 4l-8 10h6v6h4v-6h6z" />
-                                    </svg>
-                                </button>
-                                <span id="voteCount" class="text-[#000001]">30</span>
-                                <!-- DOWNVOTE -->
-                                <button id="downvote" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#FF5757] transition" onclick="toggleVote('downvote')">
-                                    <svg id="downvoteIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-[#B3B3B3]">
-                                        <path d="M12 20l8-10h-6v-6h-4v6h-6z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Voting System -->
+                <div class="flex items-center mt-4 space-x-4">
+                    <button type="button"
+                        class="flex items-center text-sm text-gray-500 hover:text-green-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                        </svg> Upvote
+                    </button>
+                    <span class="text-sm text-gray-900 dark:text-white">12</span>
+                    <button type="button"
+                        class="flex items-center text-sm text-gray-500 hover:text-red-500 dark:text-gray-400">
+                        <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg> Downvote
+                    </button>
                 </div>
-            </div>
+            </article>
+
+            <!-- Static Comment 2 -->
+            <article class="p-6 mb-4 text-base bg-white rounded-lg dark:bg-gray-900">
+                <footer class="flex justify-between items-center mb-2">
+                    <div class="flex items-center">
+                        <img class="mr-2 w-6 h-6 rounded-full"
+                            src="https://flowbite.com/docs/images/people/profile-picture-3.jpg" alt="Jane Doe">
+                        <p class="text-sm text-gray-900 dark:text-white font-semibold">Jane Doe</p>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        <time datetime="2022-03-15">Mar. 15, 2022</time>
+                    </p>
+                </footer>
+                <p class="text-gray-500 dark:text-gray-400">I have a different perspective on this. Has anyone tried
+                    another approach?</p>
+
+                <!-- Voting System -->
+                <div class="flex items-center mt-4 space-x-4">
+                    <button type="button"
+                        class="flex items-center text-sm text-gray-500 hover:text-green-600 dark:text-gray-400">
+                        <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                        </svg> Upvote
+                    </button>
+                    <span class="text-sm text-gray-900 dark:text-white">8</span>
+                    <button type="button"
+                        class="flex items-center text-sm text-gray-500 hover:text-red-500 dark:text-gray-400">
+                        <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg> Downvote
+                    </button>
+                </div>
+            </article>
         </div>
-    </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
+    <script src="{{ asset('js/vote.js') }}"></script>
 </body>
 
 </html>
