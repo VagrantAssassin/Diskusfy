@@ -40,7 +40,7 @@
                         <input type="checkbox" class="rounded border-gray-300 text-green-600 focus:ring-green-500"/>
                         <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
                     </label>
-                    <a href="/forget" class="text-sm text-green-600 hover:text-green-500 dark:text-green-400">Forgot password?</a>
+                    {{-- <a href="/forget" class="text-sm text-green-600 hover:text-green-500 dark:text-green-400">Forgot password?</a> --}}
                 </div>
                 
                 <button type="submit" id="login-submit" class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-500 dark:hover:bg-green-600 dark:focus:ring-green-800">
