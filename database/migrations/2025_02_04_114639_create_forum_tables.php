@@ -16,7 +16,7 @@ class CreateForumTables extends Migration
         });
 
         // Tabel 'pengguna'
-        Schema::create('pengguna', function (Blueprint $table) {
+        Schema::create('penggunas', function (Blueprint $table) {
             $table->string('uid', 100)->primary();
             $table->string('username', 32);
             $table->string('email', 50);
@@ -31,7 +31,7 @@ class CreateForumTables extends Migration
             $table->foreignId('id_kategori')->nullable()->constrained('kategori', 'id_kategori');
             $table->string('isi_diskusi', 255);
             $table->string('uid', 32);
-            $table->foreign('uid')->references('uid')->on('pengguna');  // Menjadikan 'uid' sebagai foreign key
+            $table->foreign('uid')->references('uid')->on('penggunas');  // Menjadikan 'uid' sebagai foreign key
             $table->string('judul', 50);
             $table->date('tanggal')->nullable();
             $table->timestamps();
@@ -44,7 +44,7 @@ class CreateForumTables extends Migration
             $table->foreignId('id_diskusi')->nullable()->constrained('diskusi', 'id_diskusi');
             $table->string('isi_balasan', 255);
             $table->string('uid', 32);
-            $table->foreign('uid')->references('uid')->on('pengguna');  // Menjadikan 'uid' sebagai foreign key
+            $table->foreign('uid')->references('uid')->on('penggunas');  // Menjadikan 'uid' sebagai foreign key
             $table->date('tanggal')->nullable();
             $table->timestamps();
         });
@@ -56,7 +56,7 @@ class CreateForumTables extends Migration
             $table->foreignId('id_balasan')->nullable()->constrained('balasan', 'id_balasan');
             $table->string('isi_vote', 255);
             $table->string('uid', 32);
-            $table->foreign('uid')->references('uid')->on('pengguna');  // Menjadikan 'uid' sebagai foreign key
+            $table->foreign('uid')->references('uid')->on('penggunas');  // Menjadikan 'uid' sebagai foreign key
             $table->timestamps();
         });
 
@@ -67,7 +67,7 @@ class CreateForumTables extends Migration
         Schema::dropIfExists('vote');
         Schema::dropIfExists('balasan');
         Schema::dropIfExists('diskusi');
-        Schema::dropIfExists('pengguna');
+        Schema::dropIfExists('penggunas');
         Schema::dropIfExists('kategori');
     }
 }

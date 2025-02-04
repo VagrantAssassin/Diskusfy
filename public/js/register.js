@@ -28,6 +28,8 @@ document
 
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
+        const username = document.getElementById("username").value;
+        const nama = document.getElementById("nama").value; // Tambahkan field nama
 
         try {
             const userCredential = await createUserWithEmailAndPassword(
@@ -35,8 +37,31 @@ document
                 email,
                 password
             );
-            alert("Registrasi berhasil! Anda sekarang dapat masuk.");
-            window.location.href = "/login";
+
+            // Setelah registrasi berhasil, kirim data ke server Laravel
+            const response = await fetch("/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document
+                        .querySelector('meta[name="csrf-token"]')
+                        .getAttribute("content"),
+                },
+                body: JSON.stringify({
+                    email,
+                    username,
+                    nama,
+                    uid: userCredential.user.uid, // Kirim UID dari Firebase
+                }),
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                alert("Registrasi berhasil! Anda sekarang dapat masuk.");
+                window.location.href = "/login"; // Redirect ke halaman login
+            } else {
+                alert("Gagal menambahkan pengguna.");
+            }
         } catch (error) {
             alert("Registrasi gagal: " + error.message);
         }

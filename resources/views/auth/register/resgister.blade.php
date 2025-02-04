@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.css" rel="stylesheet" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Register</title>
 </head>
 <body>
@@ -14,6 +15,29 @@
       <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Register</h2>
       
       <form class="space-y-4" id="register-form">
+        @csrf
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+          <input 
+            type="name" 
+            id="username"
+            name="username"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+            placeholder="username"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+          <input 
+            type="name" 
+            id="nama"
+            name="nama"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+            placeholder="name"
+          />
+        </div>
+
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
           <input 
