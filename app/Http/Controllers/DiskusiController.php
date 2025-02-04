@@ -29,6 +29,15 @@ class DiskusiController extends Controller
         }
     }
 
+    public function index()
+    {
+        // Mengambil data diskusi dari database
+        $diskusis = Diskusi::all(); // Bisa menggunakan pagination jika data banyak
+
+        // Mengirim data ke view 'home.home'
+        return view('home.home', compact('diskusis'));
+    }
+
 
 }
 

@@ -192,11 +192,11 @@
         </nav>
       </aside>
 
-      <div class="flex-1 pl-64"> <!-- Adjusted the padding to the sidebar width -->
+      <div class="flex-1 pl-64">
         <main class="min-h-screen" id="mainContent">
-          @include('home.home') <!-- Default content -->
+            @include('home.home') <!-- Mengarahkan ke home -->
         </main>
-      </div>
+    </div>
 
 
     </div>
