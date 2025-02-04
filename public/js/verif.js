@@ -34,3 +34,36 @@ onAuthStateChanged(auth, (user) => {
         window.location.href = "/login"; // Redirect ke halaman login jika belum login
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("diskusi-form");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Mencegah form submit biasa
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    // Tampilkan popup
+                    alert(data.message);
+                    // Redirect ke halaman lain, misalnya home
+                    window.location.href = "/";
+                } else {
+                    alert("Terjadi kesalahan: " + data.message);
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("Terjadi kesalahan saat mengirim data.");
+            });
+    });
+});
