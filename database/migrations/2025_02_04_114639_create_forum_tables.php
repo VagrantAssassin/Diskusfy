@@ -9,7 +9,7 @@ class CreateForumTables extends Migration
     public function up()
     {
         // Tabel 'kategori'
-        Schema::create('kategori', function (Blueprint $table) {
+        Schema::create('kategoris', function (Blueprint $table) {
             $table->id('id_kategori');
             $table->string('nama_kategori', 20);
             $table->timestamps();
@@ -26,9 +26,9 @@ class CreateForumTables extends Migration
         });
 
         // Tabel 'diskusi'
-        Schema::create('diskusi', function (Blueprint $table) {
+        Schema::create('diskusis', function (Blueprint $table) {
             $table->id('id_diskusi');
-            $table->foreignId('id_kategori')->nullable()->constrained('kategori', 'id_kategori');
+            $table->foreignId('id_kategori')->nullable()->constrained('kategoris', 'id_kategori');
             $table->string('isi_diskusi', 255);
             $table->string('uid', 32);
             $table->foreign('uid')->references('uid')->on('penggunas');  // Menjadikan 'uid' sebagai foreign key
@@ -39,9 +39,9 @@ class CreateForumTables extends Migration
 
 
         // Tabel 'balasan'
-        Schema::create('balasan', function (Blueprint $table) {
+        Schema::create('balasans', function (Blueprint $table) {
             $table->id('id_balasan');
-            $table->foreignId('id_diskusi')->nullable()->constrained('diskusi', 'id_diskusi');
+            $table->foreignId('id_diskusi')->nullable()->constrained('diskusis', 'id_diskusi');
             $table->string('isi_balasan', 255);
             $table->string('uid', 32);
             $table->foreign('uid')->references('uid')->on('penggunas');  // Menjadikan 'uid' sebagai foreign key
@@ -51,9 +51,9 @@ class CreateForumTables extends Migration
 
 
         // Tabel 'vote'
-        Schema::create('vote', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->id('id_vote');
-            $table->foreignId('id_balasan')->nullable()->constrained('balasan', 'id_balasan');
+            $table->foreignId('id_balasan')->nullable()->constrained('balasans', 'id_balasan');
             $table->string('isi_vote', 255);
             $table->string('uid', 32);
             $table->foreign('uid')->references('uid')->on('penggunas');  // Menjadikan 'uid' sebagai foreign key
@@ -64,10 +64,10 @@ class CreateForumTables extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('vote');
-        Schema::dropIfExists('balasan');
-        Schema::dropIfExists('diskusi');
+        Schema::dropIfExists('votes');
+        Schema::dropIfExists('balasans');
+        Schema::dropIfExists('diskusis');
         Schema::dropIfExists('penggunas');
-        Schema::dropIfExists('kategori');
+        Schema::dropIfExists('kategoris');
     }
 }
