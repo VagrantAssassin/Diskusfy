@@ -20,11 +20,17 @@ Route::get('/new_discussion', function () {
     return view('create_new_discussion.new_discussion');
 });
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
+Route::get('/home', function () {
+    return view('home.home');
+});
 
-// Route::get('/login', function () {
-//     return view('auth.login.login');
-// });
+Route::get('/login', function () {
+    return view('auth.login.login');
+});
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 
@@ -36,7 +42,7 @@ Route::get('/forget', function () {
     return view('auth.forget.forget');
 });
 
-Route::middleware('auth')->group(function () {
+/*Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
@@ -44,5 +50,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return view('home.home');
     });
-});
+});*/
 

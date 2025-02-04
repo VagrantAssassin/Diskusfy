@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container mx-auto p-6">
+
+<div class="p-6">
     <div class="bg-white shadow-md rounded-lg p-6 w-full h-screen overflow-auto">
         <h1 class="text-2xl font-bold mb-4 text-[#5B913B]">Diskusi Terbaru</h1>
 
@@ -29,4 +29,3 @@
     </div>
 </div>
 <script defer src="{{ asset('js/commentButton.js') }}"></script>
-@endsection
