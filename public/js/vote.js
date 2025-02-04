@@ -1,43 +1,54 @@
-let voteState = null;
+document.addEventListener("DOMContentLoaded", function () {
+    const upvoteBtn = document.getElementById("upvoteBtn");
+    const downvoteBtn = document.getElementById("downvoteBtn");
+    const upvoteCount = document.getElementById("upvoteCount");
+    const downvoteCount = document.getElementById("downvoteCount");
+    
+    let upvoted = false;
+    let downvoted = false;
+    let upvotes = 0;
+    let downvotes = 0;
 
-function toggleVote(type) {
-    const upvoteButton = document.getElementById("upvoteIcon");
-    const downvoteButton = document.getElementById("downvoteIcon");
-    const voteCount = document.getElementById("voteCount");
-    let count = parseInt(voteCount.innerText);
-
-    if (type === "upvote") {
-        if (voteState === "upvote") {
-            // Jika upvote sudah aktif, matikan
-            upvoteButton.classList.remove("text-green-600");
-            voteCount.innerText = count - 1;
-            voteState = null;
+    upvoteBtn.addEventListener("click", function () {
+        if (upvoted) {
+            upvotes--;
+            upvoted = false;
+            upvoteBtn.classList.remove("text-blue-500");
         } else {
-            // Jika sedang downvote, matikan downvote dulu
-            if (voteState === "downvote") {
-                downvoteButton.classList.remove("text-red-500");
+            upvotes++;
+            upvoted = true;
+            upvoteBtn.classList.add("text-blue-500");
+            
+            if (downvoted) {
+                downvotes--;
+                downvoted = false;
+                downvoteBtn.classList.remove("text-red-500");
             }
-
-            // Aktifkan upvote dan update count
-            upvoteButton.classList.add("text-green-600");
-            voteCount.innerText = count + 1;
-            voteState = "upvote";
         }
-    } else if (type === "downvote") {
-        if (voteState === "downvote") {
-            // Jika downvote sudah aktif, matikan
-            downvoteButton.classList.remove("text-red-500");
-            voteState = null;
+        updateVotes();
+    });
+
+    downvoteBtn.addEventListener("click", function () {
+        if (downvoted) {
+            downvotes--;
+            downvoted = false;
+            downvoteBtn.classList.remove("text-red-500");
         } else {
-            // Jika sedang upvote, matikan upvote dulu
-            if (voteState === "upvote") {
-                upvoteButton.classList.remove("text-green-600");
-                voteCount.innerText = count - 1; // Batalkan upvote saat beralih ke downvote
+            downvotes++;
+            downvoted = true;
+            downvoteBtn.classList.add("text-red-500");
+            
+            if (upvoted) {
+                upvotes--;
+                upvoted = false;
+                upvoteBtn.classList.remove("text-blue-500");
             }
-
-            // Aktifkan downvote tanpa mengubah count
-            downvoteButton.classList.add("text-red-500");
-            voteState = "downvote";
         }
+        updateVotes();
+    });
+
+    function updateVotes() {
+        upvoteCount.textContent = upvotes;
+        downvoteCount.textContent = downvotes;
     }
-}
+});
