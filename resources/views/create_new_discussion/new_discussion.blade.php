@@ -1,49 +1,38 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diskusfy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100">
-    <div class="flex items-center justify-center min-h-screen">
-        <main class="w-full max-w-2xl p-6 bg-white rounded-lg shadow-md mx-auto">
-            <h2 class="text-2xl font-semibold mb-6">Buat Diskusi Baru</h2>
-
-            <form action="#" method="POST" class="space-y-6">
+<section class="bg-gray-100 dark:bg-gray-900 h-screen flex items-center justify-center">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.css" rel="stylesheet" />
+    <div class="py-8 px-6 w-full max-w-md bg-white dark:bg-gray-800 shadow-md rounded-lg">
+        <h2 class="mb-6 text-2xl font-bold text-gray-900 dark:text-white text-center">Buat diskusi baru</h2>
+        <form action="#">
+            <div class="flex flex-col gap-4">
                 <div>
-                    <label for="judul" class="block text-gray-700 font-semibold mb-2 text-lg">Judul diskusi</label>
-                    <input type="text" id="judul" name="judul" class="w-full border rounded-lg p-3 focus:ring focus:ring-blue-300 text-lg">
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul</label>
+                    <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Tulis judul disini" required>
                 </div>
-
                 <div>
-                    <label for="isi" class="block text-gray-700 font-semibold mb-2 text-lg">Isi diskusi</label>
-                    <textarea id="isi" name="isi" rows="8" class="w-full border rounded-lg p-3 focus:ring focus:ring-blue-300 text-lg"></textarea>
+                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Diskusi</label>
+                    <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Isi diskusi disini"></textarea>
                 </div>
-
-                <!-- Kategori dengan Dropdown -->
                 <div>
-                    <label for="kategori" class="block text-gray-700 font-semibold mb-2 text-lg">Kategori</label>
-                    <select id="kategori" name="kategori" class="w-full border rounded-lg p-3 text-lg">
-                        <option value="">Pilih Kategori</option>
-                        <option value="Indonesia">Indonesia</option>
-                        <option value="Coding">Coding</option>
-                        <option value="Matematika">Matematika</option>
-                        <option value="Hukum">Hukum</option>
-                        <option value="Algoritma">Algoritma</option>
+                    <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
+                    <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
+                        <option selected>Pilih Kategori</option>
+                        <option value="IND">Indonesia</option>
+                        <option value="MTK">Matematika</option>
+                        <option value="CD">Coding</option>
+                        <option value="HK">Hukum</option>
+                        <option value="ALG">Algoritma</option>
                     </select>
                 </div>
-
-                <!-- Tombol Unggah dan Batal -->
-                <div class="mt-6 flex justify-between">
-                    <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-green-700">Unggah</button>
-                    <button type="button" onclick="window.location.href='/'" class="bg-red-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-red-600">
-                        Batal
-                    </button>
-                </div>
-            </form>
-        </main>
+            </div>
+            <div class="flex gap-4 mt-6">
+                <button type="submit" class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-500 dark:hover:bg-green-600 dark:focus:ring-green-800">
+                    Unggah
+                </button>
+                <button type="button" onclick="window.location.href='/'"class="w-full text-gray-900 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-500">
+                    Batal
+                </button>
+            </div>
+        </form>
     </div>
-</body>
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
+</section>
