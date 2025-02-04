@@ -2,40 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Diskusi;
 use Illuminate\Http\Request;
-
+use App\Models\Diskusi; // Pastikan model Diskusi ada
 
 class DiskusiController extends Controller
 {
     public function add(Request $request)
     {
-        // Validasi data
-        $validated = $request->validate([
-            'uid' => 'required|exists:penggunas,uid', // Validasi untuk memastikan uid ada di tabel penggunas
-            'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:penggunas',
-            'nama' => 'required|string|max:255',
-            'id_kategori' => 'nullable|exists:kategoris,id_kategori', // Validasi untuk id_kategori
-            'judul' => 'required|string|max:50',
-            'isi_diskusi' => 'required|string|max:255', // Pastikan isi_diskusi ada dalam request
+        $validatedData = $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi_diskusi' => 'required|string',
+            'id_kategori' => 'nullable|integer',
+            'user_uid' => 'required|string'
         ]);
 
-        // Menyimpan data ke database
         $diskusi = new Diskusi();
-        $diskusi->id_diskusi = $request->id_diskusi; // Jika id_diskusi bukan auto-increment, pastikan untuk mengirimkan data ini
-        $diskusi->id_kategori = $request->id_kategori; // Jika ada, masukkan id_kategori
-        $diskusi->uid = $request->uid; // Menyimpan uid yang mengacu pada penggunas
-        $diskusi->judul = $request->judul; // Menyimpan judul diskusi
-        $diskusi->isi_diskusi = $request->isi_diskusi; // Menyimpan isi diskusi
-        $diskusi->tanggal = $request->tanggal ?? now(); // Jika tanggal tidak ada, set default ke sekarang
-        $diskusi->save();
-
+        $diskusi->uid = $validatedData['user_uid'];
+        $diskusi->judul = $validatedData['judul'];
+        $diskusi->isi_diskusi = $validatedData['isi_diskusi'];
+        $diskusi->id_kategori = $validatedData['id_kategori'] ?? null;
 
         if ($diskusi->save()) {
-            return response()->json(['success' => true]);
+            return response()->json(['success' => true, 'message' => 'Data berhasil disimpan']);
         } else {
-            return response()->json(['success' => false]);
+            return response()->json(['success' => false, 'message' => 'Gagal menyimpan ke database']);
         }
     }
+
+
 }
+

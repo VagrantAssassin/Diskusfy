@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DiskusiController;
 
 
 
@@ -20,6 +21,11 @@ Route::get('/comment', function () {
 Route::get('/new_discussion', function () {
     return view('create_new_discussion.new_discussion');
 });
+
+Route::post('new_discussion', [DiskusiController::class, 'add'])->name('diskusi.add');
+
+
+
 
 Route::get('/', function () {
     return view('welcome');

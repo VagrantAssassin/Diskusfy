@@ -29,10 +29,9 @@ class CreateForumTables extends Migration
         // Tabel 'diskusi'
         Schema::create('diskusis', function (Blueprint $table) {
             $table->id('id_diskusi');
-            $table->foreignId('id_kategori')->nullable()->constrained('kategoris', 'id_kategori');
+            $table->unsignedBigInteger('id_kategori')->nullable();
             $table->string('isi_diskusi', 255);
             $table->string('uid', 32);
-            $table->foreign('uid')->references('uid')->on('penggunas');  // Menjadikan 'uid' sebagai foreign key
             $table->string('judul', 50);
             $table->date('tanggal')->nullable();
             $table->timestamps();
@@ -46,29 +45,24 @@ class CreateForumTables extends Migration
             ['id_kategori' => 5, 'nama_kategori' => 'Algoritma'],
         ]);
 
-
         // Tabel 'balasan'
         Schema::create('balasans', function (Blueprint $table) {
             $table->id('id_balasan');
-            $table->foreignId('id_diskusi')->nullable()->constrained('diskusis', 'id_diskusi');
+            $table->unsignedBigInteger('id_diskusi')->nullable();
             $table->string('isi_balasan', 255);
             $table->string('uid', 32);
-            $table->foreign('uid')->references('uid')->on('penggunas');  // Menjadikan 'uid' sebagai foreign key
             $table->date('tanggal')->nullable();
             $table->timestamps();
         });
 
-
         // Tabel 'vote'
         Schema::create('votes', function (Blueprint $table) {
             $table->id('id_vote');
-            $table->foreignId('id_balasan')->nullable()->constrained('balasans', 'id_balasan');
+            $table->unsignedBigInteger('id_balasan')->nullable();
             $table->string('isi_vote', 255);
             $table->string('uid', 32);
-            $table->foreign('uid')->references('uid')->on('penggunas');  // Menjadikan 'uid' sebagai foreign key
             $table->timestamps();
         });
-
     }
 
     public function down()
