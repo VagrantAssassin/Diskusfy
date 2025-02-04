@@ -52,22 +52,32 @@
                 <span class="ms-3">Dashboard</span>
               </a>
             </li>
-            <li>
-              <a href="#"
-                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg
-                  class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+            <li x-data="{ open: false }">
+              <button @click="open = !open" class="flex items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full">
+                <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                   aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    d="M4 3C4 2.44772 4.44772 2 5 2H15C15.5523 2 16 2.44772 16 3V7C16 7.55228 15.5523 8 15 8H5C4.44772 8 4 7.55228 4 7V3Z" />
-                  <path
-                    d="M4 10C4 9.44772 4.44772 9 5 9H15C15.5523 9 16 9.44772 16 10V14C16 14.5523 15.5523 15 15 15H5C4.44772 15 4 14.5523 4 14V10Z" />
-                  <path
-                    d="M4 17C4 16.4477 4.44772 16 5 16H15C15.5523 16 16 16.4477 16 17V18C16 18.5523 15.5523 19 15 19H5C4.44772 19 4 18.5523 4 18V17Z" />
+                  <path d="M4 3C4 2.44772 4.44772 2 5 2H15C15.5523 2 16 2.44772 16 3V7C16 7.55228 15.5523 8 15 8H5C4.44772 8 4 7.55228 4 7V3Z" />
+                  <path d="M4 10C4 9.44772 4.44772 9 5 9H15C15.5523 9 16 9.44772 16 10V14C16 14.5523 15.5523 15 15 15H5C4.44772 15 4 14.5523 4 14V10Z" />
+                  <path d="M4 17C4 16.4477 4.44772 16 5 16H15C15.5523 16 16 16.4477 16 17V18C16 18.5523 15.5523 19 15 19H5C4.44772 19 4 18.5523 4 18V17Z" />
                 </svg>
-                <span class="flex-1 ms-3 whitespace-nowrap">Kategori</span>
-              </a>
+                <span class="ms-3 whitespace-nowrap">Kategori</span>
+                <svg class="w-4 h-4 ml-auto text-gray-500 dark:text-gray-400 transform transition-transform"
+                  :class="open ? 'rotate-180' : 'rotate-0'" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </button>
+            
+              <!-- Dropdown menu -->
+              <ul x-show="open" @click.away="open = false" class="ml-6 mt-2 space-y-2 bg-gray-100 dark:bg-gray-700 rounded-lg p-2">
+                <li><a href="/kategori/teknologi" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Indonesia</a></li>
+                <li><a href="/kategori/sains" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Matematika</a></li>
+                <li><a href="/kategori/hiburan" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Coding</a></li>
+                <li><a href="/kategori/hiburan" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Hukum</a></li>
+                <li><a href="/kategori/hiburan" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Algoritma</a></li>
+              </ul>
             </li>
+            
             <li>
               <a href="/new_discussion"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
