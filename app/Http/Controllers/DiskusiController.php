@@ -38,6 +38,12 @@ class DiskusiController extends Controller
         return view('home.home', compact('diskusis'));
     }
 
+    public function show($id_diskusi)
+    {
+        $diskusi = Diskusi::where('id_diskusi', $id_diskusi)->firstOrFail();
+        return view('comment_discussion.comment', compact('diskusi'));
+    }
+
 
 }
 

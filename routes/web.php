@@ -59,6 +59,9 @@ Route::get('/forget', function () {
     return view('auth.forget.forget');
 });
 
+Route::get('/comment/{id_diskusi}', [DiskusiController::class, 'show']);
+
+
 /*Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('welcome');

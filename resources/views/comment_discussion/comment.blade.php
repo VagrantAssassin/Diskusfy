@@ -13,13 +13,11 @@
     <section class="bg-gray-100 dark:bg-gray-900 h-screen items-center justify-center py-2 lg:py-16 antialiased">
         <div class="w-full mx-auto max-w-screen-lg px-4 2xl:px-0">
             <!-- Topik Diskusi -->
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">GeForce GRD 572.16 Feedback Thread
-                (Released 1/30/25)</h2>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $diskusi->judul }}</h2>
             <div class="mt-2 border-t border-gray-700 pt-2">
                 <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg flex items-start mt-3">
                     <p class="text-gray-900 dark:text-gray-300">
-                        Get started with a collection of comments sections coded with Tailwind CSS to show a list of
-                        comments for blog posts with features like a reply, like, and more.
+                        {{ $diskusi->isi_diskusi }}
                     </p>
                 </div>
             </div>

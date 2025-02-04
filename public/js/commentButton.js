@@ -1,10 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const commentButtons = document.querySelectorAll("[id^='commentButton']");
+    const commentButtons = document.querySelectorAll(".commentButton"); // Pakai class bukan ID
     const mainContent = document.getElementById("mainContent");
 
     commentButtons.forEach((button) => {
-        button.addEventListener("click", function () {
-            fetch("/comment")
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const diskusiId = this.getAttribute("data-id"); // Ambil ID dari atribut data-id
+
+            fetch("/comment/" + diskusiId)
                 .then((response) => response.text())
                 .then((data) => {
                     mainContent.innerHTML = `
@@ -14,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                         </div>
                     `;
-                    
+
                     // Eksekusi ulang script yang ada di dalam data
                     const scripts = mainContent.querySelectorAll("script");
                     scripts.forEach((script) => {
