@@ -13,7 +13,7 @@
     <div class="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
       <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Sign In</h2>
       
-      <form class="space-y-4">
+      <form class="space-y-4" id="login-form">
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
           <input 
