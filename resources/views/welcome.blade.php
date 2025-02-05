@@ -320,7 +320,7 @@
   <script defer src="{{ asset('js/ctg_btn/mtkBtn.js') }}"></script>
   <script defer src="{{ asset('js/ctg_btn/codingBtn.js') }}"></script>
   <script defer src="{{ asset('js/ctg_btn/hukumBtn.js') }}"></script>
-  <script defer src="{{ asset('js/ctg_btn/algo.Btn.js') }}"></script>
+  <script defer src="{{ asset('js/ctg_btn/algoBtn.js') }}"></script>
 
   <script defer src="{{ asset('js/newDiscussionButton.js') }}"></script>
   <script defer src="{{ asset('js/commentButton.js') }}"></script>
