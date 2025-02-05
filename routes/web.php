@@ -94,3 +94,7 @@ Route::get('/comment/{id_diskusi}', [DiskusiController::class, 'show']);
     });
 });*/
 
+/*route kategori*/
+Route::get('/indonesia', function () {
+    return view('category.indonesia');
+});

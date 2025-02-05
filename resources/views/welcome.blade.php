@@ -54,31 +54,47 @@
               </a>
             </li>
             <li x-data="{ open: false }">
-              <button @click="open = !open" class="flex items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full">
-                <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              <button @click="open = !open"
+                class="flex items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full">
+                <svg
+                  class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                   aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M4 3C4 2.44772 4.44772 2 5 2H15C15.5523 2 16 2.44772 16 3V7C16 7.55228 15.5523 8 15 8H5C4.44772 8 4 7.55228 4 7V3Z" />
-                  <path d="M4 10C4 9.44772 4.44772 9 5 9H15C15.5523 9 16 9.44772 16 10V14C16 14.5523 15.5523 15 15 15H5C4.44772 15 4 14.5523 4 14V10Z" />
-                  <path d="M4 17C4 16.4477 4.44772 16 5 16H15C15.5523 16 16 16.4477 16 17V18C16 18.5523 15.5523 19 15 19H5C4.44772 19 4 18.5523 4 18V17Z" />
+                  <path
+                    d="M4 3C4 2.44772 4.44772 2 5 2H15C15.5523 2 16 2.44772 16 3V7C16 7.55228 15.5523 8 15 8H5C4.44772 8 4 7.55228 4 7V3Z" />
+                  <path
+                    d="M4 10C4 9.44772 4.44772 9 5 9H15C15.5523 9 16 9.44772 16 10V14C16 14.5523 15.5523 15 15 15H5C4.44772 15 4 14.5523 4 14V10Z" />
+                  <path
+                    d="M4 17C4 16.4477 4.44772 16 5 16H15C15.5523 16 16 16.4477 16 17V18C16 18.5523 15.5523 19 15 19H5C4.44772 19 4 18.5523 4 18V17Z" />
                 </svg>
                 <span class="ms-3 whitespace-nowrap">Kategori</span>
                 <svg class="w-4 h-4 ml-auto text-gray-500 dark:text-gray-400 transform transition-transform"
-                  :class="open ? 'rotate-180' : 'rotate-0'" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                  stroke-linecap="round" stroke-linejoin="round">
+                  :class="open ? 'rotate-180' : 'rotate-0'" fill="none" stroke="currentColor" stroke-width="2"
+                  viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M6 9l6 6 6-6"></path>
                 </svg>
               </button>
-            
+
               <!-- Dropdown menu -->
-              <ul x-show="open" @click.away="open = false" class="ml-6 mt-2 space-y-2 bg-gray-100 dark:bg-gray-700 rounded-lg p-2">
-                <li><a href="/kategori/teknologi" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Indonesia</a></li>
-                <li><a href="/kategori/sains" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Matematika</a></li>
-                <li><a href="/kategori/hiburan" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Coding</a></li>
-                <li><a href="/kategori/hiburan" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Hukum</a></li>
-                <li><a href="/kategori/hiburan" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Algoritma</a></li>
+              <ul x-show="open" @click.away="open = false"
+                class="ml-6 mt-2 space-y-2 bg-gray-100 dark:bg-gray-700 rounded-lg p-2">
+                <li><a href="/indonesia"
+                    class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Indonesia</a>
+                </li>
+                <li><a href="/category/sains"
+                    class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Matematika</a>
+                </li>
+                <li><a href="/category/hiburan"
+                    class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Coding</a>
+                </li>
+                <li><a href="/category/hiburan"
+                    class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Hukum</a>
+                </li>
+                <li><a href="/category/hiburan"
+                    class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Algoritma</a>
+                </li>
               </ul>
             </li>
-            
+
             <li>
               <a href="/new_discussion"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -195,31 +211,33 @@
 
       <div class="flex-1 pl-64">
         <main class="min-h-screen" id="mainContent">
-            @include('home.home') <!-- Mengarahkan ke home -->
+          @include('home.home') <!-- Mengarahkan ke home -->
         </main>
-    </div>
+      </div>
 
 
     </div>
   </div>
 
-  <button id="chatbotButton" class="fixed bottom-5 right-5 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition">
+  <button id="chatbotButton"
+    class="fixed bottom-5 right-5 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition">
     💬
-</button>
+  </button>
 
-<div id="chatbotPopup" class="hidden fixed bottom-16 right-5 w-80 h-96 bg-white shadow-lg rounded-lg flex flex-col">
+  <div id="chatbotPopup" class="hidden fixed bottom-16 right-5 w-80 h-96 bg-white shadow-lg rounded-lg flex flex-col">
     <div class="flex justify-between items-center bg-blue-500 text-white p-3 rounded-t-lg">
-        <span>Chatbot AI</span>
-        <button id="closeChatbot" class="text-white">&times;</button>
+      <span>Chatbot AI</span>
+      <button id="closeChatbot" class="text-white">&times;</button>
     </div>
     <div id="chatbox" class="flex-1 p-3 overflow-y-auto max-h-64"></div>
     <div class="p-3 border-t flex">
-        <input id="chatInput" type="text" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-200" placeholder="Tulis pesan...">
-        <button id="sendChat" class="bg-blue-500 text-white px-3 ml-2 rounded-lg hover:bg-blue-600 transition">📤</button>
+      <input id="chatInput" type="text" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-200"
+        placeholder="Tulis pesan...">
+      <button id="sendChat" class="bg-blue-500 text-white px-3 ml-2 rounded-lg hover:bg-blue-600 transition">📤</button>
     </div>
-</div>
+  </div>
 
-<script>
+  <script>
     // Ambil CSRF token dari meta tag yang ada di halaman
     const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
 
@@ -232,67 +250,67 @@
 
     // Toggle popup when the chatbot button is clicked
     chatbotButton.addEventListener('click', (event) => {
-        event.preventDefault();  // Prevent any default action like page reload
-        chatbotPopup.classList.toggle('hidden');  // Show or hide the popup
+      event.preventDefault();  // Prevent any default action like page reload
+      chatbotPopup.classList.toggle('hidden');  // Show or hide the popup
     });
 
     // Close the popup when the close button is clicked
     closeChatbot.addEventListener('click', () => {
-        chatbotPopup.classList.add('hidden');
+      chatbotPopup.classList.add('hidden');
     });
 
     // Send message when send button is clicked
     sendChat.addEventListener('click', async () => {
-        const message = chatInput.value.trim();
-        if (!message) return;
+      const message = chatInput.value.trim();
+      if (!message) return;
 
-        // Display user message
-        displayMessage(message, 'user');
-        chatInput.value = '';
+      // Display user message
+      displayMessage(message, 'user');
+      chatInput.value = '';
 
-        // Send the message to the backend
-        try {
-            const response = await fetch('/chatbot', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken,  // Include CSRF token
-                },
-                body: JSON.stringify({ message })
-            });
+      // Send the message to the backend
+      try {
+        const response = await fetch('/chatbot', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,  // Include CSRF token
+          },
+          body: JSON.stringify({ message })
+        });
 
-            if (response.ok) {
-                const data = await response.json();
-                const reply = data.reply || "Maaf, saya tidak mengerti.";
-                displayMessage(reply, 'bot');
-            } else {
-                const errorText = await response.text();
-                displayMessage(`Error: ${response.status} - ${errorText}`, 'error');
-            }
-        } catch (error) {
-            displayMessage(`Error: ${error.message}`, 'error');
+        if (response.ok) {
+          const data = await response.json();
+          const reply = data.reply || "Maaf, saya tidak mengerti.";
+          displayMessage(reply, 'bot');
+        } else {
+          const errorText = await response.text();
+          displayMessage(`Error: ${response.status} - ${errorText}`, 'error');
         }
+      } catch (error) {
+        displayMessage(`Error: ${error.message}`, 'error');
+      }
     });
 
     // Function to display messages in the chatbox
     function displayMessage(message, sender) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('p-2', 'my-1', 'rounded-lg');
-        if (sender === 'user') {
-            messageDiv.classList.add('bg-gray-200', 'self-end');
-        } else if (sender === 'bot') {
-            messageDiv.classList.add('bg-blue-100', 'self-start');
-        } else if (sender === 'error') {
-            messageDiv.classList.add('text-red-500');
-        }
-        messageDiv.textContent = message;
-        chatbox.appendChild(messageDiv);
-        chatbox.scrollTop = chatbox.scrollHeight;
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('p-2', 'my-1', 'rounded-lg');
+      if (sender === 'user') {
+        messageDiv.classList.add('bg-gray-200', 'self-end');
+      } else if (sender === 'bot') {
+        messageDiv.classList.add('bg-blue-100', 'self-start');
+      } else if (sender === 'error') {
+        messageDiv.classList.add('text-red-500');
+      }
+      messageDiv.textContent = message;
+      chatbox.appendChild(messageDiv);
+      chatbox.scrollTop = chatbox.scrollHeight;
     }
-</script>
+  </script>
 
 
-  
+
 
 
   {{-- <main class="content" id="mainContent">

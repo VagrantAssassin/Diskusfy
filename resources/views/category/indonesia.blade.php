@@ -1,7 +1,11 @@
+<link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.css" rel="stylesheet" />
+
+
 <section class="bg-gray-900 py-8 antialiased dark:bg-gray-900 md:py-16">
     <div class="mx-auto max-w-screen-lg px-4 2xl:px-0">
         <div class="lg:flex lg:items-center lg:justify-between lg:gap-4">
-            <h2 class="shrink-0 text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Questions (147)</h2>
+            <h2 class="shrink-0 text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Questions (147)
+            </h2>
 
             <form class="mt-4 w-full gap-4 sm:flex sm:items-center sm:justify-end lg:mt-0">
                 <label for="simple-search" class="sr-only">Search</label>
@@ -19,13 +23,14 @@
 
         <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-gray-200 dark:divide-gray-800">
-                @foreach ([['answers' => 3, 'question' => '“The specs say this model has 2 USB ports. The one I received has none. Are they hidden somewhere?”', 'answer' => 'It’s a USB-C port it’s a smaller port. Not the regular size USB port. See the picture below. It fits the newer Apple chargers.', 'answeredBy' => 'Bonnie Green'], ['answers' => 1, 'question' => '“Is this just the monitor?”', 'answer' => "It's an all-in-one (AIO). Which means everything in one structure. So it's not just a monitor it uses Apple's operating System, macOS and it has storage, CPU, GPU etc.", 'answeredBy' => 'Jese Leos'], ['answers' => 7, 'question' => '“For an inexpert 85-year-old general user with a ten-year old iMac (OSX Yosemite version 10.10.5), is this latest model 24" iMac with Retina 4.5K display Apple M1 8GB memory - 256GB SSD a decent upgrade?”', 'answer' => "It's basically the same system as your older machine, but bigger, lighter and faster. There is no disc drive and it has fewer ports.", 'answeredBy' => 'Bonnie Green'], ['answers' => 32, 'question' => '“I just brought home the Imac24". It says the mouse and Keyboard are wireless. Where do I install the power for them?”', 'answer' => 'You can charge the mouse and keyboard with a lightning charger. Once charged, they last months before having to charge again.', 'answeredBy' => 'Roberta Casas'], ['answers' => 4, 'question' => '“Does this include the keyboard and mouse?”', 'answer' => 'Yes it does, color matched to the Mac. And the keyboard has Touch ID.', 'answeredBy' => 'Joseph McFallen']] as $question)
+                @foreach ([['answers' => 5, 'question' => '“Apa saja kelebihan dan kekurangan transportasi umum di Indonesia?”', 'answer' => 'Transportasi umum di Indonesia semakin berkembang dengan adanya MRT dan LRT, namun masih terkendala kemacetan dan keterbatasan rute di beberapa daerah.', 'answeredBy' => 'Andi Pratama'], ['answers' => 3, 'question' => '“Bagaimana cara UMKM di Indonesia bisa berkembang di era digital?”', 'answer' => 'UMKM dapat berkembang dengan memanfaatkan e-commerce, pemasaran digital, serta program dukungan pemerintah seperti KUR dan pelatihan digitalisasi.', 'answeredBy' => 'Siti Rahma'], ['answers' => 7, 'question' => '“Apakah kebijakan bebas visa bagi turis asing berdampak positif bagi pariwisata Indonesia?”', 'answer' => 'Bebas visa dapat meningkatkan jumlah wisatawan, namun juga perlu diimbangi dengan regulasi ketat agar tidak disalahgunakan.', 'answeredBy' => 'Budi Santoso'], ['answers' => 10, 'question' => '“Bagaimana dampak perkembangan teknologi terhadap pendidikan di Indonesia?”', 'answer' => 'Teknologi memudahkan akses pendidikan, terutama dengan adanya platform pembelajaran online. Namun, kesenjangan akses internet masih menjadi tantangan.', 'answeredBy' => 'Rina Dewi'], ['answers' => 4, 'question' => '“Seberapa efektif kebijakan kerja dari rumah (WFH) bagi perusahaan di Indonesia?”', 'answer' => 'WFH efektif bagi beberapa sektor, seperti teknologi dan keuangan, tetapi kurang optimal untuk sektor manufaktur dan jasa yang membutuhkan kehadiran fisik.', 'answeredBy' => 'Dian Kusuma']] as $question)
                     <div class="space-y-4 py-6 md:py-8">
                         <div class="grid gap-4">
                             <div>
-                                <span
-                                    class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0">{{ $question['answers'] }}
-                                    answers</span>
+                                {{--<span
+                                    class="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300 md:mb-0">{{
+                                    $question['answers'] }}
+                                    answers</span>--}}
                             </div>
 
                             <a href="#" id="commentButton"
@@ -43,5 +48,6 @@
         </div>
     </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
 
 <script defer src="{{ asset('js/commentButton.js') }}"></script>
