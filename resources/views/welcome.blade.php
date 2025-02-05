@@ -202,6 +202,31 @@
     </div>
   </div>
 
+<!-- Floating Chatbot Button -->
+<button id="chatbotButton"
+  class="fixed bottom-5 right-5 bg-blue-500 text-white p-5 rounded-full shadow-lg hover:bg-blue-600 transition">
+  💬
+</button>
+
+<!-- Chatbot Popup -->
+<div id="chatbotPopup" class="hidden fixed bottom-16 right-5 w-80 h-96 bg-white shadow-lg rounded-lg">
+  <div class="flex justify-between items-center bg-blue-500 text-white p-3 rounded-t-lg">
+    <span>Customer Support</span>
+    <button id="closeChatbot" class="text-white">&times;</button>
+  </div>
+  <iframe src="https://gemini.google.com/app?hl=id" class="w-full h-full border-none"></iframe>
+</div>
+
+<!-- Script to Toggle Chatbot -->
+<script>
+  document.getElementById('chatbotButton').addEventListener('click', function () {
+    document.getElementById('chatbotPopup').classList.toggle('hidden');
+  });
+
+  document.getElementById('closeChatbot').addEventListener('click', function () {
+    document.getElementById('chatbotPopup').classList.add('hidden');
+  });
+</script>
 
   {{-- <main class="content" id="mainContent">
     @include('home.home')
