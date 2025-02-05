@@ -26,8 +26,8 @@
                     </div>
                     <div>
                         <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
-                        <select id="kategori" name="id_kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" required>
-                            <option value="">Pilih Kategori</option>
+                        <select input type="hidden" id="kategori" name="id_kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" required>
+                            <option value=""></option>
                             <option value="1">Indonesia</option>
                             <option value="2">Matematika</option>
                             <option value="3">Coding</option>
@@ -53,6 +53,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
     <script src="{{ asset('js/verif.js') }}" type="module"></script>
+    <script src="{{ asset('js/categoryVerif.js') }}" type="module"></script>
 </body>
 </html>
 
