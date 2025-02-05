@@ -26,6 +26,8 @@ class CreateForumTables extends Migration
             $table->timestamps();
         });
 
+
+
         // Tabel 'diskusi'
         Schema::create('diskusis', function (Blueprint $table) {
             $table->id('id_diskusi');
@@ -36,6 +38,7 @@ class CreateForumTables extends Migration
             $table->date('tanggal')->nullable();
             $table->timestamps();
         });
+
 
         DB::table('kategoris')->insert([
             ['id_kategori' => 1, 'nama_kategori' => 'Indonesia'],

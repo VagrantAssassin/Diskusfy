@@ -238,7 +238,6 @@
   </div>
 
   <script>
-    // Ambil CSRF token dari meta tag yang ada di halaman
     const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
 
     const chatbotButton = document.getElementById('chatbotButton');
@@ -248,33 +247,32 @@
     const chatInput = document.getElementById('chatInput');
     const sendChat = document.getElementById('sendChat');
 
-    // Toggle popup when the chatbot button is clicked
     chatbotButton.addEventListener('click', (event) => {
-      event.preventDefault();  // Prevent any default action like page reload
-      chatbotPopup.classList.toggle('hidden');  // Show or hide the popup
+      event.preventDefault(); 
+      chatbotPopup.classList.toggle('hidden'); 
     });
 
-    // Close the popup when the close button is clicked
+
     closeChatbot.addEventListener('click', () => {
       chatbotPopup.classList.add('hidden');
     });
 
-    // Send message when send button is clicked
+
     sendChat.addEventListener('click', async () => {
       const message = chatInput.value.trim();
       if (!message) return;
 
-      // Display user message
+
       displayMessage(message, 'user');
       chatInput.value = '';
 
-      // Send the message to the backend
+
       try {
         const response = await fetch('/chatbot', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrfToken,  // Include CSRF token
+            'X-CSRF-TOKEN': csrfToken,  
           },
           body: JSON.stringify({ message })
         });
@@ -292,7 +290,7 @@
       }
     });
 
-    // Function to display messages in the chatbox
+
     function displayMessage(message, sender) {
       const messageDiv = document.createElement('div');
       messageDiv.classList.add('p-2', 'my-1', 'rounded-lg');
