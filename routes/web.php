@@ -98,3 +98,19 @@ Route::get('/comment/{id_diskusi}', [DiskusiController::class, 'show']);
 Route::get('/indonesia', function () {
     return view('category.indonesia');
 });
+
+Route::get('/matematika', function () {
+    return view('category.matematika');
+});
+
+Route::get('/coding', function () {
+    return view('category.coding');
+});
+
+Route::get('/hukum', function () {
+    return view('category.hukum');
+});
+
+Route::get('/algoritma', function () {
+    return view('category.algoritma');
+});

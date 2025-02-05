@@ -80,16 +80,16 @@
                 <li><a id="indoBtn"
                     class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Indonesia</a>
                 </li>
-                <li><a href="/category/sains"
+                <li><a id="mtkBtn"
                     class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Matematika</a>
                 </li>
-                <li><a href="/category/hiburan"
+                <li><a id="codingBtn"
                     class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Coding</a>
                 </li>
-                <li><a href="/category/hiburan"
+                <li><a id="hukumBtn"
                     class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Hukum</a>
                 </li>
-                <li><a href="/category/hiburan"
+                <li><a id="algoBtn"
                     class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Algoritma</a>
                 </li>
               </ul>
@@ -317,6 +317,11 @@
     @include('home.home')
   </main> --}}
   <script defer src="{{ asset('js/ctg_btn/indoBtn.js') }}"></script>
+  <script defer src="{{ asset('js/ctg_btn/mtkBtn.js') }}"></script>
+  <script defer src="{{ asset('js/ctg_btn/codingBtn.js') }}"></script>
+  <script defer src="{{ asset('js/ctg_btn/hukumBtn.js') }}"></script>
+  <script defer src="{{ asset('js/ctg_btn/algo.Btn.js') }}"></script>
+
   <script defer src="{{ asset('js/newDiscussionButton.js') }}"></script>
   <script defer src="{{ asset('js/commentButton.js') }}"></script>
   <script type="module" src="{{ asset('js/auth.js') }}"></script>
