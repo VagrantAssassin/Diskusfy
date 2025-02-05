@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/hoverA.css') }}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.css" rel="stylesheet" />
@@ -202,31 +203,97 @@
     </div>
   </div>
 
-<!-- Floating Chatbot Button -->
-<button id="chatbotButton"
-  class="fixed bottom-5 right-5 bg-blue-500 text-white p-5 rounded-full shadow-lg hover:bg-blue-600 transition">
-  💬
+  <button id="chatbotButton" class="fixed bottom-5 right-5 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition">
+    💬
 </button>
 
-<!-- Chatbot Popup -->
-<div id="chatbotPopup" class="hidden fixed bottom-16 right-5 w-80 h-96 bg-white shadow-lg rounded-lg">
-  <div class="flex justify-between items-center bg-blue-500 text-white p-3 rounded-t-lg">
-    <span>Customer Support</span>
-    <button id="closeChatbot" class="text-white">&times;</button>
-  </div>
-  <iframe src="https://gemini.google.com/app?hl=id" class="w-full h-full border-none"></iframe>
+<div id="chatbotPopup" class="hidden fixed bottom-16 right-5 w-80 h-96 bg-white shadow-lg rounded-lg flex flex-col">
+    <div class="flex justify-between items-center bg-blue-500 text-white p-3 rounded-t-lg">
+        <span>Chatbot AI</span>
+        <button id="closeChatbot" class="text-white">&times;</button>
+    </div>
+    <div id="chatbox" class="flex-1 p-3 overflow-y-auto max-h-64"></div>
+    <div class="p-3 border-t flex">
+        <input id="chatInput" type="text" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-200" placeholder="Tulis pesan...">
+        <button id="sendChat" class="bg-blue-500 text-white px-3 ml-2 rounded-lg hover:bg-blue-600 transition">📤</button>
+    </div>
 </div>
 
-<!-- Script to Toggle Chatbot -->
 <script>
-  document.getElementById('chatbotButton').addEventListener('click', function () {
-    document.getElementById('chatbotPopup').classList.toggle('hidden');
-  });
+    // Ambil CSRF token dari meta tag yang ada di halaman
+    const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
 
-  document.getElementById('closeChatbot').addEventListener('click', function () {
-    document.getElementById('chatbotPopup').classList.add('hidden');
-  });
+    const chatbotButton = document.getElementById('chatbotButton');
+    const chatbotPopup = document.getElementById('chatbotPopup');
+    const closeChatbot = document.getElementById('closeChatbot');
+    const chatbox = document.getElementById('chatbox');
+    const chatInput = document.getElementById('chatInput');
+    const sendChat = document.getElementById('sendChat');
+
+    // Toggle popup when the chatbot button is clicked
+    chatbotButton.addEventListener('click', (event) => {
+        event.preventDefault();  // Prevent any default action like page reload
+        chatbotPopup.classList.toggle('hidden');  // Show or hide the popup
+    });
+
+    // Close the popup when the close button is clicked
+    closeChatbot.addEventListener('click', () => {
+        chatbotPopup.classList.add('hidden');
+    });
+
+    // Send message when send button is clicked
+    sendChat.addEventListener('click', async () => {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        // Display user message
+        displayMessage(message, 'user');
+        chatInput.value = '';
+
+        // Send the message to the backend
+        try {
+            const response = await fetch('/chatbot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,  // Include CSRF token
+                },
+                body: JSON.stringify({ message })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const reply = data.reply || "Maaf, saya tidak mengerti.";
+                displayMessage(reply, 'bot');
+            } else {
+                const errorText = await response.text();
+                displayMessage(`Error: ${response.status} - ${errorText}`, 'error');
+            }
+        } catch (error) {
+            displayMessage(`Error: ${error.message}`, 'error');
+        }
+    });
+
+    // Function to display messages in the chatbox
+    function displayMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('p-2', 'my-1', 'rounded-lg');
+        if (sender === 'user') {
+            messageDiv.classList.add('bg-gray-200', 'self-end');
+        } else if (sender === 'bot') {
+            messageDiv.classList.add('bg-blue-100', 'self-start');
+        } else if (sender === 'error') {
+            messageDiv.classList.add('text-red-500');
+        }
+        messageDiv.textContent = message;
+        chatbox.appendChild(messageDiv);
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
 </script>
+
+
+  
+
 
   {{-- <main class="content" id="mainContent">
     @include('home.home')
