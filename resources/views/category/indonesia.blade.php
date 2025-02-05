@@ -4,7 +4,7 @@
 <section class="bg-gray-900 py-8 antialiased dark:bg-gray-900 md:py-16">
     <div class="mx-auto max-w-screen-lg px-4 2xl:px-0">
         <div class="lg:flex lg:items-center lg:justify-between lg:gap-4">
-            <h2 class="shrink-0 text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Questions (147)
+            <h2 class="shrink-0 text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Questions (5)
             </h2>
 
             <form class="mt-4 w-full gap-4 sm:flex sm:items-center sm:justify-end lg:mt-0">

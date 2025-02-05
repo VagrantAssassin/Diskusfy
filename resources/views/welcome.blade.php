@@ -77,7 +77,7 @@
               <!-- Dropdown menu -->
               <ul x-show="open" @click.away="open = false"
                 class="ml-6 mt-2 space-y-2 bg-gray-100 dark:bg-gray-700 rounded-lg p-2">
-                <li><a href="/indonesia"
+                <li><a id="indoBtn"
                     class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded dark:text-white">Indonesia</a>
                 </li>
                 <li><a href="/category/sains"
@@ -316,6 +316,7 @@
   {{-- <main class="content" id="mainContent">
     @include('home.home')
   </main> --}}
+  <script defer src="{{ asset('js/ctg_btn/indoBtn.js') }}"></script>
   <script defer src="{{ asset('js/newDiscussionButton.js') }}"></script>
   <script defer src="{{ asset('js/commentButton.js') }}"></script>
   <script type="module" src="{{ asset('js/auth.js') }}"></script>
