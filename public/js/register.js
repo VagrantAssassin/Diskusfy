@@ -71,11 +71,40 @@ document
 document.getElementById("google-signup").addEventListener("click", async () => {
     try {
         const result = await signInWithPopup(auth, provider);
-        alert(
-            "Login dengan Google berhasil! Selamat datang, " +
-                result.user.displayName
-        );
-        window.location.href = "/"; // Sesuaikan dengan halaman setelah login
+        const user = result.user;
+        const email = user.email;
+        const uid = user.uid;
+
+        // Gunakan email untuk username dan nama
+        const username = email;
+        const nama = email;
+
+        // Kirim data ke server Laravel
+        const response = await fetch("/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document
+                    .querySelector('meta[name="csrf-token"]')
+                    .getAttribute("content"),
+            },
+            body: JSON.stringify({
+                email,
+                username,
+                nama,
+                uid, // UID dari Firebase
+            }),
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            alert(
+                "Registrasi dengan Google berhasil! Selamat datang, " + email
+            );
+            window.location.href = "/"; // Redirect ke halaman utama atau halaman lain sesuai kebutuhan
+        } else {
+            alert("Gagal menambahkan pengguna.");
+        }
     } catch (error) {
         alert("Login dengan Google gagal: " + error.message);
     }

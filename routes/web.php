@@ -8,6 +8,7 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiskusiController;
 use App\Http\Controllers\BalasanController;
+use App\Http\Controllers\ProfileController;
 
 //Route::post('/diskusi/{id_diskusi}/balasan', [BalasanController::class, 'store'])->middleware('auth')->name('balasan.store');
 
@@ -16,35 +17,13 @@ use App\Http\Controllers\BalasanController;
 Route::post('/balasan/store/{id_diskusi}', [BalasanController::class, 'store']);
 
 
+// API untuk mendapatkan data profil berdasarkan uid
+Route::get('/api/profile/{uid}', [ProfileController::class, 'show']);
 
+// API untuk memperbarui profil
+Route::post('/api/profile/update', [ProfileController::class, 'update']);
 
 Route::post('/chat', [ChatController::class, 'handleChat'])->name('chat.handle');
-
-// Route::post('/', function (Request $request) {
-//     $message = $request->input('message');
-
-//     $API_KEY = "AIzaSyCwvzFM0By4tApqp6hY_bmEYTKge1-tJg0"; // Ganti dengan API Key yang baru dan aman
-
-//     $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateText", [
-//         "key" => $API_KEY,
-//         "inputs" => [
-//             [
-//                 "text" => $message
-//             ]
-//         ]
-//     ]);
-
-//     // Check if the response was successful
-//     if ($response->successful()) {
-//         return response()->json([
-//             'reply' => $response->json()['candidates'][0]['content'] ?? "Maaf, saya tidak mengerti."
-//         ]);
-//     } else {
-//         return response()->json([
-//             'error' => 'Failed to fetch reply from API. ' . $response->status()
-//         ], 500);
-//     }
-// });
 
 Route::get('/', [DashboardController::class, 'index']);
 
@@ -68,11 +47,11 @@ Route::post('new_discussion', [DiskusiController::class, 'add'])->name('diskusi.
 
 Route::get('/home', [DiskusiController::class, 'index']);
 
-Route::get('/login', function () {
-    return view('auth.login.login');
-});
+// Menampilkan halaman login
+Route::get('/login', [AuthController::class, 'loginPage']);
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+// Menangani proses login (POST request dari Firebase)
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/register', function () {
     return view('auth.register.resgister');
