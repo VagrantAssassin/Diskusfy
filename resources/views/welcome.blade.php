@@ -241,7 +241,7 @@
 
 
 
-
+  <script src="{{ asset('js/chatbot.js') }}"></script>
 
   {{-- <main class="content" id="mainContent">
     @include('home.home')
@@ -251,7 +251,6 @@
   <script defer src="{{ asset('js/ctg_btn/codingBtn.js') }}"></script>
   <script defer src="{{ asset('js/ctg_btn/hukumBtn.js') }}"></script>
   <script defer src="{{ asset('js/ctg_btn/algoBtn.js') }}"></script>
-  <script defer src="{{ asset('js/chatbot.js') }}"></script>
   <script defer src="{{ asset('js/newDiscussionButton.js') }}"></script>
   <script defer src="{{ asset('js/commentButton.js') }}"></script>
   <script type="module" src="{{ asset('js/auth.js') }}"></script>

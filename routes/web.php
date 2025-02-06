@@ -2,36 +2,39 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiskusiController;
 
-Route::post('/', function (Request $request) {
-    $message = $request->input('message');
+Route::post('/chat', [ChatController::class, 'handleChat'])->name('chat.handle');
 
-    $API_KEY = "AIzaSyCwvzFM0By4tApqp6hY_bmEYTKge1-tJg0"; // Ganti dengan API Key yang baru dan aman
+// Route::post('/', function (Request $request) {
+//     $message = $request->input('message');
 
-    $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateText", [
-        "key" => $API_KEY,
-        "inputs" => [
-            [
-                "text" => $message
-            ]
-        ]
-    ]);
+//     $API_KEY = "AIzaSyCwvzFM0By4tApqp6hY_bmEYTKge1-tJg0"; // Ganti dengan API Key yang baru dan aman
 
-    // Check if the response was successful
-    if ($response->successful()) {
-        return response()->json([
-            'reply' => $response->json()['candidates'][0]['content'] ?? "Maaf, saya tidak mengerti."
-        ]);
-    } else {
-        return response()->json([
-            'error' => 'Failed to fetch reply from API. ' . $response->status()
-        ], 500);
-    }
-});
+//     $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateText", [
+//         "key" => $API_KEY,
+//         "inputs" => [
+//             [
+//                 "text" => $message
+//             ]
+//         ]
+//     ]);
+
+//     // Check if the response was successful
+//     if ($response->successful()) {
+//         return response()->json([
+//             'reply' => $response->json()['candidates'][0]['content'] ?? "Maaf, saya tidak mengerti."
+//         ]);
+//     } else {
+//         return response()->json([
+//             'error' => 'Failed to fetch reply from API. ' . $response->status()
+//         ], 500);
+//     }
+// });
 
 Route::get('/', [DashboardController::class, 'index']);
 
