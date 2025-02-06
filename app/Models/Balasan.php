@@ -1,20 +1,30 @@
 <?php
 
+// app/Models/Balasan.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Diskusi;
 
 class Balasan extends Model
 {
     use HasFactory;
 
-    protected $table = 'balasans'; // Sesuaikan dengan nama tabel
-    protected $primaryKey = 'id_balasan'; // Jika berbeda, sesuaikan
+    protected $table = 'balasans';
+    protected $primaryKey = 'id_balasan';
 
     protected $fillable = [
         'id_diskusi',
         'uid',
-        'isi_balasan',
+        'isi_balasan'
     ];
+
+    // Relasi: Balasan termasuk ke dalam satu diskusi
+    public function diskusi()
+    {
+        return $this->belongsTo(Diskusi::class, 'id_diskusi', 'id_diskusi');
+    }
 }
+

@@ -58,7 +58,8 @@ class DiskusiController extends Controller
 
     public function show($id_diskusi)
     {
-        $diskusi = Diskusi::where('id_diskusi', $id_diskusi)->firstOrFail();
+        // Mengambil diskusi beserta komentar (balasans)
+        $diskusi = Diskusi::with('balasans')->where('id_diskusi', $id_diskusi)->firstOrFail();
         return view('comment_discussion.comment', compact('diskusi'));
     }
 }

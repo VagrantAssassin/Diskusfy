@@ -1,16 +1,19 @@
 <?php
 
+// app/Models/Diskusi.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Balasan;
 
 class Diskusi extends Model
 {
     use HasFactory;
 
-    protected $table = 'diskusis'; // Sesuaikan dengan nama tabel di database
-    protected $primaryKey = 'id_diskusi'; // Sesuaikan jika id bukan 'id'
+    protected $table = 'diskusis';
+    protected $primaryKey = 'id_diskusi';
 
     protected $fillable = [
         'judul',
@@ -19,4 +22,11 @@ class Diskusi extends Model
         'uid',
         'nama_kategori'
     ];
+
+    // Relasi: Satu diskusi memiliki banyak balasan
+    public function balasans()
+    {
+        return $this->hasMany(Balasan::class, 'id_diskusi', 'id_diskusi');
+    }
 }
+
