@@ -1,33 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const kategoriSelect = document.getElementById("kategori");
+    const kategoriInput = document.getElementById("kategori");
     const judulInput = document.getElementById("judulDiskusi");
     const isiInput = document.getElementById("isiDiskusi");
 
     // Daftar kata kunci untuk kategori
     const kategoriKeywords = {
-        "1": ["indonesia", "bahasa", "puisi", "sastra"],
-        "2": ["matematika", "aljabar", "geometri", "kalkulus"],
-        "3": ["coding", "programming", "javascript", "python", "php"],
-        "4": ["hukum", "undang", "peraturan", "legal"],
-        "5": ["algoritma", "struktur data", "sorting", "graph"]
+        "Indonesia": ["indonesia", "bahasa", "puisi", "sastra"],
+        "Matematika": ["matematika", "aljabar", "geometri", "kalkulus"],
+        "Coding": ["coding", "programming", "javascript", "python", "php"],
+        "Hukum": ["hukum", "undang", "peraturan", "legal"],
+        "Algoritma": ["algoritma", "struktur data", "sorting", "graph"]
     };
 
     function tentukanKategori() {
         const judul = judulInput.value.toLowerCase();
         const isi = isiInput.value.toLowerCase();
         
-        for (const [id, keywords] of Object.entries(kategoriKeywords)) {
+        for (const [kategori, keywords] of Object.entries(kategoriKeywords)) {
             if (keywords.some(keyword => judul.includes(keyword) || isi.includes(keyword))) {
-                kategoriSelect.value = id;
+                kategoriInput.value = kategori;
                 return;
             }
         }
-
-        // Jika tidak cocok, kosongkan pilihan kategori
-        kategoriSelect.value = "";
     }
 
-    // Event listener untuk perubahan pada input
+    // Event listener untuk input
     judulInput.addEventListener("input", tentukanKategori);
     isiInput.addEventListener("input", tentukanKategori);
 });
