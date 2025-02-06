@@ -29,10 +29,11 @@
                                     count($diskusi->answers) }} answers</span> --}}
                             </div>
 
-                            <a href="#" data-id="{{ $diskusi->id_diskusi }}"
-                                class="commentButton text-xl font-semibold text-gray-900 hover:underline dark:text-white">
-                                {{ $diskusi->judul }}
-                            </a>
+                            <a href="/comment/{{ $diskusi->id_diskusi }}" data-id="{{ $diskusi->id_diskusi }}"
+                                class="text-xl font-semibold text-gray-900 hover:underline dark:text-white">
+                                 {{ $diskusi->judul }}
+                             </a>
+                             
                         </div>
                         <p class="text-base font-normal text-gray-500 dark:text-gray-400">{{ $diskusi->isi_diskusi }}</p>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">

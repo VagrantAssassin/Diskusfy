@@ -17,7 +17,7 @@ class BalasanController extends Controller
         // Simpan balasan ke database
         $balasan = new Balasan();
         $balasan->id_diskusi = $id_diskusi; // Ambil dari parameter route
-        $balasan->uid = $validatedData['user_uid']; // Pastikan pengguna login
+        $balasan->uid = $validatedData['user_uid'];
         $balasan->isi_balasan = $validatedData['isi_balasan'];
 
         if ($balasan->save()) {
@@ -27,3 +27,4 @@ class BalasanController extends Controller
         }
     }
 }
+

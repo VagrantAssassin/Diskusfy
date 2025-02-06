@@ -11,7 +11,10 @@ use App\Http\Controllers\BalasanController;
 
 //Route::post('/diskusi/{id_diskusi}/balasan', [BalasanController::class, 'store'])->middleware('auth')->name('balasan.store');
 
-Route::post('balasan/{id_diskusi}', [BalasanController::class, 'store'])->name('balasan.store');
+// Route::post('balasan/{id_diskusi}', [BalasanController::class, 'store'])->name('balasan.store');
+
+Route::post('/balasan/store/{id_diskusi}', [BalasanController::class, 'store']);
+
 
 
 
@@ -52,9 +55,10 @@ Route::get('/example', function () {
 Route::get('/edit_profile', function () {
     return view('edit_profile.edit_profile');
 });
-Route::get('/comment', function () {
-    return view('comment_discussion.comment');
-});
+
+// Route::get('/comment', function () {
+//     return view('comment_discussion.comment');
+// });
 
 Route::get('/new_discussion', function () {
     return view('create_new_discussion.new_discussion');
@@ -81,6 +85,7 @@ Route::get('/forget', function () {
 });
 
 Route::get('/comment/{id_diskusi}', [DiskusiController::class, 'show']);
+
 
 /*route kategori*/
 Route::get('/indonesia', function () {

@@ -23,47 +23,45 @@ const auth = getAuth(app);
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log("User is signed in:", user);
-        document
-            .getElementById("balasan-form")
-            .insertAdjacentHTML(
-                "beforeend",
-                `<input type="hidden" name="user_uid" value="${user.uid}">`
-            );
+        // Ambil elemen form dan textarea
+        const form = document.querySelector("form");
+        const textarea = document.getElementById("isi_balasan");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const isiBalasan = document
+                .getElementById("isi_balasan")
+                .value.trim();
+            if (isiBalasan) {
+                fetch(`/balasan/store/${diskusiId}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": document
+                            .querySelector('meta[name="csrf-token"]')
+                            .getAttribute("content"),
+                    },
+                    body: JSON.stringify({
+                        isi_balasan: isiBalasan,
+                        user_uid: user.uid, // Pastikan user sudah didefinisikan (misalnya dari Firebase)
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.success) {
+                            console.log("Data berhasil disimpan");
+                            document.getElementById("isi_balasan").value = "";
+                        } else {
+                            console.log("Gagal menyimpan data");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                    });
+            }
+        });
     } else {
         console.log("No user is signed in");
         window.location.href = "/login";
     }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("balasan-form");
-
-    form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Mencegah form submit biasa
-
-        const formData = new FormData(form);
-
-        fetch(form.action, {
-            method: "POST",
-            body: formData,
-            headers: {
-                "X-Requested-With": "XMLHttpRequest",
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.success) {
-                    // Tampilkan popup
-                    alert(data.message);
-                    // Redirect ke halaman lain, misalnya home
-                    window.location.href = "/";
-                } else {
-                    alert("Terjadi kesalahan: " + data.message);
-                }
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-                alert("Terjadi kesalahan saat mengirim data.");
-            });
-    });
 });
