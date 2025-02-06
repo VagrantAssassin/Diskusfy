@@ -48,7 +48,7 @@
                     Sign In
                 </button>
                 <button type="button" id="google-signin" class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-500 dark:hover:bg-green-600 dark:focus:ring-green-800">
-                    Sign In With Google (Maintenance)
+                    Sign In With Google
                 </button>
             </form>
             
