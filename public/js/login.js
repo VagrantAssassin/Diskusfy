@@ -6,7 +6,6 @@ import {
     GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// Konfigurasi Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyCyUNuYlWR-uFEUlXbL_-2Hm4t4u70Af4U",
     authDomain: "diskusfy.firebaseapp.com",
@@ -40,17 +39,37 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     }
 });
 
-// Handle Google Sign-in
+// Handle Google Login
 document.getElementById("google-signin").addEventListener("click", async () => {
     try {
         const result = await signInWithPopup(auth, provider);
-        alert(
-            "Login dengan Google berhasil! Selamat datang, " +
-                result.user.displayName
-        );
-        window.location.href = "/"; // Ganti dengan halaman yang sesuai setelah login
+        const user = result.user;
+        const email = user.email;
+        const uid = user.uid;
+
+        // Kirim data ke server Laravel untuk login / register otomatis
+        const response = await fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document
+                    .querySelector('meta[name="csrf-token"]')
+                    .getAttribute("content"),
+            },
+            body: JSON.stringify({
+                email,
+                uid,
+            }),
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            alert("Login berhasil! Selamat datang, " + email);
+            window.location.href = "/"; // Redirect ke halaman utama
+        } else {
+            alert("Gagal login: " + data.message);
+        }
     } catch (error) {
-        console.error("Login dengan Google gagal:", error);
         alert("Login dengan Google gagal: " + error.message);
     }
 });

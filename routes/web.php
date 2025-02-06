@@ -49,11 +49,11 @@ Route::post('new_discussion', [DiskusiController::class, 'add'])->name('diskusi.
 
 Route::get('/home', [DiskusiController::class, 'index']);
 
-Route::get('/login', function () {
-    return view('auth.login.login');
-});
+// Menampilkan halaman login
+Route::get('/login', [AuthController::class, 'loginPage']);
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+// Menangani proses login (POST request dari Firebase)
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/register', function () {
     return view('auth.register.resgister');
