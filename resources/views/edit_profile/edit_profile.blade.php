@@ -20,16 +20,21 @@
         <div class="text-center mb-8">
             <img src="https://www.pngarts.com/files/5/User-Avatar-PNG-Background-Image.png" alt="Profile Picture" class="w-32 h-32 mx-auto rounded-full mb-4 shadow-lg border-4 border-green-200 dark:border-green-500">
             <h2 class="text-green-700 dark:text-green-400 text-3xl font-bold">Raditya Aryabudhi Ramadhan</h2>
-            <p class="text-gray-600 dark:text-gray-400 text-lg">Mobile Developer</p>
-            <p class="text-gray-500 dark:text-gray-500 text-md">Jawa Barat, Indonesia</p>
+            {{-- <p class="text-gray-600 dark:text-gray-400 text-lg">Mobile Developer</p>
+            <p class="text-gray-500 dark:text-gray-500 text-md">Jawa Barat, Indonesia</p> --}}
         </div>
         
         <h3 class="text-green-700 dark:text-green-400 text-2xl font-bold text-center mb-8">Edit Profil</h3>
         
         <form action="#" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="flex flex-col">
-                <label class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1" for="name">Nama</label>
-                <input type="text" id="name" name="name" value="Raditya Aryabudhi Ramadhan" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-200">
+                <label class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1" for="uid">UID</label>
+                <input type="text" id="uid" name="uid" value="1234567890" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-200" disabled>
+            </div>
+            
+            <div class="flex flex-col">
+                <label class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1" for="username">Username</label>
+                <input type="text" id="username" name="username" value="raditya" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-200">
             </div>
             
             <div class="flex flex-col">
@@ -38,23 +43,8 @@
             </div>
             
             <div class="flex flex-col">
-                <label class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1" for="phone">Nomor Telepon</label>
-                <input type="text" id="phone" name="phone" value="081234567890" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-200">
-            </div>
-            
-            <div class="flex flex-col">
-                <label class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1" for="location">Lokasi</label>
-                <input type="text" id="location" name="location" value="Jawa Barat, Indonesia" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-200">
-            </div>
-            
-            <div class="flex flex-col md:col-span-2">
-                <label class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1" for="bio">Deskripsi Singkat</label>
-                <textarea id="bio" name="bio" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-200">Seorang Mobile Developer dengan pengalaman dalam pengembangan aplikasi Android dan iOS.</textarea>
-            </div>
-            
-            <div class="flex flex-col md:col-span-2">
-                <label class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1" for="password">Password Baru</label>
-                <input type="password" id="password" name="password" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-200" placeholder="Masukkan password baru">
+                <label class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1" for="name">Nama</label>
+                <input type="text" id="name" name="name" value="Raditya Aryabudhi Ramadhan" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-200">
             </div>
             
             <div class="md:col-span-2 flex flex-col md:flex-row justify-between items-center gap-4">
