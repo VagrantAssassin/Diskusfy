@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const kategoriSelect = document.getElementById("kategori");
+    const kategoriBaruInput = document.getElementById("kategoriBaru");
     const judulInput = document.getElementById("judulDiskusi");
     const isiInput = document.getElementById("isiDiskusi");
 
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (const [id, keywords] of Object.entries(kategoriKeywords)) {
             if (keywords.some(keyword => judul.includes(keyword) || isi.includes(keyword))) {
                 kategoriSelect.value = id;
+                kategoriBaruInput.value = ""; // Kosongkan input kategori baru jika kategori otomatis dipilih
                 return;
             }
         }
@@ -30,4 +32,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listener untuk perubahan pada input
     judulInput.addEventListener("input", tentukanKategori);
     isiInput.addEventListener("input", tentukanKategori);
+
+    // Pastikan pengguna hanya memilih salah satu antara kategori dropdown atau input kategori baru
+    kategoriSelect.addEventListener("change", function () {
+        if (kategoriSelect.value !== "") {
+            kategoriBaruInput.value = "";
+        }
+    });
+
+    kategoriBaruInput.addEventListener("input", function () {
+        if (kategoriBaruInput.value.trim() !== "") {
+            kategoriSelect.value = "";
+        }
+    });
 });

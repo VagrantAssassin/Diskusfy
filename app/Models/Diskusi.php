@@ -17,5 +17,6 @@ class Diskusi extends Model
         'isi_diskusi',
         'id_kategori',
         'uid',
+        'nama_kategori'
     ];
 }
