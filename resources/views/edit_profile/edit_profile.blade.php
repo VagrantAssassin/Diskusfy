@@ -49,7 +49,7 @@
             
             <div class="md:col-span-2 flex flex-col md:flex-row justify-between items-center gap-4">
                 <button type="submit" class="bg-green-600 dark:bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition w-full md:w-auto shadow-lg focus:ring-2 focus:ring-green-400">Simpan Perubahan</button>
-                <a href="#" class="text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 text-sm font-medium transition duration-200">Batal</a>
+                <a href="/" class="text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 text-sm font-medium transition duration-200">Batal</a>
             </div>
         </form>
     </div>
