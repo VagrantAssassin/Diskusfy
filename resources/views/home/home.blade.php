@@ -45,6 +45,3 @@
         </div>
     </div>
 </section>
-
-
-<script defer src="{{ asset('js/commentButton.js') }}"></script>

@@ -9,30 +9,12 @@ class Balasan extends Model
 {
     use HasFactory;
 
-    protected $table = 'balasans';
-    protected $primaryKey = 'id_balasan';
-    public $timestamps = true;
+    protected $table = 'balasans'; // Sesuaikan dengan nama tabel
+    protected $primaryKey = 'id_balasan'; // Jika berbeda, sesuaikan
 
     protected $fillable = [
         'id_diskusi',
-        'isi_balasan',
         'uid',
-        'tanggal'
+        'isi_balasan',
     ];
-
-    /**
-     * Relasi ke model Diskusi
-     */
-    public function diskusi()
-    {
-        return $this->belongsTo(Diskusi::class, 'id_diskusi');
-    }
-
-    /**
-     * Relasi ke model User
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'uid', 'uid');
-    }
 }
