@@ -1,14 +1,16 @@
 <?php
 use Illuminate\Http\Request;
+use App\Exports\DiskusiExport;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\RegisterController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DiskusiController;
 use App\Http\Controllers\BalasanController;
+use App\Http\Controllers\DiskusiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
+use Maatwebsite\Excel\Facades\Excel;
 
 //Route::post('/diskusi/{id_diskusi}/balasan', [BalasanController::class, 'store'])->middleware('auth')->name('balasan.store');
 
@@ -86,3 +88,7 @@ Route::get('/hukum', function () {
 Route::get('/algoritma', function () {
     return view('category.algoritma');
 });
+
+Route::get('/export-diskusi', function () {
+    return Excel::download(new DiskusiExport, 'diskusi.xlsx');
+})->name('export.diskusi');
