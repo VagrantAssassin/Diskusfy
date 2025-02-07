@@ -1,10 +1,14 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+// public/js/balasanuid.js
+import {
+    getApps,
+    initializeApp,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
     getAuth,
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// Konfigurasi Firebase
+// Konfigurasi Firebase (sama seperti file deleteComment.js)
 const firebaseConfig = {
     apiKey: "AIzaSyCyUNuYlWR-uFEUlXbL_-2Hm4t4u70Af4U",
     authDomain: "diskusfy.firebaseapp.com",
@@ -15,23 +19,23 @@ const firebaseConfig = {
     measurementId: "G-Y5MY8ZNNL0",
 };
 
-// Inisialisasi Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+// Inisialisasi Firebase hanya jika belum diinisialisasi
+if (!getApps().length) {
+    initializeApp(firebaseConfig);
+}
 
-// Cek apakah user sudah login
+const auth = getAuth();
+
+// Cek apakah pengguna sudah login dan setup pengiriman komentar
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log("User is signed in:", user);
-        // Ambil elemen form dan textarea
         const form = document.querySelector("form");
         const textarea = document.getElementById("isi_balasan");
 
         form.addEventListener("submit", (event) => {
             event.preventDefault();
-            const isiBalasan = document
-                .getElementById("isi_balasan")
-                .value.trim();
+            const isiBalasan = textarea.value.trim();
             if (isiBalasan) {
                 fetch(`/balasan/store/${diskusiId}`, {
                     method: "POST",
@@ -43,14 +47,15 @@ onAuthStateChanged(auth, (user) => {
                     },
                     body: JSON.stringify({
                         isi_balasan: isiBalasan,
-                        user_uid: user.uid, // Pastikan user sudah didefinisikan (misalnya dari Firebase)
+                        user_uid: user.uid,
                     }),
                 })
                     .then((response) => response.json())
                     .then((data) => {
                         if (data.success) {
                             console.log("Data berhasil disimpan");
-                            document.getElementById("isi_balasan").value = "";
+                            textarea.value = "";
+                            // Opsi: reload halaman atau lakukan update DOM secara dinamis
                         } else {
                             console.log("Gagal menyimpan data");
                         }
