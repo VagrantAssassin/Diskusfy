@@ -72,10 +72,10 @@
                 </p>
               </div>
               <!-- Tombol hapus; tampilkan secara default, logika penyembunyian di JS -->
-              <button id="deleteButton{{ $balasan->id }}"
+              <button id="deleteButton{{ $balasan->id_balasan }}"
                 data-comment-uid="{{ $balasan->uid }}"
-                class="inline-flex items-center p-2 text-sm font-medium text-center text-red-500 dark:text-red-400 bg-white rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-50 dark:bg-gray-900 dark:hover:bg-red-700 dark:focus:ring-red-600 delete-button"
-                type="button" onclick="deleteComment({{ $balasan->id }})">
+                class="inline-flex items-center p-2 text-sm font-medium text-center text-red-500 dark:text-red-400 bg-white rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-50 dark:bg-gray-900 dark:hover:bg-red-700 dark:focus:ring-red-600 delete-button delete-button"
+                type="button" onclick="deleteComment({{ $balasan->id_balasan }})">
                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                   viewBox="0 0 20 20">
                   <path fill-rule="evenodd"
@@ -99,10 +99,10 @@
     console.log("diskusiId:", diskusiId);
   </script>
 
+
   <!-- Sertakan file JS secara module -->
   <script src="{{ asset('js/deleteComment.js') }}" type="module"></script>
   <script src="{{ asset('js/balasanuid.js') }}" type="module"></script>
-  <!-- Flowbite JS -->
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
 </body>
 </html>

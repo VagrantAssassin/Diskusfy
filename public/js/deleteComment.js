@@ -19,29 +19,30 @@ const firebaseConfig = {
     measurementId: "G-Y5MY8ZNNL0",
 };
 
-// Inisialisasi Firebase hanya jika belum diinisialisasi
+// Inisialisasi Firebase jika belum ada aplikasi yang diinisialisasi
 if (!getApps().length) {
     initializeApp(firebaseConfig);
 }
 
 const auth = getAuth();
 
-// Cek apakah pengguna sudah login
+// Deklarasikan variabel global untuk menyimpan UID pengguna yang sedang login
+let globalCurrentUserUid = null;
+
+// Cek apakah pengguna sudah login dan simpan UID ke variabel global
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        const currentUserUid = user.uid;
-        // Ambil semua tombol delete
+        globalCurrentUserUid = user.uid; // simpan UID ke variabel global
+        // Ambil semua tombol delete dan sembunyikan yang tidak sesuai dengan UID pengguna
         const deleteButtons = document.querySelectorAll(".delete-button");
         deleteButtons.forEach((button) => {
             const commentUid = button.getAttribute("data-comment-uid");
-            // Jika UID komentar tidak sama dengan UID pengguna yang login, sembunyikan tombolnya
-            if (commentUid !== currentUserUid) {
+            if (commentUid !== user.uid) {
                 button.style.display = "none";
             }
         });
     } else {
         console.log("User belum login.");
-        // Redirect ke halaman login jika belum login (opsional)
         window.location.href = "/login";
     }
 });
@@ -49,7 +50,9 @@ onAuthStateChanged(auth, (user) => {
 // Fungsi global untuk menghapus komentar
 window.deleteComment = function (commentId) {
     if (confirm("Apakah Anda yakin ingin menghapus komentar ini?")) {
-        fetch(`/delete-comment/${commentId}`, {
+        // Jika diperlukan, kirim user_uid sebagai parameter (opsional)
+        const url = `/delete-comment/${commentId}?user_uid=${globalCurrentUserUid}`;
+        fetch(url, {
             method: "DELETE",
             headers: {
                 "X-CSRF-TOKEN": document

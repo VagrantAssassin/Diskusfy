@@ -8,7 +8,7 @@ import {
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// Konfigurasi Firebase (sama seperti file deleteComment.js)
+// Konfigurasi Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyCyUNuYlWR-uFEUlXbL_-2Hm4t4u70Af4U",
     authDomain: "diskusfy.firebaseapp.com",
@@ -19,14 +19,14 @@ const firebaseConfig = {
     measurementId: "G-Y5MY8ZNNL0",
 };
 
-// Inisialisasi Firebase hanya jika belum diinisialisasi
+// Inisialisasi Firebase jika belum ada
 if (!getApps().length) {
     initializeApp(firebaseConfig);
 }
 
 const auth = getAuth();
 
-// Cek apakah pengguna sudah login dan setup pengiriman komentar
+// Cek apakah pengguna sudah login dan siapkan event submit untuk form komentar
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log("User is signed in:", user);
@@ -55,7 +55,7 @@ onAuthStateChanged(auth, (user) => {
                         if (data.success) {
                             console.log("Data berhasil disimpan");
                             textarea.value = "";
-                            // Opsi: reload halaman atau lakukan update DOM secara dinamis
+                            // Opsi: reload halaman atau update DOM secara dinamis
                         } else {
                             console.log("Gagal menyimpan data");
                         }

@@ -12,11 +12,17 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use Maatwebsite\Excel\Facades\Excel;
 
+// Rute untuk menyimpan komentar
+Route::post('/balasan/store/{id_diskusi}', [BalasanController::class, 'store']);
+
+// Rute untuk menghapus komentar
+Route::delete('/delete-comment/{id_balasan}', [BalasanController::class, 'destroy']);
+
 //Route::post('/diskusi/{id_diskusi}/balasan', [BalasanController::class, 'store'])->middleware('auth')->name('balasan.store');
 
 // Route::post('balasan/{id_diskusi}', [BalasanController::class, 'store'])->name('balasan.store');
 
-Route::post('/balasan/store/{id_diskusi}', [BalasanController::class, 'store']);
+// Route::post('/balasan/store/{id_diskusi}', [BalasanController::class, 'store']);
 
 
 // API untuk mendapatkan data profil berdasarkan uid
