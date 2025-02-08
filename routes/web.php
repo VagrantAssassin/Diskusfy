@@ -24,6 +24,10 @@ Route::delete('/delete-comment/{id_balasan}', [BalasanController::class, 'destro
 
 // Route::post('/balasan/store/{id_diskusi}', [BalasanController::class, 'store']);
 
+Route::get('/loginAdmin', function () {
+    return view('auth.login.loginAdmin');
+});
+
 
 // API untuk mendapatkan data profil berdasarkan uid
 Route::get('/api/profile/{uid}', [ProfileController::class, 'show']);
@@ -64,6 +68,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', function () {
     return view('auth.register.resgister');
 });
+
 
 Route::post('register', [RegisterController::class, 'add']);
 
