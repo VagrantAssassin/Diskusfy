@@ -96,24 +96,44 @@
         </a>
 
         <!-- Form Reply (sembunyikan secara default) -->
+        <!-- Form Reply (sembunyikan secara default) -->
         <div id="replyForm{{ $balasan->id_balasan }}" class="reply-form hidden mt-4">
-        <form method="POST" action="/reply">
+        <form method="POST" action="/reply/{{ $balasan->id_balasan }}">
           @csrf
-          <!-- Sembunyikan ID komentar induk -->
-          <input type="hidden" name="parent_id" value="{{ $balasan->id_balasan }}">
           <div
           class="py-2 px-4 mb-4 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
           <label for="reply_{{ $balasan->id_balasan }}" class="sr-only">Your reply</label>
-          <textarea name="reply_content" id="reply_{{ $balasan->id_balasan }}" rows="3"
+          <textarea name="isi_balasan2" id="reply_{{ $balasan->id_balasan }}" rows="3"
             class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
             placeholder="Write your reply..." required></textarea>
           </div>
+          <!-- Pastikan Anda mengirimkan uid pengguna, misalnya dengan input tersembunyi atau melalui session/auth -->
+          <input type="hidden" name="user_uid" value="{{ auth()->user()->uid ?? 'default_uid' }}">
           <button type="submit"
           class="inline-flex bg-blue-700 items-center py-2.5 px-4 text-xs font-medium text-center text-white rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
           Post reply
           </button>
         </form>
         </div>
+
+
+        @if($balasan->replies->isNotEmpty())
+      <div class="ml-8 mt-4">
+      @foreach ($balasan->replies as $reply)
+      <div class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg mt-2">
+      <p class="text-gray-900 dark:text-white">{{ $reply->isi_balasan2 }}</p>
+      <div class="text-sm text-gray-600 dark:text-gray-400">
+      <span>{{ $reply->uid }}</span>
+      <time datetime="{{ $reply->created_at }}" title="{{ $reply->created_at->format('d M Y, H:i') }}">
+      {{ $reply->created_at->format('d M Y, H:i') }}
+      </time>
+      </div>
+      </div>
+    @endforeach
+      </div>
+    @endif
+
+
       </article>
     @endforeach
       </section>

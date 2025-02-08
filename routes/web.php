@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Balasan2Controller;
 
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\UserController;
@@ -21,6 +22,8 @@ use App\Http\Controllers\DiscussionAdminController;
 Route::get('/discussionAdmin', function () {
     return view('discussion_admin.discussionAdmin');
 });
+
+Route::post('/reply/{id_balasan}', [Balasan2Controller::class, 'store']);
 
 // Route API untuk diskusi (mengembalikan JSON)
 Route::get('/discussionAdmin/data', [DiscussionAdminController::class, 'index']);
@@ -59,6 +62,9 @@ Route::get('/dashboard-stats', [PanelController::class, 'stats'])->name('dashboa
 
 // Rute untuk menyimpan komentar
 Route::post('/balasan/store/{id_diskusi}', [BalasanController::class, 'store']);
+
+// Route untuk menyimpan reply ke komentar utama
+Route::post('/reply/{id_balasan}', [Balasan2Controller::class, 'store']);
 
 // Rute untuk menghapus komentar
 Route::delete('/delete-comment/{id_balasan}', [BalasanController::class, 'destroy']);
@@ -125,6 +131,7 @@ Route::get('/forget', function () {
     return view('auth.forget.forget');
 });
 
+//Menampilkan diskusi di halaman komentar
 Route::get('/comment/{id_diskusi}', [DiskusiController::class, 'show']);
 
 
@@ -149,6 +156,6 @@ Route::get('/algoritma', function () {
     return view('category.algoritma');
 });
 
-Route::get('/export-diskusi', function () {
-    return Excel::download(new DiskusiExport, 'diskusi.xlsx');
-})->name('export.diskusi');
+// Route::get('/export-diskusi', function () {
+//     return Excel::download(new DiskusiExport, 'diskusi.xlsx');
+// })->name('export.diskusi');

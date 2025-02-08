@@ -26,5 +26,12 @@ class Balasan extends Model
     {
         return $this->belongsTo(Diskusi::class, 'id_diskusi', 'id_diskusi');
     }
+
+    public function replies()
+    {
+        return $this->hasMany(Balasan2::class, 'id_balasan', 'id_balasan');
+    }
+
+    
 }
 

@@ -42,7 +42,6 @@ class CreateForumTables extends Migration
         // Tabel 'balasans'
         Schema::create('balasans', function (Blueprint $table) {
             $table->id('id_balasan');
-            $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('id_diskusi');
             $table->string('uid', 100);
             $table->text('isi_balasan');
@@ -53,7 +52,7 @@ class CreateForumTables extends Migration
             $table->foreign('uid')->references('uid')->on('penggunas')->onDelete('cascade');
         });
 
-        // Tabel 'balasan_2'
+        // Tabel 'balasans_2'
         Schema::create('balasans_2', function (Blueprint $table) {
             $table->id('id_balasan2');
             $table->unsignedBigInteger('id_balasan');
@@ -81,17 +80,83 @@ class CreateForumTables extends Migration
 
         // Insert kategori default
         DB::table('kategoris')->insert([
-            ['id_kategori' => 1, 'nama_kategori' => 'Indonesia'],
-            ['id_kategori' => 2, 'nama_kategori' => 'Matematika'],
-            ['id_kategori' => 3, 'nama_kategori' => 'Coding'],
-            ['id_kategori' => 4, 'nama_kategori' => 'Hukum'],
-            ['id_kategori' => 5, 'nama_kategori' => 'Algoritma'],
+            ['id_kategori' => 1, 'nama_kategori' => 'Indonesia', 'created_at' => now(), 'updated_at' => now()],
+            ['id_kategori' => 2, 'nama_kategori' => 'Matematika', 'created_at' => now(), 'updated_at' => now()],
+            ['id_kategori' => 3, 'nama_kategori' => 'Coding', 'created_at' => now(), 'updated_at' => now()],
+            ['id_kategori' => 4, 'nama_kategori' => 'Hukum', 'created_at' => now(), 'updated_at' => now()],
+            ['id_kategori' => 5, 'nama_kategori' => 'Algoritma', 'created_at' => now(), 'updated_at' => now()],
+        ]);
+
+        // Insert data dummy untuk penggunas (users)
+        DB::table('penggunas')->insert([
+            [
+                'uid'       => 'default_uid',
+                'username'  => 'defaultUser',
+                'email'     => 'default@example.com',
+                'nama'      => 'Default User',
+                'created_at'=> now(),
+                'updated_at'=> now(),
+            ],
+            [
+                'uid'       => 'ErWCXtBqe5cK94nm35K0gNdNZz02',
+                'username'  => 'intan',
+                'email'     => 'intan@gmail.com',
+                'nama'      => 'intan',
+                'created_at'=> now(),
+                'updated_at'=> now(),
+            ],
+        ]);
+
+        // Insert data dummy untuk diskusis (discussions)
+        DB::table('diskusis')->insert([
+            [
+                'id_kategori' => 1, // kategori 'Indonesia'
+                'uid'         => 'default_uid', // pemilik diskusi
+                'judul'       => 'Diskusi Pertama',
+                'isi_diskusi' => 'Ini adalah isi diskusi pertama.',
+                'created_at'  => now(),
+                'updated_at'  => now(),
+            ],
+        ]);
+
+        // Insert data dummy untuk balasans (komentar)
+        DB::table('balasans')->insert([
+            [
+                'id_diskusi'  => 1, // mengacu pada diskusi dengan id 1
+                'uid'         => 'ErWCXtBqe5cK94nm35K0gNdNZz02', // komentar dibuat oleh user 'intan'
+                'isi_balasan' => 'Ini adalah komentar pertama pada diskusi pertama.',
+                'created_at'  => now(),
+                'updated_at'  => now(),
+            ],
+        ]);
+
+        // Insert data dummy untuk balasans_2 (reply terhadap komentar)
+        DB::table('balasans_2')->insert([
+            [
+                'id_balasan'   => 1, // mengacu pada komentar dengan id 1
+                'uid'          => 'default_uid', // reply dibuat oleh user default
+                'isi_balasan2' => 'Ini adalah balasan terhadap komentar pertama.',
+                'created_at'   => now(),
+                'updated_at'   => now(),
+            ],
+        ]);
+
+        // (Opsional) Insert data dummy untuk votes
+        DB::table('votes')->insert([
+            [
+                'id_balasan' => 1, // vote diberikan untuk komentar id 1
+                'uid'        => 'default_uid', // vote diberikan oleh user default
+                'isi_vote'   => 1, // misalnya 1 = upvote
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 
     public function down()
     {
         Schema::dropIfExists('votes');
+        Schema::dropIfExists('balasans_2');
         Schema::dropIfExists('balasans');
         Schema::dropIfExists('diskusis');
         Schema::dropIfExists('penggunas');
