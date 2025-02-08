@@ -16,7 +16,18 @@ use App\Http\Controllers\PanelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryAdmin;
 use App\Http\Controllers\DiscussionAdminController;
+use App\Http\Controllers\ReplyAdminController;
 
+// Route untuk menampilkan halaman Reply Admin (view)
+Route::get('/reply', function () {
+    return view('reply_admin.reply');
+});
+
+// Route API untuk balasan (mengembalikan JSON)
+Route::get('/reply/data', [ReplyAdminController::class, 'index']);
+Route::get('/reply/{id}', [ReplyAdminController::class, 'edit']);
+Route::put('/reply/{id}', [ReplyAdminController::class, 'update']);
+Route::delete('/reply/{id}', [ReplyAdminController::class, 'destroy']);
 // Route untuk menampilkan halaman discussionAdmin (view)
 Route::get('/discussionAdmin', function () {
     return view('discussion_admin.discussionAdmin');
