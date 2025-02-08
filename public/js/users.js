@@ -75,7 +75,11 @@ function deleteUser(uid) {
             },
         })
             .then((response) => response.json())
-            .then(() => fetchUsers())
+            .then((data) => {
+                console.log(data.message);
+                // Perbarui daftar pengguna setelah penghapusan
+                fetchUsers();
+            })
             .catch((error) => console.error("Error deleting user:", error));
     }
 }

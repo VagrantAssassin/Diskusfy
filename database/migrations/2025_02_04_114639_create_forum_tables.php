@@ -42,6 +42,7 @@ class CreateForumTables extends Migration
         // Tabel 'balasans'
         Schema::create('balasans', function (Blueprint $table) {
             $table->id('id_balasan');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('id_diskusi');
             $table->string('uid', 100);
             $table->text('isi_balasan');
