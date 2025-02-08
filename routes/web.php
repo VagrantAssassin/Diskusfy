@@ -14,6 +14,41 @@ use Maatwebsite\Excel\Facades\Excel;
 
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryAdmin;
+use App\Http\Controllers\DiscussionAdminController;
+use App\Http\Controllers\ReplyAdminController;
+
+// Route untuk menampilkan halaman Reply Admin (view)
+Route::get('/reply', function () {
+    return view('reply_admin.reply');
+});
+
+// Route API untuk balasan (mengembalikan JSON)
+Route::get('/reply/data', [ReplyAdminController::class, 'index']);
+Route::get('/reply/{id}', [ReplyAdminController::class, 'edit']);
+Route::put('/reply/{id}', [ReplyAdminController::class, 'update']);
+Route::delete('/reply/{id}', [ReplyAdminController::class, 'destroy']);
+// Route untuk menampilkan halaman discussionAdmin (view)
+Route::get('/discussionAdmin', function () {
+    return view('discussion_admin.discussionAdmin');
+});
+
+// Route API untuk diskusi (mengembalikan JSON)
+Route::get('/discussionAdmin/data', [DiscussionAdminController::class, 'index']);
+Route::get('/discussionAdmin/{id}', [DiscussionAdminController::class, 'edit']);
+Route::put('/discussionAdmin/{id}', [DiscussionAdminController::class, 'update']);
+Route::delete('/discussionAdmin/{id}', [DiscussionAdminController::class, 'destroy']);
+
+// Route untuk menampilkan halaman categoryAdmin (view)
+Route::get('/categoryAdmin', function () {
+    return view('category_admin.categoryAdmin');
+});
+
+// Route API untuk kategori (mengembalikan JSON)
+Route::get('/categoryAdmin/data', [CategoryAdmin::class, 'index']);
+Route::get('/categoryAdmin/{id}', [CategoryAdmin::class, 'edit']);
+Route::put('/categoryAdmin/{id}', [CategoryAdmin::class, 'update']);
+Route::delete('/categoryAdmin/{id}', [CategoryAdmin::class, 'destroy']);
 
 // Route untuk menampilkan halaman daftar pengguna (view)
 Route::get('/users', function () {
