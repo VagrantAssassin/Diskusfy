@@ -14,6 +14,18 @@ use Maatwebsite\Excel\Facades\Excel;
 
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryAdmin;
+
+// Route untuk menampilkan halaman categoryAdmin (view)
+Route::get('/categoryAdmin', function () {
+    return view('category_admin.categoryAdmin');
+});
+
+// Route API untuk kategori (mengembalikan JSON)
+Route::get('/categoryAdmin/data', [CategoryAdmin::class, 'index']);
+Route::get('/categoryAdmin/{id}', [CategoryAdmin::class, 'edit']);
+Route::put('/categoryAdmin/{id}', [CategoryAdmin::class, 'update']);
+Route::delete('/categoryAdmin/{id}', [CategoryAdmin::class, 'destroy']);
 
 // Route untuk menampilkan halaman daftar pengguna (view)
 Route::get('/users', function () {
