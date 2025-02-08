@@ -12,6 +12,27 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use Maatwebsite\Excel\Facades\Excel;
 
+use App\Http\Controllers\PanelController;
+use App\Http\Controllers\UserController;
+
+// Route untuk menampilkan halaman daftar pengguna (view)
+Route::get('/users', function () {
+    return view('users.users');
+});
+
+// Route API untuk mengambil data JSON pengguna
+Route::get('/users/data', [UserController::class, 'index']);
+Route::get('/users/{id}', [UserController::class, 'edit']);
+Route::put('/users/{id}', [UserController::class, 'update']);
+Route::delete('/users/{id}', [UserController::class, 'destroy']);
+
+// Route untuk menampilkan halaman dashboard (misalnya dashboardAdmin atau welcomeAdmin)
+Route::get('/dashboardAdmin', [PanelController::class, 'index'])->name('dashboard.admin');
+
+// Route API untuk mengambil data statistik dashboard
+Route::get('/dashboard-stats', [PanelController::class, 'stats'])->name('dashboard.stats');
+
+
 // Rute untuk menyimpan komentar
 Route::post('/balasan/store/{id_diskusi}', [BalasanController::class, 'store']);
 
@@ -23,6 +44,14 @@ Route::delete('/delete-comment/{id_balasan}', [BalasanController::class, 'destro
 // Route::post('balasan/{id_diskusi}', [BalasanController::class, 'store'])->name('balasan.store');
 
 // Route::post('/balasan/store/{id_diskusi}', [BalasanController::class, 'store']);
+
+Route::get('/loginAdmin', function () {
+    return view('auth.login.loginAdmin');
+});
+
+Route::get('/dashboardAdmin', function () {
+    return view('welcomeAdmin');
+});
 
 
 // API untuk mendapatkan data profil berdasarkan uid
@@ -64,6 +93,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', function () {
     return view('auth.register.resgister');
 });
+
 
 Route::post('register', [RegisterController::class, 'add']);
 
