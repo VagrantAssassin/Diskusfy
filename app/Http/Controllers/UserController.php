@@ -34,8 +34,11 @@ class UserController extends Controller
     // Menghapus data pengguna
     public function destroy($id)
     {
+        // Cari pengguna berdasarkan id (pastikan 'uid' merupakan primary key atau sesuaikan dengan model)
         $user = Pengguna::findOrFail($id);
         $user->delete();
+
         return response()->json(['message' => 'User deleted successfully']);
     }
+
 }
