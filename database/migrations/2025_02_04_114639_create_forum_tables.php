@@ -22,7 +22,6 @@ class CreateForumTables extends Migration
             $table->string('username', 32)->unique();
             $table->string('email', 50)->unique();
             $table->string('nama', 50);
-            $table->date('tanggal')->nullable();
             $table->timestamps();
         });
 
@@ -33,7 +32,6 @@ class CreateForumTables extends Migration
             $table->string('uid', 100);
             $table->string('judul', 50);
             $table->text('isi_diskusi');
-            $table->date('tanggal')->nullable();
             $table->timestamps();
 
             // Foreign key
@@ -47,7 +45,6 @@ class CreateForumTables extends Migration
             $table->unsignedBigInteger('id_diskusi');
             $table->string('uid', 100);
             $table->text('isi_balasan');
-            $table->date('tanggal')->nullable();
             $table->timestamps();
 
             // Foreign key
@@ -55,6 +52,19 @@ class CreateForumTables extends Migration
             $table->foreign('uid')->references('uid')->on('penggunas')->onDelete('cascade');
         });
 
+        // Tabel 'balasan_2'
+        Schema::create('balasans_2', function (Blueprint $table) {
+            $table->id('id_balasan2');
+            $table->unsignedBigInteger('id_balasan');
+            $table->string('uid', 100);
+            $table->text('isi_balasan2');
+            $table->timestamps();
+
+            // Foreign key
+            $table->foreign('id_balasan')->references('id_balasan')->on('balasans')->onDelete('cascade');
+            $table->foreign('uid')->references('uid')->on('penggunas')->onDelete('cascade');
+        });
+        
         // Tabel 'votes'
         Schema::create('votes', function (Blueprint $table) {
             $table->id('id_vote');
