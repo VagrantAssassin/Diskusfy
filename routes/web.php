@@ -15,6 +15,18 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryAdmin;
+use App\Http\Controllers\DiscussionAdminController;
+
+// Route untuk menampilkan halaman discussionAdmin (view)
+Route::get('/discussionAdmin', function () {
+    return view('discussion_admin.discussionAdmin');
+});
+
+// Route API untuk diskusi (mengembalikan JSON)
+Route::get('/discussionAdmin/data', [DiscussionAdminController::class, 'index']);
+Route::get('/discussionAdmin/{id}', [DiscussionAdminController::class, 'edit']);
+Route::put('/discussionAdmin/{id}', [DiscussionAdminController::class, 'update']);
+Route::delete('/discussionAdmin/{id}', [DiscussionAdminController::class, 'destroy']);
 
 // Route untuk menampilkan halaman categoryAdmin (view)
 Route::get('/categoryAdmin', function () {
