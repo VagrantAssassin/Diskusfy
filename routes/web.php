@@ -125,6 +125,11 @@ Route::post('new_discussion', [DiskusiController::class, 'add'])->name('diskusi.
 
 Route::get('/home', [DiskusiController::class, 'index']);
 
+Route::get('/home', [DiskusiController::class, 'index'])->name('diskusi.index');
+
+// Route untuk filter diskusi berdasarkan kategori
+Route::get('/category/{id_kategori}', [DiskusiController::class, 'filterByCategory'])->name('diskusi.filterByCategory');
+
 // Menampilkan halaman login
 Route::get('/login', [AuthController::class, 'loginPage']);
 

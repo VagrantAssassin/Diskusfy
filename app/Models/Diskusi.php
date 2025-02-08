@@ -28,5 +28,14 @@ class Diskusi extends Model
     {
         return $this->hasMany(Balasan::class, 'id_diskusi', 'id_diskusi');
     }
-}
 
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
+    }
+
+    public function pengguna()
+    {
+        return $this->belongsTo(Pengguna::class, 'uid', 'uid');
+    }
+}
