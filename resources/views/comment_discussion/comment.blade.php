@@ -58,82 +58,96 @@
         </h3>
 
         @foreach ($diskusi->balasans as $balasan)
-      <article class="mt-4 p-6 text-base bg-white rounded-lg shadow dark:bg-gray-900">
-        <footer class="flex justify-between items-center mb-2">
-        <div class="flex items-center">
-          <img class="mr-2 w-6 h-6 rounded-full"
-          src="https://ui-avatars.com/api/?name={{ urlencode($balasan->uid) }}" alt="{{ $balasan->uid }}">
-          <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-          {{ $balasan->uid }}
-          </p>
-          <p class="text-sm text-gray-600 dark:text-gray-400">
-          <time pubdate datetime="{{ $balasan->created_at }}"
-            title="{{ $balasan->created_at->format('d M Y, H:i') }}">
-            {{ $balasan->created_at->format('d M Y, H:i') }}
+          <article class="mt-4 p-6 text-base bg-white rounded-lg shadow dark:bg-gray-900">
+            <footer class="flex justify-between items-center mb-2">
+            <div class="flex items-center">
+              <img class="mr-2 w-6 h-6 rounded-full"
+              src="https://ui-avatars.com/api/?name={{ urlencode($balasan->uid) }}" alt="{{ $balasan->uid }}">
+              <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
+              {{ $balasan->uid }}
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+              <time pubdate datetime="{{ $balasan->created_at }}"
+                title="{{ $balasan->created_at->format('d M Y, H:i') }}">
+                {{ $balasan->created_at->format('d M Y, H:i') }}
+              </time>
+              </p>
+            </div>
+            <!-- Tombol hapus -->
+            <button id="deleteButton{{ $balasan->id_balasan }}" data-comment-uid="{{ $balasan->uid }}"
+              class="inline-flex items-center p-2 text-sm font-medium text-center text-red-500 dark:text-red-400 bg-white rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-50 dark:bg-gray-900 dark:hover:bg-red-700 dark:focus:ring-red-600 delete-button"
+              type="button" onclick="deleteComment({{ $balasan->id_balasan }})">
+              <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M6 8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V8Zm3-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h4a1 1 0 1 1 0 2H3a1 1 0 1 1 0-2h4V3Z"
+                clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            </footer>
+            <p class="text-gray-500 dark:text-gray-400">
+            {{ $balasan->isi_balasan }}
+            </p>
+
+            <!-- Tombol Like -->
+            <div class="mt-4">
+              <button id="likeButton{{ $balasan->id_balasan }}" 
+                      onclick="toggleLike({{ $balasan->id_balasan }})"
+                      class="like-button flex items-center space-x-1 focus:outline-none">
+                <!-- Ikon hati: default-nya berwarna abu, akan berubah menjadi merah ketika di-like -->
+                <svg id="heartIcon{{ $balasan->id_balasan }}" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-gray-400">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+                <!-- Tampilan angka like -->
+                <span id="likeCount{{ $balasan->id_balasan }}">{{ $balasan->like_count ?? 0 }}</span>
+              </button>
+            </div>
+  
+            <!-- Tombol Reply untuk menampilkan form balasan -->
+            <a href="#"
+            class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium mt-5 reply-toggle"
+            data-comment-id="{{ $balasan->id_balasan }}">
+            Reply
+            </a>
+
+            <!-- Form Reply (sembunyikan secara default) -->
+            <div id="replyForm{{ $balasan->id_balasan }}" class="reply-form hidden mt-4">
+            <form method="POST" action="/reply/{{ $balasan->id_balasan }}">
+              @csrf
+              <div
+              class="py-2 px-4 mb-4 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+              <label for="reply_{{ $balasan->id_balasan }}" class="sr-only">Your reply</label>
+              <textarea name="isi_balasan2" id="reply_{{ $balasan->id_balasan }}" rows="3"
+                class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                placeholder="Write your reply..." required></textarea>
+              </div>
+              <!-- Pastikan Anda mengirimkan uid pengguna, misalnya dengan input tersembunyi atau melalui session/auth -->
+              <input type="hidden" name="user_uid" value="{{ auth()->user()->uid ?? 'default_uid' }}">
+              <button type="submit"
+              class="inline-flex bg-blue-700 items-center py-2.5 px-4 text-xs font-medium text-center text-white rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+              Post reply
+              </button>
+            </form>
+            </div>
+
+
+            @if($balasan->replies->isNotEmpty())
+          <div class="ml-8 mt-4">
+          @foreach ($balasan->replies as $reply)
+          <div class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg mt-2">
+          <p class="text-gray-900 dark:text-white">{{ $reply->isi_balasan2 }}</p>
+          <div class="text-sm text-gray-600 dark:text-gray-400">
+          <span>{{ $reply->uid }}</span>
+          <time datetime="{{ $reply->created_at }}" title="{{ $reply->created_at->format('d M Y, H:i') }}">
+          {{ $reply->created_at->format('d M Y, H:i') }}
           </time>
-          </p>
-        </div>
-        <!-- Tombol hapus -->
-        <button id="deleteButton{{ $balasan->id_balasan }}" data-comment-uid="{{ $balasan->uid }}"
-          class="inline-flex items-center p-2 text-sm font-medium text-center text-red-500 dark:text-red-400 bg-white rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-50 dark:bg-gray-900 dark:hover:bg-red-700 dark:focus:ring-red-600 delete-button"
-          type="button" onclick="deleteComment({{ $balasan->id_balasan }})">
-          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-          viewBox="0 0 20 20">
-          <path fill-rule="evenodd"
-            d="M6 8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V8Zm3-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h4a1 1 0 1 1 0 2H3a1 1 0 1 1 0-2h4V3Z"
-            clip-rule="evenodd"></path>
-          </svg>
-        </button>
-        </footer>
-        <p class="text-gray-500 dark:text-gray-400">
-        {{ $balasan->isi_balasan }}
-        </p>
-        <!-- Tombol Reply untuk menampilkan form balasan -->
-        <a href="#"
-        class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium mt-5 reply-toggle"
-        data-comment-id="{{ $balasan->id_balasan }}">
-        Reply
-        </a>
-
-        <!-- Form Reply (sembunyikan secara default) -->
-        <!-- Form Reply (sembunyikan secara default) -->
-        <div id="replyForm{{ $balasan->id_balasan }}" class="reply-form hidden mt-4">
-        <form method="POST" action="/reply/{{ $balasan->id_balasan }}">
-          @csrf
-          <div
-          class="py-2 px-4 mb-4 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-          <label for="reply_{{ $balasan->id_balasan }}" class="sr-only">Your reply</label>
-          <textarea name="isi_balasan2" id="reply_{{ $balasan->id_balasan }}" rows="3"
-            class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-            placeholder="Write your reply..." required></textarea>
           </div>
-          <!-- Pastikan Anda mengirimkan uid pengguna, misalnya dengan input tersembunyi atau melalui session/auth -->
-          <input type="hidden" name="user_uid" value="{{ auth()->user()->uid ?? 'default_uid' }}">
-          <button type="submit"
-          class="inline-flex bg-blue-700 items-center py-2.5 px-4 text-xs font-medium text-center text-white rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-          Post reply
-          </button>
-        </form>
-        </div>
-
-
-        @if($balasan->replies->isNotEmpty())
-      <div class="ml-8 mt-4">
-      @foreach ($balasan->replies as $reply)
-      <div class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg mt-2">
-      <p class="text-gray-900 dark:text-white">{{ $reply->isi_balasan2 }}</p>
-      <div class="text-sm text-gray-600 dark:text-gray-400">
-      <span>{{ $reply->uid }}</span>
-      <time datetime="{{ $reply->created_at }}" title="{{ $reply->created_at->format('d M Y, H:i') }}">
-      {{ $reply->created_at->format('d M Y, H:i') }}
-      </time>
-      </div>
-      </div>
-    @endforeach
-      </div>
-    @endif
-
-
+          </div>
+        @endforeach
+          </div>
+        @endif
       </article>
     @endforeach
       </section>
@@ -148,21 +162,9 @@
 
   <!-- Sertakan file JS eksternal -->
   <script src="{{ asset('js/deleteComment.js') }}" type="module"></script>
+  <script src="{{ asset('js/replyButton.js') }}" type="module"></script>
   <script src="{{ asset('js/balasanuid.js') }}" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
-
-  <!-- Script untuk toggle form reply -->
-  <script>
-    document.querySelectorAll('.reply-toggle').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        const commentId = this.getAttribute('data-comment-id');
-        const replyForm = document.getElementById('replyForm' + commentId);
-        // Toggle kelas "hidden" untuk menampilkan/menyembunyikan form
-        replyForm.classList.toggle('hidden');
-      });
-    });
-  </script>
 </body>
 
 </html>
