@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buat Diskusi Baru</title>
-    <!-- Include CSS Flowbite jika diperlukan -->
+    <title>Diskusfy</title>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -13,9 +12,8 @@
         <div class="py-8 px-6 w-full max-w-md bg-white dark:bg-gray-800 shadow-md rounded-lg">
             <h2 class="mb-6 text-2xl font-bold text-gray-900 dark:text-white text-center">Buat Diskusi Baru</h2>
             <form action="{{ route('diskusi.add') }}" id="diskusi-form" method="POST">
-                @csrf <!-- CSRF token -->
+                @csrf
                 <div class="flex flex-col gap-4">
-                    <!-- Judul Diskusi -->
                     <div>
                         <label for="judulDiskusi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Judul Diskusi
@@ -27,7 +25,6 @@
                                       dark:focus:ring-green-500 dark:focus:border-green-500"
                                placeholder="Tulis judul disini" required>
                     </div>
-                    <!-- Isi Diskusi -->
                     <div>
                         <label for="isiDiskusi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Diskusi
@@ -38,7 +35,6 @@
                                          dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
                                   placeholder="Isi diskusi disini" required></textarea>
                     </div>
-                    <!-- Kategori -->
                     <div>
                         <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Kategori
@@ -50,7 +46,6 @@
                                       dark:focus:ring-green-500 dark:focus:border-green-500"
                                placeholder="Masukkan kategori" required>
                     </div>
-                    <!-- Input tersembunyi untuk user_uid (pastikan nilainya di-set sesuai mekanisme autentikasi Anda) -->
                     <input type="hidden" name="user_uid" id="user_uid" value="">
                 </div>
                 <div class="flex gap-4 mt-6">
@@ -70,11 +65,9 @@
             </form>
         </div>
     </section>
-    <!-- Include script Firebase dan Flowbite -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
-    <!-- Script untuk mengisi user_uid jika menggunakan Firebase Auth -->
     <script src="{{ asset('js/verif.js') }}" type="module"></script>
     <script src="{{ asset('js/categoryVerif.js') }}" type="module"></script>
 </body>

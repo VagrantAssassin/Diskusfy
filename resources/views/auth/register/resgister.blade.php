@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.css" rel="stylesheet" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Register</title>
+    <title>Diskusfy</title>
 </head>
 <body>
-    <!-- component -->
 <div class="h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center p-4">
     <div class="max-w-md w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
       <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Register</h2>

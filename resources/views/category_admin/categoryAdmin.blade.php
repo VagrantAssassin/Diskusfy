@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <!-- Flowbite & Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
   <title>CPanel</title>
 </head>
 <body class="bg-white dark:bg-gray-800">
-  <!-- Button untuk toggle sidebar (untuk tampilan mobile) -->
   <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
     <span class="sr-only">Open sidebar</span>
     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +18,6 @@
     </svg>
   </button>
 
-  <!-- Sidebar -->
   <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
     <div class="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
       <ul class="space-y-2">
@@ -98,7 +94,6 @@
         </li>
       </ul>
     </div>
-    <!-- Footer di Sidebar (opsional) -->
     <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20 border-r border-gray-200 dark:border-gray-700">
       <a href="#" data-tooltip-target="tooltip-settings" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
         <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
@@ -112,9 +107,7 @@
     </div>
   </aside>
 
-  <!-- Main Content -->
 <div class="p-4 sm:ml-64">
-  <!-- Header dengan tombol Tambah Kategori -->
   <div class="flex justify-between items-center">
     <h1 class="text-2xl font-semibold text-gray-800 dark:text-white">Daftar Kategori</h1>
     <button onclick="document.getElementById('addModal').classList.remove('hidden')" class="bg-green-500 text-white px-4 py-2 rounded">
@@ -132,19 +125,15 @@
           <th scope="col" class="px-6 py-3">Aksi</th>
         </tr>
       </thead>
-      <!-- Ganti id tbody menjadi "categoryTableBody" agar tidak tertukar dengan table pengguna -->
       <tbody id="categoryTableBody">
-        <!-- Data kategori akan diisi oleh categoryAdmin.js -->
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- Modal Edit (sudah ada) -->
 <div id="editModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
   <div class="bg-white p-5 rounded-lg shadow-lg w-96">
     <h2 class="text-lg font-bold mb-3">Edit Kategori</h2>
-    <!-- Input hidden untuk menyimpan id kategori -->
     <input type="hidden" id="editIdKategori">
     <label class="block mb-2">Nama Kategori</label>
     <input type="text" id="editNamaKategori" class="w-full border px-2 py-1 rounded">
@@ -155,7 +144,6 @@
   </div>
 </div>
 
-<!-- Modal Tambah -->
 <div id="addModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
   <div class="bg-white p-5 rounded-lg shadow-lg w-96">
     <h2 class="text-lg font-bold mb-3">Tambah Kategori</h2>
@@ -168,7 +156,6 @@
   </div>
 </div>
 
-<!-- Script JavaScript -->
 <script src="{{ asset('js/sidebarFunction.js') }}"></script>
 <script src="{{ asset('js/categoryAdmin.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diskusfyyy</title>
+    <title>Diskusfy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/hoverA.css') }}">
@@ -190,7 +190,7 @@
 
             <div class="flex-1 pl-64">
                 <main class="min-h-screen" id="mainContent">
-                    @include('home.home') <!-- Tampilan awal -->
+                    @include('home.home')
                 </main>
             </div>
             
@@ -242,7 +242,6 @@
             fetch("{{ route('popular.discussions') }}")
                 .then(response => response.text())
                 .then(html => {
-                    // Ganti konten pada mainSection dengan tampilan diskusi populer
                     document.getElementById('mainContent').innerHTML = html;
                 })
                 .catch(error => {
