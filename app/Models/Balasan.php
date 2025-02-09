@@ -32,6 +32,10 @@ class Balasan extends Model
         return $this->hasMany(Balasan2::class, 'id_balasan', 'id_balasan');
     }
 
+    public function pengguna()
+    {
+        return $this->belongsTo(Pengguna::class, 'uid', 'uid');
+    }
     
 }
 
