@@ -18,6 +18,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryAdmin;
 use App\Http\Controllers\DiscussionAdminController;
 use App\Http\Controllers\ReplyAdminController;
+use App\Http\Controllers\ReportController;
+
+Route::get('/exportExcel', [ReportController::class, 'exportExcel'])->name('export.excel');
+
 
 // Route untuk menampilkan halaman Reply Admin (view)
 Route::get('/reply', function () {
