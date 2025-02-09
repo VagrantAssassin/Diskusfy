@@ -62,9 +62,10 @@
         <footer class="flex justify-between items-center mb-2">
         <div class="flex items-center">
           <img class="mr-2 w-6 h-6 rounded-full"
-          src="https://ui-avatars.com/api/?name={{ urlencode($balasan->uid) }}" alt="{{ $balasan->uid }}">
+          src="https://ui-avatars.com/api/?name={{ urlencode($balasan->pengguna->username) }}"
+          alt="{{ $balasan->pengguna->username }}">
           <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-          {{ $balasan->uid }}
+          {{ $balasan->pengguna->username }}
           </p>
           <p class="text-sm text-gray-600 dark:text-gray-400">
           <time pubdate datetime="{{ $balasan->created_at }}"
@@ -117,8 +118,6 @@
         </a>
         </div>
 
-
-        <!-- Form Reply (sembunyikan secara default) -->
         <!-- Form Reply (sembunyikan secara default) -->
         <div id="replyForm{{ $balasan->id_balasan }}" class="reply-form hidden mt-4">
         <form method="POST" action="/reply/{{ $balasan->id_balasan }}">
@@ -138,22 +137,35 @@
         </div>
 
 
-
+        <!-- Daftar Reply -->
         @if($balasan->replies->isNotEmpty())
-      <div class="ml-8 mt-4">
+      <div class="ml-12 mt-4">
       @foreach ($balasan->replies as $reply)
-      <div class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg mt-2">
-      <p class="text-gray-900 dark:text-white">{{ $reply->isi_balasan2 }}</p>
-      <div class="text-sm text-gray-600 dark:text-gray-400">
-      <span>{{ $reply->uid }}</span>
-      <time datetime="{{ $reply->created_at }}" title="{{ $reply->created_at->format('d M Y, H:i') }}">
-      {{ $reply->created_at->format('d M Y, H:i') }}
+      <article class="mt-4 p-4 bg-white rounded-lg shadow dark:bg-gray-800">
+      <footer class="flex justify-between items-center mb-2">
+      <div class="flex items-center">
+      <img class="mr-2 w-6 h-6 rounded-full"
+      src="https://ui-avatars.com/api/?name={{ urlencode($reply->pengguna->username) }}"
+      alt="{{ $reply->pengguna->username }}">
+      <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
+      {{ $reply->pengguna->username }}
+      </p>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+      <time pubdate datetime="{{ $reply->created_at }}"
+        title="{{ $reply->created_at->format('d M Y, H:i') }}">
+        {{ $reply->created_at->format('d M Y, H:i') }}
       </time>
+      </p>
       </div>
-      </div>
+      </footer>
+      <p class="text-gray-500 dark:text-gray-400">
+      {{ $reply->isi_balasan2 }}
+      </p>
+      </article>
     @endforeach
       </div>
     @endif
+
       </article>
     @endforeach
       </section>

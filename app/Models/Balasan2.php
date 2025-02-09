@@ -24,4 +24,9 @@ class Balasan2 extends Model
     {
         return $this->belongsTo(Balasan::class, 'id_balasan', 'id_balasan');
     }
+
+    public function pengguna()
+    {
+        return $this->belongsTo(Pengguna::class, 'uid', 'uid');
+    }
 }
