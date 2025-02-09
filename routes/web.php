@@ -12,7 +12,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Balasan2Controller;
-
+use App\Http\Controllers\VoteController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryAdmin;
@@ -22,6 +22,7 @@ use App\Http\Controllers\ReportController;
 
 Route::get('/exportExcel', [ReportController::class, 'exportExcel'])->name('export.excel');
 
+Route::post('/toggle-like', [VoteController::class, 'toggleLike'])->name('toggle.like');
 
 // Route untuk menampilkan halaman Reply Admin (view)
 Route::get('/reply', function () {
