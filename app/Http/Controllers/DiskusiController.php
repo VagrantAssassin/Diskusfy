@@ -1,17 +1,18 @@
 <?php
 
+// app/Http/Controllers/DiskusiController.php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Diskusi; // Pastikan model Diskusi sudah ada
+use App\Models\Diskusi;
 use App\Models\Kategori;
 
 class DiskusiController extends Controller
 {
     public function add(Request $request)
     {
-        // Ubah validasi: menerima judul, isi diskusi, nama kategori, dan user_uid
+        // Validasi input
         $validatedData = $request->validate([
             'judul'       => 'required|string|max:255',
             'isi_diskusi' => 'required|string',
@@ -21,18 +22,19 @@ class DiskusiController extends Controller
 
         DB::beginTransaction();
         try {
-            // Ambil nama kategori yang diinput user
             $categoryName = $validatedData['kategori'];
 
-            // Cari kategori berdasarkan nama; jika belum ada, buat kategori baru.
-            // Catatan: Jika kolom id_kategori sudah auto-increment, parameter kedua tidak diperlukan.
+            // Cari kategori berdasarkan nama, atau buat baru jika belum ada.
             $kategori = Kategori::firstOrCreate(
                 ['nama_kategori' => $categoryName],
-                ['id_kategori'   => Kategori::max('id_kategori') + 1] // Hanya diperlukan jika tidak auto-increment
+                // Jika kolom id_kategori bersifat auto-increment, Anda tidak perlu menyet nilai id secara manual.
+                // Jika tidak, Anda dapat mengatur id seperti berikut:
+                // ['id_kategori' => Kategori::max('id_kategori') + 1]
+                []
             );
             $kategoriId = $kategori->id_kategori;
 
-            // Simpan diskusi ke database dengan kategori yang sesuai
+            // Simpan diskusi
             $diskusi = Diskusi::create([
                 'judul'       => $validatedData['judul'],
                 'isi_diskusi' => $validatedData['isi_diskusi'],
@@ -53,16 +55,32 @@ class DiskusiController extends Controller
 
     public function index()
     {
-        // Mengambil seluruh data diskusi (bisa menggunakan pagination jika data sangat banyak)
+        // Ambil seluruh diskusi
         $diskusis = Diskusi::all();
-
         return view('home.home', compact('diskusis'));
     }
 
     public function show($id_diskusi)
     {
-        // Mengambil diskusi beserta komentar (relasi "balasans")
+        // Ambil diskusi beserta komentar (relasi "balasans")
         $diskusi = Diskusi::with('balasans')->where('id_diskusi', $id_diskusi)->firstOrFail();
         return view('comment_discussion.comment', compact('diskusi'));
+    }
+
+    /**
+     * Tampilkan diskusi berdasarkan kategori yang dipilih.
+     *
+     * @param  int  $id_kategori
+     * @return \Illuminate\View\View
+     */
+    public function filterByCategory($id_kategori)
+    {
+        // Ambil diskusi yang memiliki id_kategori sesuai parameter
+        $diskusis = Diskusi::where('id_kategori', $id_kategori)->get();
+
+        // Jika ingin menampilkan nama kategori di header, Anda bisa mengambil data kategori
+        $kategori = Kategori::findOrFail($id_kategori);
+
+        return view('home.home', compact('diskusis', 'kategori'));
     }
 }
