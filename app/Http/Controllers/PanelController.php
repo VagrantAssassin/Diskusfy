@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class PanelController extends Controller
 {
-    // Menampilkan halaman dashboard dengan data (jika diperlukan)
     public function index()
     {
         $data = [
@@ -18,12 +17,8 @@ class PanelController extends Controller
             'totalVotes' => DB::table('votes')->count(),
             'latestDiscussion' => DB::table('diskusis')->orderBy('created_at', 'desc')->first(),
         ];
-
-        // Misalnya, jika file view Anda bernama welcomeAdmin.blade.php
         return view('welcomeAdmin', $data);
     }
-
-    // Endpoint untuk mengembalikan data statistik dashboard dalam format JSON
     public function stats()
     {
         $data = [

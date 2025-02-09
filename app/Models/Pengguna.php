@@ -8,9 +8,8 @@ class Pengguna extends Model
 {
     protected $table = 'penggunas';
 
-    // Primary key adalah 'uid' (string)
     protected $primaryKey = 'uid';
-    public $incrementing = false; // Karena bukan auto increment
+    public $incrementing = false;
 
     protected $fillable = [
         'uid',

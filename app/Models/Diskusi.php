@@ -1,6 +1,5 @@
 <?php
 
-// app/Models/Diskusi.php
 
 namespace App\Models;
 
@@ -23,7 +22,7 @@ class Diskusi extends Model
         'nama_kategori'
     ];
 
-    // Relasi: Satu diskusi memiliki banyak balasan
+
     public function balasans()
     {
         return $this->hasMany(Balasan::class, 'id_diskusi', 'id_diskusi');

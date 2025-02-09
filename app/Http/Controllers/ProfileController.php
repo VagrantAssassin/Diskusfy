@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pengguna; // Pastikan Anda sudah membuat model Pengguna
+use App\Models\Pengguna;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
-    /**
-     * Mengembalikan data profil berdasarkan uid.
-     */
     public function show($uid)
     {
         $user = Pengguna::find($uid);
@@ -26,13 +23,8 @@ class ProfileController extends Controller
             'data' => $user
         ]);
     }
-
-    /**
-     * Memperbarui data profil pengguna.
-     */
     public function update(Request $request)
     {
-        // Validasi input
         $validator = Validator::make($request->all(), [
             'uid' => 'required|exists:penggunas,uid',
             'username' => 'required|max:32',

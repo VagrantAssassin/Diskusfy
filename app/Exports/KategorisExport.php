@@ -28,7 +28,6 @@ class KategorisExport implements FromCollection, WithHeadings, ShouldAutoSize, W
 
     public function styles(Worksheet $sheet)
     {
-        // Baris pertama (header) akan ditampilkan dengan font bold
         return [
             1 => ['font' => ['bold' => true]],
         ];

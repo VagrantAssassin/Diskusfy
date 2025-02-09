@@ -6,9 +6,6 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class ForumExport implements WithMultipleSheets
 {
-    /**
-     * Mengembalikan array objek export masing-masing sheet.
-     */
     public function sheets(): array
     {
         return [

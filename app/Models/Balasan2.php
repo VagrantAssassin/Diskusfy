@@ -18,8 +18,6 @@ class Balasan2 extends Model
         'uid',
         'isi_balasan2'
     ];
-
-    // Relasi ke komentar utama (Balasan)
     public function balasan()
     {
         return $this->belongsTo(Balasan::class, 'id_balasan', 'id_balasan');

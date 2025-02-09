@@ -1,6 +1,5 @@
 <?php
 
-// app/Models/Balasan.php
 
 namespace App\Models;
 
@@ -21,7 +20,6 @@ class Balasan extends Model
         'isi_balasan'
     ];
 
-    // Relasi: Balasan termasuk ke dalam satu diskusi
     public function diskusi()
     {
         return $this->belongsTo(Diskusi::class, 'id_diskusi', 'id_diskusi');
@@ -36,6 +34,6 @@ class Balasan extends Model
     {
         return $this->belongsTo(Pengguna::class, 'uid', 'uid');
     }
-    
+
 }
 

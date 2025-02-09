@@ -9,15 +9,12 @@ class RegisterController extends Controller
 {
     public function add(Request $request)
     {
-        // Validasi data
         $validated = $request->validate([
             'uid' => 'required|unique:penggunas',
             'username' => 'required|string|max:255',
             'email' => 'required|email|unique:penggunas',
             'nama' => 'required|string|max:255',
         ]);
-
-        // Menyimpan data ke database
         $pengguna = new Pengguna();
         $pengguna->uid = $request->uid;
         $pengguna->username = $request->username;
