@@ -10,7 +10,7 @@
     <div class="container">
         <div class="forgot-box">
             <h2>Forgot Password</h2>
-            <p>Abusken email maneh jeng neangan akun maneh</p>
+            <p>Masukkan email akun anda</p>
             <input type="email" placeholder="Abusken email maneh kehed" required>
             <button class="reset-btn">Reset Password</button>
             <button class="cancel-btn">Cancel</button>

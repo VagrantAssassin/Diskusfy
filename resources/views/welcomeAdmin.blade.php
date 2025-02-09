@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Flowbite & Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <title>CPanel</title>
 </head>
-<!-- Ubah background body agar sama dengan sidebar & main content -->
 <body class="bg-white dark:bg-gray-800">
   <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
     <span class="sr-only">Open sidebar</span>
@@ -107,11 +105,9 @@
     </div>
   </aside>
 
-  <!-- Main Content: Background disamakan dengan sidebar -->
   <div class="bg-white dark:bg-gray-800 p-4 sm:ml-64 min-h-screen">
     <h1 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Dashboard Overview</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-      <!-- Card: Total Pengguna -->
       <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4 border border-gray-200 dark:border-gray-700">
         <div class="flex items-center">
           <div class="p-3 rounded-full bg-blue-600 text-white mr-4">
@@ -123,7 +119,6 @@
           </div>
         </div>
       </div>
-      <!-- Card: Total Diskusi -->
       <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4 border border-gray-200 dark:border-gray-700">
         <div class="flex items-center">
           <div class="p-3 rounded-full bg-green-600 text-white mr-4">
@@ -135,7 +130,6 @@
           </div>
         </div>
       </div>
-      <!-- Card: Total Komentar -->
       <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4 border border-gray-200 dark:border-gray-700">
         <div class="flex items-center">
           <div class="p-3 rounded-full bg-purple-600 text-white mr-4">
@@ -147,7 +141,6 @@
           </div>
         </div>
       </div>
-      <!-- Card: Total Kategori (tambahan) -->
       <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4 border border-gray-200 dark:border-gray-700">
         <div class="flex items-center">
           <div class="p-3 rounded-full bg-yellow-600 text-white mr-4">
@@ -159,7 +152,6 @@
           </div>
         </div>
       </div>
-      <!-- Card: Total Votes (tambahan) -->
       <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4 border border-gray-200 dark:border-gray-700">
         <div class="flex items-center">
           <div class="p-3 rounded-full bg-red-600 text-white mr-4">
@@ -171,7 +163,6 @@
           </div>
         </div>
       </div>
-      <!-- Card: Diskusi Terbaru (tambahan) -->
       <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4 border border-gray-200 dark:border-gray-700">
         <div class="flex items-center">
           <div class="p-3 rounded-full bg-indigo-600 text-white mr-4">
