@@ -119,6 +119,7 @@
 
 
         <!-- Form Reply (sembunyikan secara default) -->
+        <!-- Form Reply (sembunyikan secara default) -->
         <div id="replyForm{{ $balasan->id_balasan }}" class="reply-form hidden mt-4">
         <form method="POST" action="/reply/{{ $balasan->id_balasan }}">
           @csrf
@@ -129,14 +130,13 @@
             class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
             placeholder="Write your reply..." required></textarea>
           </div>
-          <!-- Pastikan Anda mengirimkan uid pengguna, misalnya dengan input tersembunyi atau melalui session/auth -->
-          <input type="hidden" name="user_uid" value="{{ auth()->user()->uid ?? 'default_uid' }}">
           <button type="submit"
           class="inline-flex bg-blue-700 items-center py-2.5 px-4 text-xs font-medium text-center text-white rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
           Post reply
           </button>
         </form>
         </div>
+
 
 
         @if($balasan->replies->isNotEmpty())
@@ -171,6 +171,7 @@
   <script src="{{ asset('js/voteButton.js') }}" type="module"></script>
   <script src="{{ asset('js/replyButton.js') }}" type="module"></script>
   <script src="{{ asset('js/balasanuid.js') }}" type="module"></script>
+  <script src="{{ asset('js/replyuid.js') }}" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
 </body>
 
