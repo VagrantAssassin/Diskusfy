@@ -26,6 +26,13 @@ if (!getApps().length) {
 
 const auth = getAuth();
 
+// Fungsi global untuk menampilkan alert bahwa komentar telah di post
+// dan melakukan reload halaman setelah tombol OK ditekan
+window.showPostAlert = function () {
+    alert("Komentar telah di post!");
+    window.location.reload();
+};
+
 // Cek apakah pengguna sudah login dan siapkan event submit untuk form komentar
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -55,7 +62,8 @@ onAuthStateChanged(auth, (user) => {
                         if (data.success) {
                             console.log("Data berhasil disimpan");
                             textarea.value = "";
-                            // Opsi: reload halaman atau update DOM secara dinamis
+                            // Tampilkan alert dan reload halaman setelah tombol OK ditekan
+                            window.showPostAlert();
                         } else {
                             console.log("Gagal menyimpan data");
                         }
