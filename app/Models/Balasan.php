@@ -35,5 +35,10 @@ class Balasan extends Model
         return $this->belongsTo(Pengguna::class, 'uid', 'uid');
     }
 
+
+    public function votes()
+{
+    return $this->hasMany(\App\Models\Vote::class, 'id_balasan', 'id_balasan');
+}
 }
 

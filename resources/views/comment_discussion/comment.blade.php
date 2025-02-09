@@ -92,7 +92,7 @@
           </svg>
           </div>
           <span class="text-white" id="likeCount{{ $balasan->id_balasan }}">
-          {{ $balasan->like_count ?? 0 }}
+          {{ $balasan->votes->count() }}
           </span>
         </button>
         <a href="#"
@@ -172,6 +172,7 @@
   <script src="{{ asset('js/replyButton.js') }}" type="module"></script>
   <script src="{{ asset('js/balasanuid.js') }}" type="module"></script>
   <script src="{{ asset('js/replyuid.js') }}" type="module"></script>
+  <script src="{{ asset('js/voteuid.js') }}" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
 </body>
 

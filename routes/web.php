@@ -21,21 +21,19 @@ use App\Http\Controllers\ReplyAdminController;
 use App\Http\Controllers\ReportController;
 
 
-Route::get('/popular-discussions', [DiskusiController::class, 'popular'])
-    ->name('popular.discussions');
-// Route pencarian diskusi berdasarkan judul
+Route::get('/popular-discussions', [DiskusiController::class, 'popular'])->name('popular.discussions');
+
 Route::get('/search', [DiskusiController::class, 'search'])->name('diskusi.search');
 
 Route::get('/exportExcel', [ReportController::class, 'exportExcel'])->name('export.excel');
 
-Route::post('/toggle-like', [VoteController::class, 'toggleLike'])->name('toggle.like');
+Route::post('/vote/toggle-like', [VoteController::class, 'toggleLike'])->name('vote.toggle');
 
-// Route untuk menampilkan halaman Reply Admin (view)
 Route::get('/reply', function () {
     return view('reply_admin.reply');
 });
 
-// Route API untuk balasan (mengembalikan JSON)
+
 Route::get('/reply/data', [ReplyAdminController::class, 'index']);
 Route::get('/reply/{id}', [ReplyAdminController::class, 'edit']);
 Route::put('/reply/{id}', [ReplyAdminController::class, 'update']);
