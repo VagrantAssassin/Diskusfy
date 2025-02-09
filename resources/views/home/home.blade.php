@@ -3,7 +3,7 @@
         <div class="mx-auto max-w-screen-lg px-4 2xl:px-0">
             <div class="lg:flex lg:items-center lg:justify-between lg:gap-4">
                 <h2 class="shrink-0 text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
-                    Questions ({{ count($diskusis) }})
+                    {{ $title ?? 'Questions' }} ({{ count($diskusis) }})
                 </h2>
             </div>
             <div class="mt-6 flow-root">

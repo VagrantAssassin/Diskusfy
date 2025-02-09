@@ -101,8 +101,10 @@ class DiskusiController extends Controller
             ->orderBy('balasans_count', 'desc')
             ->get();
 
-        // Kembalikan view yang sama seperti home, pastikan file home.blade.php
-        // hanya berisi bagian konten (tanpa tag <html> atau <body>) agar bisa di-*include* ke mainContent.
-        return view('home.home', compact('diskusis'));
+        // Tambahkan judul khusus untuk tampilan populer
+        $title = "Popular Discussions";
+
+        // Kirim data dan judul ke view
+        return view('home.home', compact('diskusis', 'title'));
     }
 }
