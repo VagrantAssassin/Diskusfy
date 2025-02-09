@@ -8,7 +8,6 @@ use App\Models\Balasan2;
 class Balasan2Controller extends Controller
 {
     /**
-     * Simpan reply (balasan) ke database.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id_balasan
@@ -32,4 +31,24 @@ class Balasan2Controller extends Controller
             return response()->json(['success' => false, 'message' => 'Gagal menyimpan ke database']);
         }
     }
+
+    /**
+     *
+     * @param  int  $id_balasan2
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy($id_balasan2, Request $request)
+    {
+        $reply = Balasan2::find($id_balasan2);
+
+        if (!$reply) {
+            return response()->json(['success' => false, 'message' => 'Reply tidak ditemukan'], 404);
+        }
+
+        $reply->delete();
+
+        return response()->json(['success' => true, 'message' => 'Reply berhasil dihapus']);
+    }
 }
+
