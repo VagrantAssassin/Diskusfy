@@ -8,7 +8,6 @@ use App\Models\Balasan2;
 class Balasan2Controller extends Controller
 {
     /**
-     * Simpan reply (balasan) ke database.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id_balasan
@@ -34,7 +33,6 @@ class Balasan2Controller extends Controller
     }
 
     /**
-     * Hapus reply berdasarkan id_balasan2.
      *
      * @param  int  $id_balasan2
      * @param  \Illuminate\Http\Request  $request
@@ -42,20 +40,12 @@ class Balasan2Controller extends Controller
      */
     public function destroy($id_balasan2, Request $request)
     {
-        // Cari reply berdasarkan id_balasan2
         $reply = Balasan2::find($id_balasan2);
 
         if (!$reply) {
             return response()->json(['success' => false, 'message' => 'Reply tidak ditemukan'], 404);
         }
 
-        // (Optional) Cek apakah pengguna yang meminta penghapusan adalah pemilik reply
-        /*$userUid = $request->input('user_uid');
-        if ($userUid && $userUid !== $reply->uid) {
-            return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
-        }*/
-
-        // Hapus reply
         $reply->delete();
 
         return response()->json(['success' => true, 'message' => 'Reply berhasil dihapus']);
