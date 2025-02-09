@@ -73,6 +73,7 @@
           </time>
           </p>
         </div>
+
         <!-- Tombol hapus -->
         <button id="deleteButton{{ $balasan->id_balasan }}" data-comment-uid="{{ $balasan->uid }}"
           class="inline-flex items-center p-2 text-sm font-medium text-center text-red-500 dark:text-red-400 bg-white rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-50 dark:bg-gray-900 dark:hover:bg-red-700 dark:focus:ring-red-600 delete-button"
@@ -88,14 +89,35 @@
         <p class="text-gray-500 dark:text-gray-400">
         {{ $balasan->isi_balasan }}
         </p>
-        <!-- Tombol Reply untuk menampilkan form balasan -->
-        <a href="#"
-        class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium mt-5 reply-toggle"
-        data-comment-id="{{ $balasan->id_balasan }}">
-        Reply
-        </a>
 
-        <!-- Form Reply (sembunyikan secara default) -->
+        <div class="flex items-center mt-5 space-x-4">
+        <!-- Tombol Like -->
+        <button id="likeButton{{ $balasan->id_balasan }}" onclick="toggleLike({{ $balasan->id_balasan }})"
+          class="like-button flex items-center space-x-1 focus:outline-none">
+          <!-- Bungkus ikon dalam div untuk efek lingkaran hover -->
+          <div class="p-2 rounded-full transition-colors duration-200 hover:bg-red-500">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor" class="w-5 h-5 text-gray-400">
+            <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          </div>
+          <!-- Tampilan Angka Like -->
+          <span class="text-white" id="likeCount{{ $balasan->id_balasan }}">
+          {{ $balasan->like_count ?? 0 }}
+          </span>
+        </button>
+
+
+        <!-- Tombol Reply -->
+        <a href="#"
+          class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium reply-toggle"
+          data-comment-id="{{ $balasan->id_balasan }}">
+          Reply
+        </a>
+        </div>
+
+
         <!-- Form Reply (sembunyikan secara default) -->
         <div id="replyForm{{ $balasan->id_balasan }}" class="reply-form hidden mt-4">
         <form method="POST" action="/reply/{{ $balasan->id_balasan }}">
@@ -132,8 +154,6 @@
     @endforeach
       </div>
     @endif
-
-
       </article>
     @endforeach
       </section>
@@ -148,21 +168,10 @@
 
   <!-- Sertakan file JS eksternal -->
   <script src="{{ asset('js/deleteComment.js') }}" type="module"></script>
+  <script src="{{ asset('js/voteButton.js') }}" type="module"></script>
+  <script src="{{ asset('js/replyButton.js') }}" type="module"></script>
   <script src="{{ asset('js/balasanuid.js') }}" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
-
-  <!-- Script untuk toggle form reply -->
-  <script>
-    document.querySelectorAll('.reply-toggle').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        const commentId = this.getAttribute('data-comment-id');
-        const replyForm = document.getElementById('replyForm' + commentId);
-        // Toggle kelas "hidden" untuk menampilkan/menyembunyikan form
-        replyForm.classList.toggle('hidden');
-      });
-    });
-  </script>
 </body>
 
 </html>
