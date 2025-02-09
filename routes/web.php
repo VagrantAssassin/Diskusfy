@@ -20,6 +20,9 @@ use App\Http\Controllers\DiscussionAdminController;
 use App\Http\Controllers\ReplyAdminController;
 use App\Http\Controllers\ReportController;
 
+// Route pencarian diskusi berdasarkan judul
+Route::get('/search', [DiskusiController::class, 'search'])->name('diskusi.search');
+
 Route::get('/exportExcel', [ReportController::class, 'exportExcel'])->name('export.excel');
 
 Route::post('/toggle-like', [VoteController::class, 'toggleLike'])->name('toggle.like');

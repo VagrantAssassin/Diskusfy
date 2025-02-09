@@ -14,10 +14,10 @@ class DiskusiController extends Controller
     {
         // Validasi input
         $validatedData = $request->validate([
-            'judul'       => 'required|string|max:255',
+            'judul' => 'required|string|max:255',
             'isi_diskusi' => 'required|string',
-            'kategori'    => 'required|string|max:255',
-            'user_uid'    => 'required|string'
+            'kategori' => 'required|string|max:255',
+            'user_uid' => 'required|string'
         ]);
 
         DB::beginTransaction();
@@ -36,10 +36,10 @@ class DiskusiController extends Controller
 
             // Simpan diskusi
             $diskusi = Diskusi::create([
-                'judul'       => $validatedData['judul'],
+                'judul' => $validatedData['judul'],
                 'isi_diskusi' => $validatedData['isi_diskusi'],
                 'id_kategori' => $kategoriId,
-                'uid'         => $validatedData['user_uid'],
+                'uid' => $validatedData['user_uid'],
             ]);
 
             DB::commit();
@@ -82,5 +82,16 @@ class DiskusiController extends Controller
         $kategori = Kategori::findOrFail($id_kategori);
 
         return view('home.home', compact('diskusis', 'kategori'));
+    }
+
+    // Method pencarian diskusi berdasarkan judul
+    public function search(Request $request)
+    {
+        $query = $request->query('query'); // Ambil query dari URL
+        $diskusis = Diskusi::where('judul', 'like', '%' . $query . '%')->get();
+
+        // Kembalikan view partial yang berisi daftar diskusi hasil pencarian
+        // Pastikan file view 'partials.discussion-list' sudah dibuat (lihat langkah berikutnya)
+        return view('partials.discussion-list', compact('diskusis'));
     }
 }

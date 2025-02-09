@@ -219,7 +219,7 @@
     </div>
 
 
-
+    
 
     <script src="{{ asset('js/chatbot.js') }}"></script>
 
@@ -234,6 +234,7 @@
     <script defer src="{{ asset('js/newDiscussionButton.js') }}"></script>
     <script defer src="{{ asset('js/commentButton.js') }}"></script>
     <script type="module" src="{{ asset('js/auth.js') }}"></script>
+    <script src="{{ asset('js/search.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
 </body>
 
