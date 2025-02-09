@@ -37,4 +37,20 @@ class CategoryAdmin extends Controller
         $category->delete();
         return response()->json(['message' => 'Category deleted successfully']);
     }
+    public function store(Request $request)
+    {
+        // Validasi input
+        $data = $request->validate([
+            'nama_kategori' => 'required|string|max:255'
+        ]);
+
+        // Membuat data kategori baru
+        $category = Kategori::create($data);
+
+        return response()->json([
+            'message' => 'Category created successfully',
+            'category' => $category
+        ]);
+    }
+
 }

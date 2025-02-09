@@ -77,3 +77,34 @@ function deleteCategory(id) {
             .catch((error) => console.error("Error deleting category:", error));
     }
 }
+
+// Fungsi untuk menyimpan kategori baru
+function storeCategory() {
+    const nama_kategori = document.getElementById("addNamaKategori").value;
+
+    // Validasi sederhana
+    if (nama_kategori.trim() === "") {
+        alert("Nama kategori tidak boleh kosong");
+        return;
+    }
+
+    const data = { nama_kategori: nama_kategori };
+
+    fetch("/categoryAdmin", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')
+                .content,
+        },
+        body: JSON.stringify(data),
+    })
+        .then((response) => response.json())
+        .then((result) => {
+            // Setelah berhasil, tutup modal, reset input, dan refresh daftar kategori
+            document.getElementById("addModal").classList.add("hidden");
+            document.getElementById("addNamaKategori").value = "";
+            fetchCategories();
+        })
+        .catch((error) => console.error("Error creating category:", error));
+}

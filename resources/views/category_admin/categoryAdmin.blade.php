@@ -113,45 +113,65 @@
   </aside>
 
   <!-- Main Content -->
-  <div class="p-4 sm:ml-64">
+<div class="p-4 sm:ml-64">
+  <!-- Header dengan tombol Tambah Kategori -->
+  <div class="flex justify-between items-center">
     <h1 class="text-2xl font-semibold text-gray-800 dark:text-white">Daftar Kategori</h1>
-    <p class="text-gray-600 dark:text-gray-300 mb-4">Berikut adalah daftar kategori yang terdaftar di sistem.</p>
+    <button onclick="document.getElementById('addModal').classList.remove('hidden')" class="bg-green-500 text-white px-4 py-2 rounded">
+      Tambah Kategori
+    </button>
+  </div>
+  <p class="text-gray-600 dark:text-gray-300 mb-4">Berikut adalah daftar kategori yang terdaftar di sistem.</p>
 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th scope="col" class="px-6 py-3">ID Kategori</th>
-            <th scope="col" class="px-6 py-3">Nama Kategori</th>
-            <th scope="col" class="px-6 py-3">Aksi</th>
-          </tr>
-        </thead>
-        <!-- Ganti id tbody menjadi "categoryTableBody" agar tidak tertukar dengan table pengguna -->
-        <tbody id="categoryTableBody">
-          <!-- Data kategori akan diisi oleh categoryAdmin.js -->
-        </tbody>
-      </table>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">ID Kategori</th>
+          <th scope="col" class="px-6 py-3">Nama Kategori</th>
+          <th scope="col" class="px-6 py-3">Aksi</th>
+        </tr>
+      </thead>
+      <!-- Ganti id tbody menjadi "categoryTableBody" agar tidak tertukar dengan table pengguna -->
+      <tbody id="categoryTableBody">
+        <!-- Data kategori akan diisi oleh categoryAdmin.js -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal Edit (sudah ada) -->
+<div id="editModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+  <div class="bg-white p-5 rounded-lg shadow-lg w-96">
+    <h2 class="text-lg font-bold mb-3">Edit Kategori</h2>
+    <!-- Input hidden untuk menyimpan id kategori -->
+    <input type="hidden" id="editIdKategori">
+    <label class="block mb-2">Nama Kategori</label>
+    <input type="text" id="editNamaKategori" class="w-full border px-2 py-1 rounded">
+    <div class="flex justify-end mt-4">
+      <button onclick="document.getElementById('editModal').classList.add('hidden')" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
+      <button onclick="updateCategory()" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
     </div>
   </div>
+</div>
 
-  <!-- Edit Modal -->
-  <div id="editModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-    <div class="bg-white p-5 rounded-lg shadow-lg w-96">
-      <h2 class="text-lg font-bold mb-3">Edit Kategori</h2>
-      <!-- Input hidden untuk menyimpan id kategori -->
-      <input type="hidden" id="editIdKategori">
-      <label class="block mb-2">Nama Kategori</label>
-      <input type="text" id="editNamaKategori" class="w-full border px-2 py-1 rounded">
-      <div class="flex justify-end mt-4">
-        <button onclick="document.getElementById('editModal').classList.add('hidden')" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
-        <button onclick="updateCategory()" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-      </div>
+<!-- Modal Tambah -->
+<div id="addModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+  <div class="bg-white p-5 rounded-lg shadow-lg w-96">
+    <h2 class="text-lg font-bold mb-3">Tambah Kategori</h2>
+    <label class="block mb-2">Nama Kategori</label>
+    <input type="text" id="addNamaKategori" class="w-full border px-2 py-1 rounded" placeholder="Masukkan nama kategori">
+    <div class="flex justify-end mt-4">
+      <button onclick="document.getElementById('addModal').classList.add('hidden')" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
+      <button onclick="storeCategory()" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
     </div>
   </div>
+</div>
 
-  <!-- Script JavaScript -->
-  <script src="{{ asset('js/sidebarFunction.js') }}"></script>
-  <script src="{{ asset('js/categoryAdmin.js') }}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
+<!-- Script JavaScript -->
+<script src="{{ asset('js/sidebarFunction.js') }}"></script>
+<script src="{{ asset('js/categoryAdmin.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
+
 </body>
 </html>

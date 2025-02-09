@@ -149,7 +149,7 @@
   </div>
 
   <!-- Edit Modal (saat ini hanya sebagai placeholder, fungsi edit akan dikembangkan nantinya) -->
-  <div id="editModal" class="hidden fixed inset-0 dark:bg-gray-700 bg-opacity-50 flex justify-center items-center">
+  <div id="editModal" class="hidden fixed inset-0 dark:bg-gray-800 bg-opacity-50 flex justify-center items-center">
     <div class="bg-white p-5 rounded-lg shadow-lg w-96">
       <h2 class="text-lg font-bold mb-3">Edit User</h2>
       <input type="hidden" id="editUid">
