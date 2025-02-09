@@ -20,6 +20,9 @@ use App\Http\Controllers\DiscussionAdminController;
 use App\Http\Controllers\ReplyAdminController;
 use App\Http\Controllers\ReportController;
 
+
+Route::get('/popular-discussions', [DiskusiController::class, 'popular'])
+    ->name('popular.discussions');
 // Route pencarian diskusi berdasarkan judul
 Route::get('/search', [DiskusiController::class, 'search'])->name('diskusi.search');
 

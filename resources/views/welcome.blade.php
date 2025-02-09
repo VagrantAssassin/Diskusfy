@@ -56,9 +56,9 @@
                                 <span class="ms-3">Dashboard</span>
                             </a>
                         </li>
-                        <li x-data="{ open: false }">
-                            <button @click="open = !open"
-                                class="flex items-center justify-start p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full">
+                        <li>
+                            <button id="popularDiscussionButton"
+                                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group w-full">
                                 <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 20 20">
@@ -71,7 +71,7 @@
                                 </svg>
                                 <span class="ms-3 whitespace-nowrap">Popular Discussion</span>
                             </button>
-                        <li>
+                        </li>
                             <a href="/new_discussion"
                                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -190,9 +190,10 @@
 
             <div class="flex-1 pl-64">
                 <main class="min-h-screen" id="mainContent">
-                    @include('home.home') <!-- Mengarahkan ke home -->
+                    @include('home.home') <!-- Tampilan awal -->
                 </main>
             </div>
+            
 
 
         </div>
@@ -235,6 +236,21 @@
     <script defer src="{{ asset('js/commentButton.js') }}"></script>
     <script type="module" src="{{ asset('js/auth.js') }}"></script>
     <script src="{{ asset('js/search.js') }}"></script>
+    <script>
+        document.getElementById('popularDiscussionButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            fetch("{{ route('popular.discussions') }}")
+                .then(response => response.text())
+                .then(html => {
+                    // Ganti konten pada mainSection dengan tampilan diskusi populer
+                    document.getElementById('mainContent').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading popular discussions:', error);
+                });
+        });
+    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
 </body>
 
