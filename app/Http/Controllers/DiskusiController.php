@@ -94,4 +94,15 @@ class DiskusiController extends Controller
         // Pastikan file view 'partials.discussion-list' sudah dibuat (lihat langkah berikutnya)
         return view('partials.discussion-list', compact('diskusis'));
     }
+    public function popular()
+    {
+        // Ambil diskusi beserta jumlah komentar (balasans)
+        $diskusis = Diskusi::withCount('balasans')
+            ->orderBy('balasans_count', 'desc')
+            ->get();
+
+        // Kembalikan view yang sama seperti home, pastikan file home.blade.php
+        // hanya berisi bagian konten (tanpa tag <html> atau <body>) agar bisa di-*include* ke mainContent.
+        return view('home.home', compact('diskusis'));
+    }
 }
