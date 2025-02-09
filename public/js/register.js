@@ -20,7 +20,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-// Handle email/password registration
+
 document
     .getElementById("register-form")
     .addEventListener("submit", async (e) => {
@@ -29,7 +29,7 @@ document
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
         const username = document.getElementById("username").value;
-        const nama = document.getElementById("nama").value; // Tambahkan field nama
+        const nama = document.getElementById("nama").value; 
 
         try {
             const userCredential = await createUserWithEmailAndPassword(
@@ -38,7 +38,6 @@ document
                 password
             );
 
-            // Setelah registrasi berhasil, kirim data ke server Laravel
             const response = await fetch("/register", {
                 method: "POST",
                 headers: {
@@ -51,14 +50,14 @@ document
                     email,
                     username,
                     nama,
-                    uid: userCredential.user.uid, // Kirim UID dari Firebase
+                    uid: userCredential.user.uid,
                 }),
             });
 
             const data = await response.json();
             if (data.success) {
                 alert("Registrasi berhasil! Anda sekarang dapat masuk.");
-                window.location.href = "/login"; // Redirect ke halaman login
+                window.location.href = "/login";
             } else {
                 alert("Gagal menambahkan pengguna.");
             }
@@ -67,7 +66,7 @@ document
         }
     });
 
-// Handle Google sign-up
+
 document.getElementById("google-signup").addEventListener("click", async () => {
     try {
         const result = await signInWithPopup(auth, provider);
@@ -75,11 +74,11 @@ document.getElementById("google-signup").addEventListener("click", async () => {
         const email = user.email;
         const uid = user.uid;
 
-        // Gunakan email untuk username dan nama
+
         const username = email;
         const nama = email;
 
-        // Kirim data ke server Laravel
+
         const response = await fetch("/register", {
             method: "POST",
             headers: {
@@ -92,7 +91,7 @@ document.getElementById("google-signup").addEventListener("click", async () => {
                 email,
                 username,
                 nama,
-                uid, // UID dari Firebase
+                uid, 
             }),
         });
 
@@ -101,7 +100,7 @@ document.getElementById("google-signup").addEventListener("click", async () => {
             alert(
                 "Registrasi dengan Google berhasil! Selamat datang, " + email
             );
-            window.location.href = "/"; // Redirect ke halaman utama atau halaman lain sesuai kebutuhan
+            window.location.href = "/";
         } else {
             alert("Gagal menambahkan pengguna.");
         }

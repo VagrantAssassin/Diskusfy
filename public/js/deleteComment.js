@@ -1,4 +1,3 @@
-// public/js/deleteComment.js
 import {
     getApps,
     initializeApp,
@@ -8,7 +7,6 @@ import {
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// Konfigurasi Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyCyUNuYlWR-uFEUlXbL_-2Hm4t4u70Af4U",
     authDomain: "diskusfy.firebaseapp.com",

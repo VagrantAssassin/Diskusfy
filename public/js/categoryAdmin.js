@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchCategories() {
-    // Mengambil data kategori dari endpoint "/categoryAdmin/data"
+   
     fetch("/categoryAdmin/data")
         .then((response) => response.json())
         .then((categories) => {
@@ -78,11 +78,10 @@ function deleteCategory(id) {
     }
 }
 
-// Fungsi untuk menyimpan kategori baru
+
 function storeCategory() {
     const nama_kategori = document.getElementById("addNamaKategori").value;
 
-    // Validasi sederhana
     if (nama_kategori.trim() === "") {
         alert("Nama kategori tidak boleh kosong");
         return;
@@ -101,7 +100,6 @@ function storeCategory() {
     })
         .then((response) => response.json())
         .then((result) => {
-            // Setelah berhasil, tutup modal, reset input, dan refresh daftar kategori
             document.getElementById("addModal").classList.add("hidden");
             document.getElementById("addNamaKategori").value = "";
             fetchCategories();

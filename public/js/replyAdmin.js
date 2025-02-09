@@ -9,7 +9,7 @@ function fetchReplies() {
             const tableBody = document.getElementById("replyTableBody");
             tableBody.innerHTML = "";
             replies.forEach((reply) => {
-                // Jika isi balasan terlalu panjang, tampilkan sebagian saja
+
                 let isi = reply.isi_balasan;
                 if (isi.length > 50) {
                     isi = isi.substring(0, 50) + "...";

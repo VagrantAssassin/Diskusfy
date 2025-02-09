@@ -4,7 +4,6 @@ import {
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// Konfigurasi Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyCyUNuYlWR-uFEUlXbL_-2Hm4t4u70Af4U",
     authDomain: "diskusfy.firebaseapp.com",
@@ -15,11 +14,10 @@ const firebaseConfig = {
     measurementId: "G-Y5MY8ZNNL0",
 };
 
-// Inisialisasi Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Cek apakah user sudah login
+
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log("User is signed in:", user);
@@ -39,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("diskusi-form");
 
     form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Mencegah form submit biasa
+        event.preventDefault();
 
         const formData = new FormData(form);
 
@@ -52,10 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then((response) => response.json())
             .then((data) => {
-                if (data.success) {
-                    // Tampilkan popup
+                if (data.success) {                 
                     alert(data.message);
-                    // Redirect ke halaman lain, misalnya home
                     window.location.href = "/";
                 } else {
                     alert("Terjadi kesalahan: " + data.message);

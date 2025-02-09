@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Daftar route admin yang ingin dropdown selalu terbuka
     const adminRoutes = [
         "/users",
         "/categoryAdmin",
@@ -8,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
     const currentPath = window.location.pathname;
 
-    // Jika currentPath sama persis atau dimulai dengan salah satu route admin (untuk handling URL dengan parameter)
     if (
         adminRoutes.some(
             (route) =>

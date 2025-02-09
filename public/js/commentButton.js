@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     `;
 
-                    // Eksekusi ulang script yang ada di dalam data
                     const scripts = mainContent.querySelectorAll("script");
                     scripts.forEach((script) => {
                         const newScript = document.createElement("script");

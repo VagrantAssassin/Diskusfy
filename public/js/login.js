@@ -33,13 +33,13 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
             password
         );
         alert("Login berhasil!");
-        window.location.href = "/"; // Ganti dengan halaman yang sesuai setelah login
+        window.location.href = "/";
     } catch (error) {
         alert("Login gagal: " + error.message);
     }
 });
 
-// Handle Google Login
+
 document.getElementById("google-signin").addEventListener("click", async () => {
     try {
         const result = await signInWithPopup(auth, provider);
@@ -47,7 +47,6 @@ document.getElementById("google-signin").addEventListener("click", async () => {
         const email = user.email;
         const uid = user.uid;
 
-        // Kirim data ke server Laravel untuk login / register otomatis
         const response = await fetch("/login", {
             method: "POST",
             headers: {
@@ -65,7 +64,7 @@ document.getElementById("google-signin").addEventListener("click", async () => {
         const data = await response.json();
         if (data.success) {
             alert("Login berhasil! Selamat datang, " + email);
-            window.location.href = "/"; // Redirect ke halaman utama
+            window.location.href = "/"; 
         } else {
             alert("Gagal login: " + data.message);
         }

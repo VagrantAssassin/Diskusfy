@@ -3,14 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchDiscussions() {
-    // Mengambil data diskusi dari endpoint "/discussionAdmin/data"
     fetch("/discussionAdmin/data")
         .then((response) => response.json())
         .then((discussions) => {
             const tableBody = document.getElementById("discussionTableBody");
             tableBody.innerHTML = "";
             discussions.forEach((discussion) => {
-                // Jika isi diskusi terlalu panjang, kita tampilkan hanya sebagian teks
                 let isi = discussion.isi_diskusi;
                 if (isi.length > 50) {
                     isi = isi.substring(0, 50) + "...";

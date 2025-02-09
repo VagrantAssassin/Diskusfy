@@ -4,7 +4,7 @@ import {
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// Konfigurasi Firebase
+
 const firebaseConfig = {
     apiKey: "AIzaSyCyUNuYlWR-uFEUlXbL_-2Hm4t4u70Af4U",
     authDomain: "diskusfy.firebaseapp.com",
@@ -15,16 +15,16 @@ const firebaseConfig = {
     measurementId: "G-Y5MY8ZNNL0",
 };
 
-// Inisialisasi Firebase
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Periksa status login
+
 onAuthStateChanged(auth, (user) => {
     if (user) {
         const uid = user.uid;
 
-        // Ambil data profil dari backend menggunakan uid
+
         fetch(`/api/profile/${uid}`)
             .then((response) => response.json())
             .then((data) => {
@@ -35,7 +35,6 @@ onAuthStateChanged(auth, (user) => {
                         userData.username;
                     document.getElementById("email").value = userData.email;
                     document.getElementById("name").value = userData.nama;
-                    // Update tampilan nama di atas foto profil (jika diinginkan)
                     document.getElementById("display-name").textContent =
                         userData.nama;
                 } else {
@@ -44,7 +43,6 @@ onAuthStateChanged(auth, (user) => {
             })
             .catch((err) => console.error("Error fetching profile:", err));
 
-        // Tangani submit form untuk update profil
         const form = document.getElementById("profile-form");
         form.addEventListener("submit", (event) => {
             event.preventDefault();

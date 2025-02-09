@@ -1,4 +1,3 @@
-// public/js/balasanuid.js
 import {
     getApps,
     initializeApp,
@@ -8,7 +7,7 @@ import {
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// Konfigurasi Firebase
+
 const firebaseConfig = {
     apiKey: "AIzaSyCyUNuYlWR-uFEUlXbL_-2Hm4t4u70Af4U",
     authDomain: "diskusfy.firebaseapp.com",
@@ -19,21 +18,20 @@ const firebaseConfig = {
     measurementId: "G-Y5MY8ZNNL0",
 };
 
-// Inisialisasi Firebase jika belum ada
+
 if (!getApps().length) {
     initializeApp(firebaseConfig);
 }
 
 const auth = getAuth();
 
-// Fungsi global untuk menampilkan alert bahwa komentar telah di post
-// dan melakukan reload halaman setelah tombol OK ditekan
+
 window.showPostAlert = function () {
     alert("Komentar telah di post!");
     window.location.reload();
 };
 
-// Cek apakah pengguna sudah login dan siapkan event submit untuk form komentar
+
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log("User is signed in:", user);
@@ -62,7 +60,7 @@ onAuthStateChanged(auth, (user) => {
                         if (data.success) {
                             console.log("Data berhasil disimpan");
                             textarea.value = "";
-                            // Tampilkan alert dan reload halaman setelah tombol OK ditekan
+                            
                             window.showPostAlert();
                         } else {
                             console.log("Gagal menyimpan data");
