@@ -10,7 +10,7 @@
     <div class="h-screen flex flex-col items-center justify-center p-4">
         <div class="max-w-md w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
             <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Welcome Administrator</h2>
-            
+
             <form class="space-y-4" id="admin-login-form">
                 <div>
                     <label class="block text-sm font-medium text-gray-900 dark:text-white mb-1">Email</label>
@@ -22,7 +22,7 @@
                         placeholder="your@email.com"
                     />
                 </div>
-                
+
                 <div>
                     <label class="block text-sm font-medium text-gray-900 dark:text-white mb-1">Password</label>
                     <input 
@@ -33,12 +33,10 @@
                         placeholder="••••••••"
                     />
                 </div>
-                
+
                 <div class="flex items-center justify-between">
-                
-                    {{-- <a href="/forget" class="text-sm text-green-600 hover:text-green-500 dark:text-green-400">Forgot password?</a> --}}
-                </div>
-                
+                    </div>
+
                 <button type="submit" id="login-submit" class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-500 dark:hover:bg-green-600 dark:focus:ring-green-800">
                     Sign In
                 </button>
@@ -49,5 +47,3 @@
     <script src="{{ asset('js/loginAdmin.js') }}" type="module"></script>
 </body>
 </html>
-
-
