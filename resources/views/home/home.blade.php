@@ -4,7 +4,7 @@
             <div class="lg:flex lg:items-center lg:justify-between lg:gap-4">
                 <h2 class="shrink-0 text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
                     {{ $title ?? 'Questions' }} ({{ count($diskusis) }})
-                </h2
+                </h2>
             </div>
             <div class="mt-6 flow-root">
                 <div class="-my-6 divide-y divide-gray-200 dark:divide-gray-800">
