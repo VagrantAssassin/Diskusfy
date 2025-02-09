@@ -54,7 +54,7 @@ Route::delete('/discussionAdmin/{id}', [DiscussionAdminController::class, 'destr
 Route::get('/categoryAdmin', function () {
     return view('category_admin.categoryAdmin');
 });
-
+Route::post('/categoryAdmin', [CategoryAdmin::class, 'store']);
 // Route API untuk kategori (mengembalikan JSON)
 Route::get('/categoryAdmin/data', [CategoryAdmin::class, 'index']);
 Route::get('/categoryAdmin/{id}', [CategoryAdmin::class, 'edit']);

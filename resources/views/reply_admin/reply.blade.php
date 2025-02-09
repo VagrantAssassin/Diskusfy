@@ -137,7 +137,7 @@
   </div>
 
   <!-- Edit Modal -->
-  <div id="editModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+  <div id="editModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
     <div class="bg-white p-5 rounded-lg shadow-lg w-96">
       <h2 class="text-lg font-bold mb-3">Edit Balasan</h2>
       <input type="hidden" id="editIdBalasan">
