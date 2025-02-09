@@ -1,23 +1,18 @@
-<!-- resources/views/comment_discussion/comment.blade.php -->
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- CSRF Token untuk Laravel -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Diskusfy</title>
-  <!-- Flowbite CSS -->
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.css" rel="stylesheet" />
-  <!-- AlpineJS (opsional) -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="bg-gray-900 dark:bg-gray-900">
   <section class="bg-gray-900 dark:bg-gray-900 py-8 lg:py-16 antialiased">
     <div class="mx-auto max-w-screen-lg px-4 2xl:px-0">
-      <!-- Header -->
       <div class="flex justify-between items-center">
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $diskusi->judul }}</h2>
         <a href="/"
@@ -29,14 +24,12 @@
         </a>
       </div>
 
-      <!-- Tampilan Diskusi -->
       <div class="mt-2 border-t border-gray-700 pt-2">
         <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg flex items-start mt-3">
           <p class="text-gray-900 dark:text-gray-300">{{ $diskusi->isi_diskusi }}</p>
         </div>
       </div>
 
-      <!-- Form Komentar Utama -->
       <form id="commentForm" method="POST" action="/comment">
         @csrf
         <div class="py-2 px-4 mb-4 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -51,7 +44,6 @@
         </button>
       </form>
 
-      <!-- Daftar Komentar -->
       <section class="mt-8">
         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
           Comments ({{ count($diskusi->balasans) }})
@@ -74,8 +66,6 @@
           </time>
           </p>
         </div>
-
-        <!-- Tombol hapus -->
         <button id="deleteButton{{ $balasan->id_balasan }}" data-comment-uid="{{ $balasan->uid }}"
           class="inline-flex items-center p-2 text-sm font-medium text-center text-red-500 dark:text-red-400 bg-white rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-50 dark:bg-gray-900 dark:hover:bg-red-700 dark:focus:ring-red-600 delete-button"
           type="button" onclick="deleteComment({{ $balasan->id_balasan }})">
@@ -92,10 +82,8 @@
         </p>
 
         <div class="flex items-center mt-5 space-x-4">
-        <!-- Tombol Like -->
         <button id="likeButton{{ $balasan->id_balasan }}" onclick="toggleLike({{ $balasan->id_balasan }})"
           class="like-button flex items-center space-x-1 focus:outline-none">
-          <!-- Bungkus ikon dalam div untuk efek lingkaran hover -->
           <div class="p-2 rounded-full transition-colors duration-200 hover:bg-red-500">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
             stroke="currentColor" class="w-5 h-5 text-gray-400">
@@ -103,14 +91,10 @@
             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
           </svg>
           </div>
-          <!-- Tampilan Angka Like -->
           <span class="text-white" id="likeCount{{ $balasan->id_balasan }}">
           {{ $balasan->like_count ?? 0 }}
           </span>
         </button>
-
-
-        <!-- Tombol Reply -->
         <a href="#"
           class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium reply-toggle"
           data-comment-id="{{ $balasan->id_balasan }}">
@@ -118,7 +102,6 @@
         </a>
         </div>
 
-        <!-- Form Reply (sembunyikan secara default) -->
         <div id="replyForm{{ $balasan->id_balasan }}" class="reply-form hidden mt-4">
         <form method="POST" action="/reply/{{ $balasan->id_balasan }}">
           @csrf
@@ -136,8 +119,6 @@
         </form>
         </div>
 
-
-        <!-- Daftar Reply -->
         @if($balasan->replies->isNotEmpty())
       <div class="ml-12 mt-4">
       @foreach ($balasan->replies as $reply)
@@ -157,6 +138,16 @@
       </time>
       </p>
       </div>
+      <button id="deleteReplyButton{{ $reply->id_balasan2 }}" data-reply-uid="{{ $reply->uid }}"
+      class="inline-flex items-center p-2 text-sm font-medium text-center text-red-500 dark:text-red-400 bg-white dark:bg-gray-800 rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-50 dark:hover:bg-red-700 dark:focus:ring-red-600 delete-reply-button"
+      type="button" onclick="deleteReply({{ $reply->id_balasan2 }})">
+      <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+      viewBox="0 0 20 20">
+      <path fill-rule="evenodd"
+        d="M6 8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V8Zm3-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h4a1 1 0 1 1 0 2H3a1 1 0 1 1 0-2h4V3Z"
+        clip-rule="evenodd"></path>
+      </svg>
+      </button>
       </footer>
       <p class="text-gray-500 dark:text-gray-400">
       {{ $reply->isi_balasan2 }}
@@ -165,21 +156,18 @@
     @endforeach
       </div>
     @endif
-
       </article>
     @endforeach
       </section>
     </div>
   </section>
 
-  <!-- Definisikan diskusiId secara global (digunakan di JS) -->
   <script>
     const diskusiId = "{{ $diskusi->id_diskusi }}";
     console.log("diskusiId:", diskusiId);
   </script>
-
-  <!-- Sertakan file JS eksternal -->
   <script src="{{ asset('js/deleteComment.js') }}" type="module"></script>
+  <script src="{{ asset('js/deleteReply.js') }}" type="module"></script>
   <script src="{{ asset('js/voteButton.js') }}" type="module"></script>
   <script src="{{ asset('js/replyButton.js') }}" type="module"></script>
   <script src="{{ asset('js/balasanuid.js') }}" type="module"></script>

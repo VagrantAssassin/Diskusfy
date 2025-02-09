@@ -91,6 +91,9 @@ Route::post('/reply/{id_balasan}', [Balasan2Controller::class, 'store']);
 // Rute untuk menghapus komentar
 Route::delete('/delete-comment/{id_balasan}', [BalasanController::class, 'destroy']);
 
+// Rute untuk menghapus reply
+Route::delete('/delete-reply/{id_balasan2}', [Balasan2Controller::class, 'destroy']);
+
 //Route::post('/diskusi/{id_diskusi}/balasan', [BalasanController::class, 'store'])->middleware('auth')->name('balasan.store');
 
 // Route::post('balasan/{id_diskusi}', [BalasanController::class, 'store'])->name('balasan.store');
