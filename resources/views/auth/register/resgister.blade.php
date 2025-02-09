@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.css" rel="stylesheet" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Register</title>
+    <title>Diskusfy</title>
 </head>
 <body>
 <div class="h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center p-4">
