@@ -26,6 +26,12 @@ function getIdBalasanFromAction(actionUrl) {
     return parts[parts.length - 1];
 }
 
+// Fungsi global untuk menampilkan alert dan melakukan reload halaman
+window.showAlertAndReload = function(message) {
+    alert(message);
+    window.location.reload();
+}
+
 // Setelah memastikan pengguna sudah login, daftarkan event listener pada form reply
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -39,7 +45,7 @@ onAuthStateChanged(auth, (user) => {
                 // Ambil nilai dari textarea dalam form reply
                 const textarea = form.querySelector('textarea');
                 const isiBalasan2 = textarea.value.trim();
-                if (!isiBalasan2) return; // jangan submit jika kosong
+                if (!isiBalasan2) return; // Jangan submit jika kosong
 
                 // Dapatkan id_balasan dari URL action form (misalnya "/reply/123")
                 const actionUrl = form.getAttribute('action');
@@ -65,7 +71,8 @@ onAuthStateChanged(auth, (user) => {
                         console.log("Reply berhasil disimpan");
                         // Bersihkan textarea
                         textarea.value = "";
-                        // Opsi: reload halaman atau update DOM secara dinamis untuk menampilkan reply baru
+                        // Tampilkan alert dan reload halaman setelah tombol OK ditekan
+                        window.showAlertAndReload("Reply berhasil disimpan!");
                     } else {
                         console.error("Gagal menyimpan reply");
                     }
