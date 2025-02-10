@@ -14,7 +14,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414l-3.293 3.293h7.586a1 1 0 010 2H6.414l3.293 3.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                 </svg>
-                Kembali
+                Back
             </a>
         </div>
         
@@ -42,13 +42,13 @@
             </div>
             
             <div class="flex flex-col">
-                <label class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1" for="name">Nama</label>
+                <label class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1" for="name">Name</label>
                 <input type="text" id="name" name="name" value="" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 transition duration-200">
             </div>
             
             <div class="md:col-span-2 flex flex-col md:flex-row justify-between items-center gap-4">
-                <button type="submit" class="bg-green-600 dark:bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition w-full md:w-auto shadow-lg focus:ring-2 focus:ring-green-400">Simpan Perubahan</button>
-                <a href="/" class="text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 text-sm font-medium transition duration-200">Batal</a>
+                <button type="submit" class="bg-green-600 dark:bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition w-full md:w-auto shadow-lg focus:ring-2 focus:ring-green-400">Save Change</button>
+                <a href="/" class="text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 text-sm font-medium transition duration-200">Cancel</a>
             </div>
         </form>
     </div>

@@ -213,7 +213,7 @@
         <div id="chatbox" class="flex-1 p-3 overflow-y-auto max-h-64"></div>
         <div class="p-3 border-t flex">
             <input id="chatInput" type="text"
-                class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-200" placeholder="Tulis pesan...">
+                class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-200" placeholder="Write message...">
             <button id="sendChat"
                 class="bg-blue-500 text-white px-3 ml-2 rounded-lg hover:bg-blue-600 transition">📤</button>
         </div>
