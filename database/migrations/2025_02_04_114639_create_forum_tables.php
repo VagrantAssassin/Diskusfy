@@ -9,14 +9,12 @@ class CreateForumTables extends Migration
 {
     public function up()
     {
-        // Tabel 'kategoris'
         Schema::create('kategoris', function (Blueprint $table) {
             $table->id('id_kategori');
             $table->string('nama_kategori', 20);
             $table->timestamps();
         });
 
-        // Tabel 'penggunas'
         Schema::create('penggunas', function (Blueprint $table) {
             $table->string('uid', 100)->primary();
             $table->string('username', 32)->unique();
@@ -25,7 +23,6 @@ class CreateForumTables extends Migration
             $table->timestamps();
         });
 
-        // Tabel 'diskusis'
         Schema::create('diskusis', function (Blueprint $table) {
             $table->id('id_diskusi');
             $table->unsignedBigInteger('id_kategori')->nullable();
@@ -34,12 +31,10 @@ class CreateForumTables extends Migration
             $table->text('isi_diskusi');
             $table->timestamps();
 
-            // Foreign key
             $table->foreign('id_kategori')->references('id_kategori')->on('kategoris')->onDelete('set null');
             $table->foreign('uid')->references('uid')->on('penggunas')->onDelete('cascade');
         });
 
-        // Tabel 'balasans'
         Schema::create('balasans', function (Blueprint $table) {
             $table->id('id_balasan');
             $table->unsignedBigInteger('id_diskusi');
@@ -47,12 +42,10 @@ class CreateForumTables extends Migration
             $table->text('isi_balasan');
             $table->timestamps();
 
-            // Foreign key
             $table->foreign('id_diskusi')->references('id_diskusi')->on('diskusis')->onDelete('cascade');
             $table->foreign('uid')->references('uid')->on('penggunas')->onDelete('cascade');
         });
 
-        // Tabel 'balasans_2'
         Schema::create('balasans_2', function (Blueprint $table) {
             $table->id('id_balasan2');
             $table->unsignedBigInteger('id_balasan');
@@ -60,28 +53,23 @@ class CreateForumTables extends Migration
             $table->text('isi_balasan2');
             $table->timestamps();
 
-            // Foreign key
             $table->foreign('id_balasan')->references('id_balasan')->on('balasans')->onDelete('cascade');
             $table->foreign('uid')->references('uid')->on('penggunas')->onDelete('cascade');
         });
 
-        // Tabel 'votes'
         Schema::create('votes', function (Blueprint $table) {
             $table->id('id_vote');
             $table->unsignedBigInteger('id_balasan');
             $table->string('uid', 100);
-            $table->boolean('isi_vote'); // Bisa diubah jadi boolean untuk upvote/downvote
+            $table->boolean('isi_vote');
             $table->timestamps();
 
-            // Foreign key
             $table->foreign('id_balasan')->references('id_balasan')->on('balasans')->onDelete('cascade');
             $table->foreign('uid')->references('uid')->on('penggunas')->onDelete('cascade');
         });
 
 
 
-
-        // (Opsional) Insert data dummy untuk votes
 
     }
 
