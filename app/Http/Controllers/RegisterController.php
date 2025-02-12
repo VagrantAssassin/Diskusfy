@@ -9,12 +9,14 @@ class RegisterController extends Controller
 {
     public function add(Request $request)
     {
+        // Validasi input
         $validated = $request->validate([
             'uid' => 'required|unique:penggunas',
             'username' => 'required|string|max:255',
             'email' => 'required|email|unique:penggunas',
             'nama' => 'required|string|max:255',
         ]);
+
         $pengguna = new Pengguna();
         $pengguna->uid = $request->uid;
         $pengguna->username = $request->username;
@@ -27,5 +29,4 @@ class RegisterController extends Controller
             return response()->json(['success' => false]);
         }
     }
-
 }
