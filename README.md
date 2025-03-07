@@ -87,7 +87,6 @@ Dengan mengikuti langkah-langkah di atas, aplikasi Diskusfy seharusnya sudah dap
 
 Jika terjadi masalah saat instalasi, hubungi:
 
-*   +6281324087085
 *   radityaramadhan.138@gmail.com
 
 ## Link Penting
